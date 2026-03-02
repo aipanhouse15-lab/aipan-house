@@ -1,0 +1,7 @@
+:root{--ochre:#943B20;--ochre-deep:#6B1E08;--ochre-warm:#B84A28;--cream:#FDF8F3;--ivory:#F7EFE5;--sand:#EDE3D5;--gold:#C6A55C;--gold-light:#DBBF7A;--gold-muted:#B49A5A;--charcoal:#2A2420;--warm-brown:#7A6B5D;--taupe:#A89888;--soft-white:#FEFCF9;--blush:#F5E6DA;--border:rgba(198,165,92,0.18);--shadow-soft:0 8px 40px rgba(107,30,8,0.06);--shadow-hover:0 16px 60px rgba(107,30,8,0.10);--r-sm:16px;--r-md:24px;--r-lg:40px;--r-xl:60px;--r-pill:999px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--charcoal);overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--cream)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px}
+@keyframes gentleUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{opacity:0;transform:translateY(25px);transition:all .6s cubic-bezier(.4,0,.2,1)}
+.fade-in.visible{opacity:1;transform:translateY(0)}

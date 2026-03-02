@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lakshmi Chowki Grand Panel — Aipan House</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500;6..12,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+
+
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--cream)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 40px;transition:all .5s cubic-bezier(.4,0,.2,1)}
+.navbar.scrolled{background:rgba(253,248,243,.92);backdrop-filter:blur(24px);box-shadow:0 4px 30px rgba(107,30,8,.05)}
+.nav-inner{max-width:1440px;margin:0 auto;padding:10px 28px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,243,.85);backdrop-filter:blur(16px);border-radius:var(--r-pill);border:1px solid var(--border);transition:all .5s ease}
+.navbar.scrolled .nav-inner{background:transparent;border-color:transparent;backdrop-filter:none}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo{width:38px;height:38px;border-radius:50%;background:var(--ochre-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-brand-text{display:flex;flex-direction:column}
+.nav-brand-name{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ochre-deep);line-height:1.1}
+.nav-brand-tag{font-size:9px;letter-spacing:2.5px;color:var(--gold-muted);text-transform:uppercase;font-weight:500}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{text-decoration:none;color:var(--warm-brown);font-size:13px;padding:8px 18px;border-radius:var(--r-pill);transition:all .3s ease}
+.nav-links a:hover{background:var(--sand);color:var(--ochre-deep)}
+.nav-actions{display:flex;gap:8px;align-items:center}
+.nav-icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--warm-brown);transition:all .3s ease;position:relative;text-decoration:none}
+.nav-icon-btn:hover{background:var(--sand);color:var(--ochre-deep);border-color:var(--sand)}
+.cart-badge{position:absolute;top:-3px;right:-3px;width:18px;height:18px;background:var(--ochre-warm);color:white;font-size:9px;font-weight:600;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--cream)}
+
+/* BREADCRUMB */
+.breadcrumb{max-width:1440px;margin:0 auto;padding:100px 40px 0;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--taupe)}
+.breadcrumb a{color:var(--warm-brown);text-decoration:none;transition:color .2s}
+.breadcrumb a:hover{color:var(--ochre-deep)}
+.breadcrumb svg{opacity:.4}
+
+/* PRODUCT HERO */
+.product-hero{max-width:1440px;margin:0 auto;padding:24px 40px 0;display:grid;grid-template-columns:1.15fr 1fr;gap:60px;align-items:start}
+
+/* IMAGE GALLERY */
+.gallery{position:sticky;top:100px}
+.gallery-main{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/5;position:relative;cursor:crosshair;margin-bottom:16px}
+.gallery-main-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;transition:transform .5s ease;background:linear-gradient(160deg,var(--ochre-deep) 0%,var(--ochre-warm) 55%,#C46A48 100%)}
+.gallery-main:hover .gallery-main-bg{transform:scale(1.03)}
+.gallery-main-motif{opacity:.2;animation:floatSoft 8s ease-in-out infinite}
+@keyframes floatSoft{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+.gallery-badge{position:absolute;top:20px;left:20px;padding:8px 20px;background:var(--ochre-deep);color:white;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;border-radius:var(--r-pill);z-index:2;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.gallery-zoom{position:absolute;bottom:20px;right:20px;width:44px;height:44px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.1);z-index:2;transition:all .3s;border:none;color:var(--warm-brown)}
+.gallery-zoom:hover{transform:scale(1.1);background:var(--ivory)}
+.gallery-thumbs{display:flex;gap:12px}
+.gallery-thumb{width:80px;height:80px;border-radius:var(--r-sm);overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all .3s;opacity:.6}
+.gallery-thumb:hover,.gallery-thumb.active{border-color:var(--ochre-deep);opacity:1}
+.gallery-thumb-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+
+/* PRODUCT INFO */
+.product-info{padding:16px 0 80px}
+.pi-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:var(--ivory);border-radius:var(--r-pill);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-muted);font-weight:600;margin-bottom:14px}
+.pi-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.pi-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,3vw,40px);color:var(--ochre-deep);line-height:1.15;margin-bottom:10px}
+.pi-subtitle{font-family:'Lora',serif;font-size:15px;color:var(--warm-brown);font-style:italic;margin-bottom:20px}
+.pi-rating{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.pi-stars{display:flex;gap:3px}
+.pi-star{width:18px;height:18px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:9px;color:white}
+.pi-star.empty{background:var(--sand);color:var(--taupe)}
+.pi-rating-text{font-size:13px;color:var(--warm-brown)}
+.pi-rating-text strong{color:var(--ochre-deep)}
+.pi-divider{height:1px;background:var(--border);margin:24px 0}
+
+/* PRICE */
+.pi-price-block{margin-bottom:24px}
+.pi-price{font-family:'DM Serif Display',serif;font-size:36px;color:var(--ochre-deep)}
+.pi-orig{font-family:'Nunito Sans',sans-serif;font-size:18px;color:var(--taupe);text-decoration:line-through;margin-left:10px}
+.pi-save{display:inline-flex;padding:4px 12px;background:rgba(198,165,92,.12);color:var(--gold-muted);font-size:11px;font-weight:600;border-radius:var(--r-pill);margin-left:10px;vertical-align:middle}
+.pi-tax{font-size:12px;color:var(--taupe);margin-top:4px}
+
+/* DESCRIPTION */
+.pi-desc{font-family:'Lora',serif;font-size:15px;line-height:1.8;color:var(--warm-brown);margin-bottom:28px}
+
+/* SPECS GRID */
+.pi-specs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.pi-spec{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--ivory);border-radius:var(--r-md);transition:background .2s}
+.pi-spec:hover{background:var(--sand)}
+.pi-spec-icon{width:36px;height:36px;border-radius:50%;background:white;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.04);font-size:14px}
+.pi-spec-text{font-size:12px;line-height:1.4;color:var(--warm-brown)}
+.pi-spec-text strong{display:block;color:var(--ochre-deep);font-weight:600;font-size:13px}
+
+/* SIZE SELECTOR */
+.pi-section-title{font-family:'DM Serif Display',serif;font-size:16px;color:var(--ochre-deep);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.size-options{display:flex;gap:10px;margin-bottom:28px}
+.size-opt{padding:10px 22px;border:1.5px solid var(--border);border-radius:var(--r-pill);font-size:13px;color:var(--warm-brown);cursor:pointer;transition:all .2s;background:white;font-family:'Nunito Sans',sans-serif}
+.size-opt:hover{border-color:var(--gold);color:var(--ochre-deep)}
+.size-opt.active{border-color:var(--ochre-deep);background:var(--ochre-deep);color:white}
+
+/* QUANTITY + ADD TO CART */
+.pi-actions{display:flex;gap:14px;align-items:center;margin-bottom:24px}
+.qty-control{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:var(--r-pill);overflow:hidden;background:white}
+.qty-btn{width:44px;height:48px;border:none;background:transparent;cursor:pointer;font-size:18px;color:var(--charcoal);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.qty-btn:hover{background:var(--ivory);color:var(--ochre-deep)}
+.qty-val{font-family:'DM Serif Display',serif;font-size:16px;min-width:32px;text-align:center;color:var(--ochre-deep)}
+.add-cart-btn{flex:1;padding:16px 32px;background:var(--ochre-deep);color:var(--cream);border:none;border-radius:var(--r-pill);font-family:'Nunito Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(107,30,8,.2);display:flex;align-items:center;justify-content:center;gap:10px}
+.add-cart-btn:hover{background:var(--ochre-warm);transform:translateY(-2px);box-shadow:0 8px 28px rgba(107,30,8,.25)}
+.wish-btn{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--border);background:white;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--warm-brown);transition:all .3s;flex-shrink:0}
+.wish-btn:hover{border-color:var(--ochre-warm);color:var(--ochre-warm);background:rgba(184,74,40,.04)}
+.wish-btn.liked{background:var(--ochre-warm);border-color:var(--ochre-warm);color:white}
+.wish-btn.liked svg{fill:white}
+
+/* TRUST PILLS */
+.pi-trust{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.trust-pill{display:flex;align-items:center;gap:8px;padding:10px 18px;background:white;border:1px solid var(--border);border-radius:var(--r-pill);font-size:12px;color:var(--warm-brown)}
+.trust-pill svg{flex-shrink:0;color:var(--gold)}
+
+/* ACCORDION */
+.accordion{border-top:1px solid var(--border)}
+.acc-item{border-bottom:1px solid var(--border)}
+.acc-header{padding:18px 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:'DM Serif Display',serif;font-size:16px;color:var(--ochre-deep);transition:color .2s}
+.acc-header:hover{color:var(--ochre-warm)}
+.acc-header svg{transition:transform .3s;color:var(--taupe)}
+.acc-item.open .acc-header svg{transform:rotate(180deg)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease}
+.acc-item.open .acc-body{max-height:400px;padding-bottom:20px}
+.acc-body-inner{font-family:'Lora',serif;font-size:14px;line-height:1.8;color:var(--warm-brown)}
+.acc-body-inner ul{list-style:none;padding:0}
+.acc-body-inner li{padding:4px 0;display:flex;align-items:flex-start;gap:8px}
+.acc-body-inner li::before{content:'◆';color:var(--gold);font-size:8px;margin-top:5px;flex-shrink:0}
+
+/* ARTISAN CARD */
+.artisan-card{margin-top:28px;padding:28px;background:var(--ivory);border-radius:var(--r-lg);display:flex;gap:20px;align-items:center}
+.artisan-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--ochre),var(--ochre-warm));display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'DM Serif Display',serif;font-size:24px;color:white;box-shadow:0 4px 12px rgba(148,59,32,.2)}
+.artisan-info{flex:1}
+.artisan-name{font-family:'DM Serif Display',serif;font-size:17px;color:var(--ochre-deep);margin-bottom:2px}
+.artisan-role{font-family:'Lora',serif;font-size:12px;color:var(--taupe);font-style:italic;margin-bottom:6px}
+.artisan-text{font-size:13px;color:var(--warm-brown);line-height:1.5}
+
+/* STORY STRIP */
+.product-story{max-width:1440px;margin:0 auto;padding:80px 40px}
+.story-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.story-card{background:white;border-radius:var(--r-lg);padding:36px 28px;border:1px solid var(--border);transition:all .4s;text-align:center}
+.story-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px)}
+.story-icon{width:60px;height:60px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:22px}
+.si-1{background:linear-gradient(135deg,rgba(148,59,32,.08),rgba(148,59,32,.03))}
+.si-2{background:linear-gradient(135deg,rgba(198,165,92,.12),rgba(198,165,92,.04))}
+.si-3{background:linear-gradient(135deg,rgba(61,43,31,.08),rgba(61,43,31,.03))}
+.story-card h3{font-family:'DM Serif Display',serif;font-size:17px;color:var(--ochre-deep);margin-bottom:8px}
+.story-card p{font-family:'Lora',serif;font-size:13px;color:var(--warm-brown);line-height:1.65}
+
+/* RELATED PRODUCTS */
+.related{padding:40px 40px 100px;max-width:1440px;margin:0 auto}
+.related-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px}
+.related-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,2.5vw,32px);color:var(--ochre-deep)}
+.related-link{font-size:13px;color:var(--warm-brown);text-decoration:none;display:flex;align-items:center;gap:6px;padding:8px 20px;border:1px solid var(--border);border-radius:var(--r-pill);transition:all .2s}
+.related-link:hover{border-color:var(--ochre-deep);color:var(--ochre-deep)}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.rel-card{background:white;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);transition:all .5s cubic-bezier(.4,0,.2,1);cursor:pointer}
+.rel-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-5px);border-color:transparent}
+.rel-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;transition:transform .6s ease;overflow:hidden}
+.rel-card:hover .rel-img svg{transform:scale(1.1)}
+.rel-img svg{transition:transform .6s ease}
+.rel-info{padding:16px}
+.rel-cat{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);font-weight:600;margin-bottom:4px}
+.rel-name{font-family:'DM Serif Display',serif;font-size:15px;color:var(--ochre-deep);margin-bottom:8px;line-height:1.3}
+.rel-price{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ochre-deep)}
+.rel-price .orig{font-family:'Nunito Sans',sans-serif;font-size:11px;color:var(--taupe);text-decoration:line-through;margin-left:4px}
+
+/* PAYMENT TRUST STRIP */
+.payment-trust{padding:48px 40px;background:var(--sand)}
+.payment-trust-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.pt-section{display:flex;align-items:center;gap:16px}
+.pt-label{font-family:'DM Serif Display',serif;font-size:14px;color:var(--ochre-deep);white-space:nowrap}
+.pt-icons{display:flex;gap:8px}
+.pt-icon{border-radius:6px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.08);transition:transform .2s}
+.pt-icon:hover{transform:translateY(-2px)}
+.pt-divider{width:1px;height:40px;background:var(--border)}
+.pt-badges{display:flex;gap:20px;flex-wrap:wrap}
+.pt-badge{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--warm-brown);white-space:nowrap}
+.pt-badge svg{color:var(--gold);flex-shrink:0}
+
+/* FOOTER */
+.footer{background:var(--charcoal);padding:80px 40px 36px;color:rgba(253,248,243,.6)}
+.footer-inner{max-width:1440px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.06)}
+.footer-brand-desc{font-family:'Lora',serif;font-size:14px;line-height:1.7;margin-top:18px;color:rgba(253,248,243,.4);max-width:300px}
+.footer-heading{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:20px;font-weight:600}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
+.footer-links a{text-decoration:none;color:rgba(253,248,243,.4);font-size:13px;transition:all .3s;display:inline-block}
+.footer-links a:hover{color:var(--cream);transform:translateX(3px)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-size:12px;color:rgba(253,248,243,.25)}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(253,248,243,.4);text-decoration:none;font-size:13px;transition:all .3s}
+.footer-social a:hover{border-color:var(--gold);color:var(--gold);background:rgba(198,165,92,.08)}
+
+/* TOAST */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--charcoal);color:var(--cream);padding:14px 28px;border-radius:var(--r-pill);font-size:13px;font-weight:500;z-index:4000;opacity:0;transition:all .4s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:10px;box-shadow:0 8px 30px rgba(0,0,0,.2)}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast-ck{width:22px;height:22px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:11px;color:white}
+
+/* STICKY BAR */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid var(--border);padding:14px 40px;z-index:900;transform:translateY(100%);transition:transform .4s ease;display:flex;align-items:center;justify-content:center;gap:24px;box-shadow:0 -4px 20px rgba(0,0,0,.04)}
+.sticky-bar.visible{transform:translateY(0)}
+.sb-name{font-family:'DM Serif Display',serif;font-size:16px;color:var(--ochre-deep)}
+.sb-price{font-family:'DM Serif Display',serif;font-size:20px;color:var(--ochre-deep)}
+.sb-btn{padding:12px 32px;background:var(--ochre-deep);color:var(--cream);border:none;border-radius:var(--r-pill);font-family:'Nunito Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .3s}
+.sb-btn:hover{background:var(--ochre-warm)}
+.sb-divider{width:1px;height:24px;background:var(--border)}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(25px);transition:all .6s cubic-bezier(.4,0,.2,1)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+.nav-links{display:none}
+.product-hero{grid-template-columns:1fr;gap:32px}
+.gallery{position:static}
+.pi-specs{grid-template-columns:1fr}
+.related-grid{grid-template-columns:repeat(2,1fr)}
+.story-strip{grid-template-columns:1fr}
+.footer-top{grid-template-columns:1fr 1fr}
+.payment-trust-inner{flex-direction:column;gap:20px}.pt-divider{width:80px;height:1px}
+}
+@media(max-width:640px){
+.navbar{padding:10px 16px}.nav-inner{padding:8px 16px}
+.breadcrumb{padding:100px 20px 0}
+.product-hero{padding:16px 20px 0}
+.pi-actions{flex-wrap:wrap}
+.add-cart-btn{order:3;width:100%}
+.gallery-thumbs{gap:8px}
+.gallery-thumb{width:64px;height:64px}
+.size-options{flex-wrap:wrap}
+.pi-trust{flex-direction:column}
+.related{padding:40px 20px 60px}
+.related-grid{grid-template-columns:1fr 1fr;gap:14px}
+.product-story{padding:40px 20px}
+.footer{padding:40px 20px 24px}.footer-top{grid-template-columns:1fr;gap:30px}
+.payment-trust{padding:32px 20px}.pt-badges{flex-direction:column;gap:12px}
+.sticky-bar{padding:12px 20px;gap:12px}
+.sb-name{display:none}
+}
+
+
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar"><div class="nav-inner">
+<a href="index.html" class="nav-brand"><div class="nav-logo"><svg width="18" height="18" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="30" stroke="#FDF8F3" stroke-width="2"/><circle cx="50" cy="50" r="15" stroke="#FDF8F3" stroke-width="1.5"/><circle cx="50" cy="50" r="4" fill="#FDF8F3"/><ellipse cx="50" cy="30" rx="6" ry="14" stroke="#FDF8F3" stroke-width="1"/><ellipse cx="50" cy="70" rx="6" ry="14" stroke="#FDF8F3" stroke-width="1"/><ellipse cx="30" cy="50" rx="14" ry="6" stroke="#FDF8F3" stroke-width="1"/><ellipse cx="70" cy="50" rx="14" ry="6" stroke="#FDF8F3" stroke-width="1"/></svg></div><div class="nav-brand-text"><span class="nav-brand-name">Aipan House</span><span class="nav-brand-tag">Heritage Aipan Art</span></div></a>
+<div class="nav-links"><a href="index.html">Home</a><a href="shop.html" class="active">Shop</a><a href="story.html">Our Story</a><a href="blog.html">Blog</a></div>
+<div class="nav-actions"><button class="nav-icon-btn" title="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><button class="nav-icon-btn" title="Account"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button><button class="nav-icon-btn" id="cartToggle" title="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-badge" id="cartCount">0</span></button></div>
+</div></nav>
+
+<!-- NAVBAR -->
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+<a href="index.html">Home</a>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+<a href="index.html">Shop</a>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+<a href="index.html">Paintings & Wall Art</a>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+<span style="color:var(--ochre-deep);font-weight:500">Lakshmi Chowki Grand Panel</span>
+</div>
+
+<!-- PRODUCT HERO -->
+<div class="product-hero">
+
+<!-- GALLERY -->
+<div class="gallery">
+<div class="gallery-main" id="galleryMain">
+<div class="gallery-main-bg" id="galleryBg">
+<svg class="gallery-main-motif" width="280" height="280" viewBox="0 0 300 300" fill="none">
+<circle cx="150" cy="150" r="120" stroke="#FDF8F3" stroke-width=".8"/>
+<circle cx="150" cy="150" r="85" stroke="#FDF8F3" stroke-width=".6"/>
+<circle cx="150" cy="150" r="50" stroke="#FDF8F3" stroke-width=".6"/>
+<circle cx="150" cy="150" r="20" fill="#FDF8F3" opacity=".1"/>
+<ellipse cx="150" cy="50" rx="18" ry="46" stroke="#FDF8F3" stroke-width=".6"/>
+<ellipse cx="150" cy="250" rx="18" ry="46" stroke="#FDF8F3" stroke-width=".6"/>
+<ellipse cx="50" cy="150" rx="46" ry="18" stroke="#FDF8F3" stroke-width=".6"/>
+<ellipse cx="250" cy="150" rx="46" ry="18" stroke="#FDF8F3" stroke-width=".6"/>
+<ellipse cx="85" cy="85" rx="15" ry="38" transform="rotate(-45 85 85)" stroke="#FDF8F3" stroke-width=".6"/>
+<ellipse cx="215" cy="85" rx="15" ry="38" transform="rotate(45 215 85)" stroke="#FDF8F3" stroke-width=".6"/>
+<ellipse cx="85" cy="215" rx="15" ry="38" transform="rotate(45 85 215)" stroke="#FDF8F3" stroke-width=".6"/>
+<ellipse cx="215" cy="215" rx="15" ry="38" transform="rotate(-45 215 215)" stroke="#FDF8F3" stroke-width=".6"/>
+</svg>
+</div>
+<div class="gallery-badge">Editor's Pick</div>
+<button class="gallery-zoom" title="Zoom"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></button>
+</div>
+<div class="gallery-thumbs">
+<div class="gallery-thumb active" onclick="switchThumb(0,this)"><div class="gallery-thumb-inner bg-1" style="display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="25" stroke="white" stroke-width="1"/><circle cx="50" cy="50" r="12" stroke="white" stroke-width=".5"/></svg></div></div>
+<div class="gallery-thumb" onclick="switchThumb(1,this)"><div class="gallery-thumb-inner bg-9" style="display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 100 100" fill="none"><rect x="20" y="20" width="60" height="60" rx="10" stroke="white" stroke-width="1"/></svg></div></div>
+<div class="gallery-thumb" onclick="switchThumb(2,this)"><div class="gallery-thumb-inner bg-3" style="display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="50" rx="25" ry="15" stroke="white" stroke-width="1"/></svg></div></div>
+<div class="gallery-thumb" onclick="switchThumb(3,this)"><div class="gallery-thumb-inner bg-6" style="display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="20" stroke="white" stroke-width="1"/><circle cx="50" cy="50" r="8" fill="white" opacity=".3"/></svg></div></div>
+</div>
+</div>
+
+<!-- PRODUCT INFO -->
+<div class="product-info" id="productInfo">
+<div class="pi-tag">Paintings & Wall Art</div>
+<h1 class="pi-title">Lakshmi Chowki Grand Panel</h1>
+<p class="pi-subtitle">Sacred prosperity motif on handmade Himalayan lokta paper</p>
+
+<div class="pi-rating">
+<div class="pi-stars"><span class="pi-star">★</span><span class="pi-star">★</span><span class="pi-star">★</span><span class="pi-star">★</span><span class="pi-star">★</span></div>
+<div class="pi-rating-text"><strong>4.9</strong> (127 reviews)</div>
+</div>
+
+<div class="pi-divider"></div>
+
+<div class="pi-price-block">
+<span class="pi-price" style="font-size:15px;letter-spacing:.5px">Coming Soon</span>
+<div class="pi-tax">Inclusive of all taxes · Free shipping</div>
+</div>
+
+<p class="pi-desc">The Lakshmi Chowki is the most revered Aipan motif — traditionally painted on the floor where Goddess Lakshmi is invited to sit during puja. This museum-quality rendition captures every sacred detail on handmade Himalayan lokta paper, using natural rice paste and ochre pigments prepared by master artisan Kamala Devi's family in Almora.</p>
+
+<div class="pi-specs">
+<div class="pi-spec"><div class="pi-spec-icon">◈</div><div class="pi-spec-text"><strong>Handmade Paper</strong>Himalayan lokta bark</div></div>
+<div class="pi-spec"><div class="pi-spec-icon">❋</div><div class="pi-spec-text"><strong>Natural Pigments</strong>Rice paste & red ochre</div></div>
+<div class="pi-spec"><div class="pi-spec-icon">✦</div><div class="pi-spec-text"><strong>GI Certified</strong>Verified Kumaon origin</div></div>
+<div class="pi-spec"><div class="pi-spec-icon">◎</div><div class="pi-spec-text"><strong>Signed by Artist</strong>Certificate included</div></div>
+</div>
+
+<div class="pi-section-title">Select Size</div>
+<div class="size-options">
+<div class="size-opt" onclick="pickSize(this,'Coming Soon')">18 × 24 in</div>
+<div class="size-opt active" onclick="pickSize(this,'Coming Soon')">24 × 36 in</div>
+<div class="size-opt" onclick="pickSize(this,'Coming Soon')">30 × 40 in</div>
+</div>
+
+<div class="pi-actions">
+<div class="qty-control"><button class="qty-btn" onclick="chgQty(-1)">−</button><span class="qty-val" id="qtyVal">1</span><button class="qty-btn" onclick="chgQty(1)">+</button></div>
+<button class="add-cart-btn" onclick="addToCart()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Coming Soon — Notify Me</button>
+<button class="wish-btn" id="wishBtn" onclick="toggleWish()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21.3l7.8-7.8 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+</div>
+
+<div class="pi-trust">
+<div class="trust-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12l5 5L20 7"/></svg>Free Shipping</div>
+<div class="trust-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Secure Packaging</div>
+<div class="trust-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.5 9A9 9 0 0 0 5.6 5.6L1 10m22 4l-4.6 4.4A9 9 0 0 1 3.5 15"/></svg>15-Day Returns</div>
+</div>
+
+<div class="accordion">
+<div class="acc-item open">
+<div class="acc-header" onclick="toggleAcc(this)">The Cultural Significance <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+<div class="acc-body"><div class="acc-body-inner">The Lakshmi Chowki is painted at the heart of every Kumaoni home during Diwali, Navratri, and housewarming ceremonies. The square seat (chowki) represents the throne of Goddess Lakshmi, while the surrounding lotus petals and geometric borders channel prosperity and divine blessings into the household. Owning this piece brings both aesthetic beauty and cultural resonance to your space.</div></div>
+</div>
+<div class="acc-item">
+<div class="acc-header" onclick="toggleAcc(this)">Care Instructions <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+<div class="acc-body"><div class="acc-body-inner"><ul><li>Frame under glass to preserve natural pigments</li><li>Avoid direct sunlight for extended periods</li><li>Handle from edges only — natural oils can affect rice paste</li><li>Ideal humidity: 40–60% (standard indoor conditions)</li><li>Lokta paper naturally resists insects and mould</li></ul></div></div>
+</div>
+<div class="acc-item">
+<div class="acc-header" onclick="toggleAcc(this)">Shipping & Returns <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+<div class="acc-body"><div class="acc-body-inner"><ul><li>Free shipping on all orders</li><li>Dispatched within 3–5 business days (made to order)</li><li>Shipped in custom rigid packaging with acid-free tissue</li><li>15-day returns — item must be unused and in original packaging</li><li>Pan-India delivery via premium courier partners</li></ul></div></div>
+</div>
+</div>
+
+<div class="artisan-card fade-in">
+<div class="artisan-avatar">K</div>
+<div class="artisan-info">
+<div class="artisan-name">Made by Kamala Devi</div>
+<div class="artisan-role">Master Artisan · Almora, Uttarakhand</div>
+<div class="artisan-text">40 years of Aipan practice. Kamala learned from her grandmother at age 8 and has trained over 60 women in her village. Each piece takes 4–7 days to complete.</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- STORY STRIP -->
+<section class="product-story">
+<div class="story-strip">
+<div class="story-card fade-in">
+<div class="story-icon si-1">✦</div>
+<h3>4–7 Days to Create</h3>
+<p>Each panel is painted over several days, allowing natural pigments to dry between layers. No rushing, no shortcuts — just patient, meditative craft.</p>
+</div>
+<div class="story-card fade-in">
+<div class="story-icon si-2">❋</div>
+<h3>Zero Synthetic Materials</h3>
+<p>Rice flour paste, red ochre earth, and lokta bark paper — every material is harvested sustainably from the Himalayan foothills.</p>
+</div>
+<div class="story-card fade-in">
+<div class="story-icon si-3">◎</div>
+<h3>Signed & Certified</h3>
+<p>Every piece comes with a signed certificate of authenticity, the artisan's story card, and GI tag verification linking it to Kumaon.</p>
+</div>
+</div>
+</section>
+
+<!-- RELATED PRODUCTS -->
+<section class="related">
+<div class="related-header">
+<h2 class="related-title">You May Also Love</h2>
+<a href="index.html" class="related-link">View All <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+<div class="related-grid">
+<div class="rel-card fade-in" onclick="location.href='product.html'">
+<div class="rel-img bg-5" style="display:flex;align-items:center;justify-content:center"><svg width="70" height="70" viewBox="0 0 100 100" fill="none" style="opacity:.2"><circle cx="50" cy="50" r="30" stroke="white" stroke-width=".5"/><circle cx="50" cy="50" r="15" stroke="white" stroke-width=".5"/></svg></div>
+<div class="rel-info"><div class="rel-cat">Paintings & Wall Art</div><div class="rel-name">Durga Puja Canvas</div><div class="rel-price" style="font-size:12px;color:var(--taupe);letter-spacing:.5px">Coming Soon</div></div>
+</div>
+<div class="rel-card fade-in" onclick="location.href='product.html'">
+<div class="rel-img bg-9" style="display:flex;align-items:center;justify-content:center"><svg width="70" height="70" viewBox="0 0 100 100" fill="none" style="opacity:.2"><circle cx="50" cy="50" r="30" stroke="white" stroke-width=".5"/><circle cx="50" cy="50" r="15" stroke="white" stroke-width=".5"/></svg></div>
+<div class="rel-info"><div class="rel-cat">Paintings & Wall Art</div><div class="rel-name">Saraswati Chowki Print</div><div class="rel-price" style="font-size:12px;color:var(--taupe);letter-spacing:.5px">Coming Soon</div></div>
+</div>
+<div class="rel-card fade-in" onclick="location.href='product.html'">
+<div class="rel-img bg-2" style="display:flex;align-items:center;justify-content:center"><svg width="70" height="70" viewBox="0 0 100 100" fill="none" style="opacity:.2"><rect x="20" y="20" width="60" height="60" rx="12" stroke="white" stroke-width=".5"/></svg></div>
+<div class="rel-info"><div class="rel-cat">Cushions & Textiles</div><div class="rel-name">Aipan Lotus Cushion Set</div><div class="rel-price" style="font-size:12px;color:var(--taupe);letter-spacing:.5px">Coming Soon</div></div>
+</div>
+<div class="rel-card fade-in" onclick="location.href='product.html'">
+<div class="rel-img bg-3" style="display:flex;align-items:center;justify-content:center"><svg width="70" height="70" viewBox="0 0 100 100" fill="none" style="opacity:.2"><ellipse cx="50" cy="50" rx="25" ry="15" stroke="white" stroke-width=".5"/></svg></div>
+<div class="rel-info"><div class="rel-cat">Vessel & Pottery</div><div class="rel-name">Copper Kalash Vessel</div><div class="rel-price" style="font-size:12px;color:var(--taupe);letter-spacing:.5px">Coming Soon</div></div>
+</div>
+</div>
+</section>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="stickyBar">
+<span class="sb-name">Lakshmi Chowki Grand Panel</span>
+<span class="sb-divider"></span>
+<span class="sb-price" style="font-size:14px;letter-spacing:.5px">Coming Soon</span>
+<button class="sb-btn" style="opacity:.85;cursor:default" disabled>Coming Soon</button>
+</div>
+
+<!-- TRUST & PAYMENT STRIP -->
+
+<!-- FOOTER -->
+
+<!-- TOAST -->
+</div>
+
+<section class="payment-trust">
+<div class="payment-trust-inner">
+<div class="pt-section"><div class="pt-label">Secure Payments</div><div class="pt-icons"><div class="pt-icon" title="Visa"><svg width="32" height="20" viewBox="0 0 32 20"><rect width="32" height="20" rx="3" fill="#1A1F71"/><text x="16" y="13" text-anchor="middle" fill="white" font-family="Arial" font-size="8" font-weight="bold">VISA</text></svg></div><div class="pt-icon" title="Mastercard"><svg width="32" height="20" viewBox="0 0 32 20"><rect width="32" height="20" rx="3" fill="#2D2D2D"/><circle cx="12" cy="10" r="6" fill="#EB001B" opacity=".9"/><circle cx="20" cy="10" r="6" fill="#F79E1B" opacity=".9"/></svg></div><div class="pt-icon" title="UPI"><svg width="32" height="20" viewBox="0 0 32 20"><rect width="32" height="20" rx="3" fill="#4CAF50"/><text x="16" y="13" text-anchor="middle" fill="white" font-family="Arial" font-size="7" font-weight="bold">UPI</text></svg></div><div class="pt-icon" title="Net Banking"><svg width="32" height="20" viewBox="0 0 32 20"><rect width="32" height="20" rx="3" fill="#1565C0"/><text x="16" y="13" text-anchor="middle" fill="white" font-family="Arial" font-size="6" font-weight="bold">NETB</text></svg></div><div class="pt-icon" title="RuPay"><svg width="32" height="20" viewBox="0 0 32 20"><rect width="32" height="20" rx="3" fill="#3F51B5"/><text x="16" y="13" text-anchor="middle" fill="white" font-family="Arial" font-size="6" font-weight="bold">RuPay</text></svg></div></div></div>
+<div class="pt-divider"></div>
+<div class="pt-badges"><div class="pt-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>SSL Encrypted</div><div class="pt-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>100% Secure Checkout</div><div class="pt-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Verified by Razorpay</div><div class="pt-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.5 9A9 9 0 0 0 5.6 5.6L1 10m22 4l-4.6 4.4A9 9 0 0 1 3.5 15"/></svg>Easy Refunds</div></div>
+</div>
+</section>
+<footer class="footer"><div class="footer-inner">
+<div class="footer-top">
+<div><a href="index.html" class="nav-brand"><div class="nav-logo"><svg width="18" height="18" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="30" stroke="#FDF8F3" stroke-width="2"/><circle cx="50" cy="50" r="15" stroke="#FDF8F3" stroke-width="1.5"/><circle cx="50" cy="50" r="4" fill="#FDF8F3"/></svg></div><div class="nav-brand-text"><span class="nav-brand-name" style="color:var(--cream)">Aipan House</span><span class="nav-brand-tag" style="color:var(--gold-light)">Heritage Aipan Art</span></div></a><p class="footer-brand-desc">Bringing the sacred beauty of Kumaon's Aipan art into modern homes. Every purchase supports artisan families in the Himalayan foothills.</p></div>
+<div><h4 class="footer-heading">Shop</h4><ul class="footer-links"><li><a href="shop.html">Paintings & Wall Art</a></li><li><a href="shop.html">Cushions & Textiles</a></li><li><a href="shop.html">Vessel & Pottery</a></li><li><a href="shop.html">Home Décor</a></li><li><a href="shop.html">Gift Cards</a></li></ul></div>
+<div><h4 class="footer-heading">Company</h4><ul class="footer-links"><li><a href="story.html">Our Story</a></li><li><a href="blog.html">Blog</a></li><li><a href="story.html">Meet the Artisans</a></li><li><a href="story.html">Sustainability</a></li><li><a href="#">Press & Media</a></li></ul></div>
+<div><h4 class="footer-heading">Support</h4><ul class="footer-links"><li><a href="#">Shipping & Returns</a></li><li><a href="#">Care Instructions</a></li><li><a href="#">FAQs</a></li><li><a href="#">Contact Us</a></li></ul></div>
+</div>
+<div class="footer-bottom"><span>&copy; 2026 Aipan House. All rights reserved.</span><div class="footer-social"><a href="#" title="Instagram">ig</a><a href="#" title="Facebook">fb</a><a href="#" title="Pinterest">pi</a><a href="#" title="YouTube">yt</a></div></div>
+</div></footer>
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-sidebar" id="cartSidebar">
+<div class="cart-header"><h3 class="cart-title">Your Cart</h3><button class="cart-close" id="cartClose">✕</button></div>
+<div class="cart-items" id="cartItems"><div class="cart-empty">Your cart is empty.<br>Begin your collection today.</div></div>
+<div class="cart-footer" id="cartFooter" style="display:none"><div class="cart-total"><span class="cart-total-l">Subtotal</span><span class="cart-total-p" id="cartTotal">—</span></div><button class="checkout-btn">Browse Collection →</button></div>
+</div>
+<div class="toast" id="toast"><span class="toast-ck">✓</span><span id="toastMsg"></span></div>
+
+<script>
+// Shared functionality
+window.addEventListener('scroll', function() {
+  var nb = document.getElementById('navbar');
+  if (nb) nb.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll animations
+var fadeObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(x) { if (x.isIntersecting) x.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade-in').forEach(function(el) { fadeObserver.observe(el); });
+
+// Cart
+var cart = [];
+function openCartSidebar() { document.getElementById('cartOverlay').classList.add('active'); document.getElementById('cartSidebar').classList.add('active'); }
+function closeCartSidebar() { document.getElementById('cartOverlay').classList.remove('active'); document.getElementById('cartSidebar').classList.remove('active'); }
+ document.getElementById('cartToggle').addEventListener('click', openCartSidebar); } catch(_){}
+ document.getElementById('cartOverlay').addEventListener('click', closeCartSidebar); } catch(_){}
+ document.getElementById('cartClose').addEventListener('click', closeCartSidebar); } catch(_){}
+
+function showToast(m) { var t = document.getElementById('toast'); document.getElementById('toastMsg').textContent = m; t.classList.add('show'); setTimeout(function(){ t.classList.remove('show'); }, 2500); }
+
+
+
+
+var qty=1,wished=false;
+var thumbBgs=['bg-1','bg-9','bg-3','bg-6'];
+var mainGrads=[
+'linear-gradient(160deg,#6B1E08 0%,#B84A28 55%,#C46A48 100%)',
+'linear-gradient(160deg,#6B3020,#8B5038,#AB7058)',
+'linear-gradient(160deg,#5C4033,#7A5A48,#9A7A68)',
+'linear-gradient(160deg,#5A4420,#7A6530,#9A8550)'
+];
+
+function switchThumb(i,el){
+document.querySelectorAll('.gallery-thumb').forEach(t=>t.classList.remove('active'));
+el.classList.add('active');
+document.getElementById('galleryBg').style.background=mainGrads[i];
+}
+
+function pickSize(el,price){
+document.querySelectorAll('.size-opt').forEach(s=>s.classList.remove('active'));
+el.classList.add('active');
+// Price update disabled - coming soon
+document.querySelector('.sb-price').textContent=price;
+}
+
+function chgQty(d){qty=Math.max(1,qty+d);document.getElementById('qtyVal').textContent=qty}
+function addToCart(){showToast('Lakshmi Chowki Grand Panel added to cart');document.getElementById('cartCount').textContent=qty}
+function toggleWish(){
+wished=!wished;
+var btn=document.getElementById('wishBtn');
+btn.classList.toggle('liked');
+showToast(wished?'Added to wishlist ♥':'Removed from wishlist');
+}
+
+function toggleAcc(header){
+var item=header.parentElement;
+var wasOpen=item.classList.contains('open');
+document.querySelectorAll('.acc-item').forEach(a=>a.classList.remove('open'));
+if(!wasOpen)item.classList.add('open');
+}
+
+function showToast(m){var t=document.getElementById('toast');document.getElementById('toastMsg').textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+
+// Sticky bar on scroll
+var productInfo=document.getElementById('productInfo');
+
+
+// Scroll animations
+
+
+
+
+
+</script>
+</body>
+</html>

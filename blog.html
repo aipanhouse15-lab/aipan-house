@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Craft Journal — Aipan House</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500;6..12,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+
+
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--cream)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 40px;transition:all .5s cubic-bezier(.4,0,.2,1)}
+.navbar.scrolled{background:rgba(253,248,243,.92);backdrop-filter:blur(24px);box-shadow:0 4px 30px rgba(107,30,8,.05)}
+.nav-inner{max-width:1440px;margin:0 auto;padding:10px 28px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,243,.85);backdrop-filter:blur(16px);border-radius:var(--r-pill);border:1px solid var(--border);transition:all .5s ease}
+.navbar.scrolled .nav-inner{background:transparent;border-color:transparent;backdrop-filter:none}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo{width:38px;height:38px;border-radius:50%;background:var(--ochre-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-brand-text{display:flex;flex-direction:column}
+.nav-brand-name{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ochre-deep);line-height:1.1}
+.nav-brand-tag{font-size:9px;letter-spacing:2.5px;color:var(--gold-muted);text-transform:uppercase;font-weight:500}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{text-decoration:none;color:var(--warm-brown);font-size:13px;padding:8px 18px;border-radius:var(--r-pill);transition:all .3s ease}
+.nav-links a:hover,.nav-links a.active{background:var(--sand);color:var(--ochre-deep)}
+.nav-actions{display:flex;gap:8px;align-items:center}
+.nav-icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--warm-brown);transition:all .3s ease;position:relative;text-decoration:none}
+.nav-icon-btn:hover{background:var(--sand);color:var(--ochre-deep);border-color:var(--sand)}
+
+/* PAGE HERO */
+.blog-hero{position:relative;padding:150px 40px 80px;overflow:hidden;background:linear-gradient(180deg,var(--ivory) 0%,var(--cream) 100%);text-align:center}
+.blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,var(--cream));z-index:1;pointer-events:none}
+.blog-hero-blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.1}
+.bhb-1{width:500px;height:500px;background:var(--ochre-warm);top:-200px;right:-100px}
+.bhb-2{width:350px;height:350px;background:var(--gold);top:-50px;left:-150px}
+.blog-hero-inner{position:relative;z-index:2;max-width:700px;margin:0 auto}
+.section-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:var(--soft-white);border:1px solid var(--border);border-radius:var(--r-pill);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-muted);font-weight:600;margin-bottom:16px}
+.section-chip::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.blog-hero-title{font-family:'DM Serif Display',serif;font-size:clamp(36px,4.5vw,60px);color:var(--ochre-deep);margin-bottom:14px;line-height:1.1}
+.blog-hero-title em{font-style:italic;color:var(--ochre-warm)}
+.blog-hero-desc{font-family:'Lora',serif;font-size:17px;color:var(--warm-brown);line-height:1.65;max-width:540px;margin:0 auto}
+
+/* FEATURED POST */
+.featured-post{max-width:1200px;margin:0 auto;padding:40px 40px 0}
+.fp-card{display:grid;grid-template-columns:1.3fr 1fr;background:white;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);transition:all .5s ease;cursor:pointer;text-decoration:none;color:inherit}
+.fp-card:hover{box-shadow:var(--shadow-hover);border-color:transparent}
+.fp-image{position:relative;min-height:400px;overflow:hidden}
+.fp-image img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.fp-card:hover .fp-image img{transform:scale(1.04)}
+.fp-image-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;transition:transform .7s ease}
+.fp-card:hover .fp-image-placeholder{transform:scale(1.04)}
+.fp-label{position:absolute;top:20px;left:20px;padding:8px 20px;background:var(--ochre-deep);color:white;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;border-radius:var(--r-pill);z-index:2}
+.fp-body{padding:48px 44px;display:flex;flex-direction:column;justify-content:center}
+.fp-meta{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.fp-category{padding:4px 12px;background:var(--ivory);border-radius:var(--r-pill);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-muted);font-weight:600}
+.fp-date{font-size:12px;color:var(--taupe)}
+.fp-read{font-size:12px;color:var(--taupe)}
+.fp-title{font-family:'DM Serif Display',serif;font-size:clamp(22px,2.5vw,30px);color:var(--ochre-deep);margin-bottom:14px;line-height:1.25}
+.fp-excerpt{font-family:'Lora',serif;font-size:15px;line-height:1.8;color:var(--warm-brown);margin-bottom:24px}
+.fp-author{display:flex;align-items:center;gap:12px}
+.fp-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--ochre),var(--ochre-warm));display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:16px;color:white}
+.fp-author-info{font-size:13px;line-height:1.3;color:var(--warm-brown)}
+.fp-author-info strong{color:var(--ochre-deep);display:block}
+
+/* BLOG GRID */
+.blog-grid-section{max-width:1200px;margin:0 auto;padding:60px 40px 40px}
+.blog-grid-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px}
+.blog-grid-title{font-family:'DM Serif Display',serif;font-size:24px;color:var(--ochre-deep)}
+.blog-tags{display:flex;gap:8px;flex-wrap:wrap}
+.blog-tag{padding:6px 16px;border-radius:var(--r-pill);border:1px solid var(--border);font-size:11px;color:var(--warm-brown);cursor:pointer;transition:all .2s;background:white}
+.blog-tag:hover,.blog-tag.active{background:var(--ochre-deep);color:white;border-color:var(--ochre-deep)}
+.blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+
+/* BLOG CARD */
+.blog-card{background:white;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);transition:all .5s cubic-bezier(.4,0,.2,1);cursor:pointer;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.blog-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-5px);border-color:transparent}
+.bc-image{position:relative;height:240px;overflow:hidden}
+.bc-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.blog-card:hover .bc-image img{transform:scale(1.06)}
+.bc-image-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;transition:transform .6s ease}
+.blog-card:hover .bc-image-placeholder{transform:scale(1.06)}
+.bc-read-time{position:absolute;top:14px;right:14px;padding:5px 14px;background:white;border-radius:var(--r-pill);font-size:10px;color:var(--warm-brown);font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,.08);z-index:2}
+.bc-body{padding:24px 24px 28px;flex:1;display:flex;flex-direction:column}
+.bc-meta{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.bc-category{padding:3px 10px;background:var(--ivory);border-radius:var(--r-pill);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-muted);font-weight:600}
+.bc-date{font-size:11px;color:var(--taupe)}
+.bc-title{font-family:'DM Serif Display',serif;font-size:19px;color:var(--ochre-deep);margin-bottom:10px;line-height:1.3}
+.bc-excerpt{font-family:'Lora',serif;font-size:13px;line-height:1.7;color:var(--warm-brown);margin-bottom:18px;flex:1}
+.bc-footer{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--border)}
+.bc-author{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--warm-brown)}
+.bc-author-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:11px;color:white}
+.bc-read-link{font-size:12px;color:var(--ochre-deep);font-weight:600;display:flex;align-items:center;gap:4px;transition:gap .2s}
+.blog-card:hover .bc-read-link{gap:8px}
+
+/* SINGLE POST VIEW */
+.post-overlay{position:fixed;inset:0;background:rgba(42,36,32,.5);backdrop-filter:blur(6px);z-index:2000;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:flex-start;justify-content:center;padding:40px;overflow-y:auto}
+.post-overlay.active{opacity:1;pointer-events:all}
+.post-modal{background:var(--cream);border-radius:var(--r-lg);max-width:820px;width:100%;transform:translateY(30px);transition:transform .4s cubic-bezier(.4,0,.2,1);box-shadow:0 30px 80px rgba(0,0,0,.15);overflow:hidden;margin:20px 0}
+.post-overlay.active .post-modal{transform:translateY(0)}
+.post-hero-img{width:100%;height:350px;position:relative;overflow:hidden}
+.post-hero-img img{width:100%;height:100%;object-fit:cover}
+.post-hero-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px}
+.post-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:white;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:var(--warm-brown);box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:3;transition:all .2s}
+.post-close:hover{background:var(--ivory);color:var(--ochre)}
+.post-content{padding:48px 56px 56px}
+.post-content .post-category{display:inline-flex;padding:4px 14px;background:var(--ivory);border-radius:var(--r-pill);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-muted);font-weight:600;margin-bottom:14px}
+.post-content h1{font-family:'DM Serif Display',serif;font-size:clamp(26px,3vw,36px);color:var(--ochre-deep);margin-bottom:16px;line-height:1.2}
+.post-content .post-meta{display:flex;align-items:center;gap:16px;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border);font-size:13px;color:var(--taupe);flex-wrap:wrap}
+.post-content .post-meta strong{color:var(--ochre-deep)}
+article h2{font-family:'DM Serif Display',serif;font-size:22px;color:var(--ochre-deep);margin:32px 0 14px;line-height:1.3}
+article h3{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ochre-deep);margin:24px 0 10px}
+article p{font-family:'Lora',serif;font-size:16px;line-height:1.9;color:var(--warm-brown);margin-bottom:18px}
+article blockquote{font-family:'DM Serif Display',serif;font-size:20px;font-style:italic;color:var(--ochre);line-height:1.5;padding:24px 0 24px 28px;border-left:3px solid var(--gold);margin:28px 0}
+article ul{list-style:none;padding:0;margin-bottom:18px}
+article ul li{padding:6px 0;display:flex;align-items:flex-start;gap:10px;font-family:'Lora',serif;font-size:15px;line-height:1.7;color:var(--warm-brown)}
+article ul li::before{content:'◆';color:var(--gold);font-size:8px;margin-top:7px;flex-shrink:0}
+article .inline-img{width:100%;border-radius:var(--r-md);margin:24px 0;overflow:hidden}
+article .inline-img img{width:100%;height:280px;object-fit:cover;display:block}
+article .img-caption{font-size:12px;color:var(--taupe);text-align:center;font-style:italic;margin-top:8px;margin-bottom:24px}
+.post-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
+.post-tag{padding:5px 14px;border-radius:var(--r-pill);background:var(--ivory);font-size:11px;color:var(--warm-brown)}
+
+/* NEWSLETTER CTA */
+.blog-newsletter{max-width:1200px;margin:0 auto;padding:60px 40px 0}
+.bn-card{background:var(--ochre-deep);border-radius:var(--r-lg);padding:56px 48px;text-align:center;position:relative;overflow:hidden}
+.bn-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15}
+.bnb-1{width:300px;height:300px;background:var(--ochre-warm);top:-100px;right:-80px}
+.bnb-2{width:200px;height:200px;background:var(--gold);bottom:-60px;left:-60px}
+.bn-card h3{font-family:'DM Serif Display',serif;font-size:26px;color:var(--cream);margin-bottom:10px;position:relative;z-index:1}
+.bn-card p{font-family:'Lora',serif;font-size:14px;color:rgba(253,248,243,.6);margin-bottom:28px;position:relative;z-index:1}
+.bn-form{display:flex;gap:12px;max-width:460px;margin:0 auto;position:relative;z-index:1}
+.bn-input{flex:1;padding:14px 22px;border:1px solid rgba(255,255,255,.15);border-radius:var(--r-pill);background:rgba(255,255,255,.08);font-family:'Nunito Sans',sans-serif;font-size:13px;color:var(--cream);outline:none;backdrop-filter:blur(10px);transition:border-color .3s}
+.bn-input::placeholder{color:rgba(253,248,243,.4)}
+.bn-input:focus{border-color:var(--gold)}
+.bn-btn{padding:14px 28px;background:var(--gold);color:white;border:none;border-radius:var(--r-pill);font-family:'Nunito Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .3s;white-space:nowrap}
+.bn-btn:hover{background:var(--gold-light);transform:scale(1.03)}
+
+/* PAYMENT TRUST STRIP */
+.payment-trust{padding:48px 40px;background:var(--sand);margin-top:80px}
+.payment-trust-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.pt-section{display:flex;align-items:center;gap:16px}
+.pt-label{font-family:'DM Serif Display',serif;font-size:14px;color:var(--ochre-deep);white-space:nowrap}
+.pt-icons{display:flex;gap:8px}
+.pt-icon{border-radius:6px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.08);transition:transform .2s}
+.pt-icon:hover{transform:translateY(-2px)}
+.pt-divider{width:1px;height:40px;background:var(--border)}
+.pt-badges{display:flex;gap:20px;flex-wrap:wrap}
+.pt-badge{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--warm-brown);white-space:nowrap}
+.pt-badge svg{color:var(--gold);flex-shrink:0}
+
+/* FOOTER */
+.footer{background:var(--charcoal);padding:80px 40px 36px;color:rgba(253,248,243,.6)}
+.footer-inner{max-width:1440px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.06)}
+.footer-brand-desc{font-family:'Lora',serif;font-size:14px;line-height:1.7;margin-top:18px;color:rgba(253,248,243,.4);max-width:300px}
+.footer-heading{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:20px;font-weight:600}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
+.footer-links a{text-decoration:none;color:rgba(253,248,243,.4);font-size:13px;transition:all .3s;display:inline-block}
+.footer-links a:hover{color:var(--cream);transform:translateX(3px)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-size:12px;color:rgba(253,248,243,.25)}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(253,248,243,.4);text-decoration:none;font-size:13px;transition:all .3s}
+.footer-social a:hover{border-color:var(--gold);color:var(--gold);background:rgba(198,165,92,.08)}
+
+.fade-in{opacity:0;transform:translateY(25px);transition:all .6s cubic-bezier(.4,0,.2,1)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+.nav-links{display:none}
+.fp-card{grid-template-columns:1fr}.fp-image{min-height:280px}
+.blog-grid{grid-template-columns:1fr}
+.footer-top{grid-template-columns:1fr 1fr}
+.payment-trust-inner{flex-direction:column;gap:20px}.pt-divider{width:80px;height:1px}
+.blog-grid-header{flex-direction:column;align-items:flex-start;gap:14px}
+}
+@media(max-width:640px){
+.navbar{padding:10px 16px}.nav-inner{padding:8px 16px}
+.blog-hero{padding:120px 20px 50px}
+.featured-post{padding:24px 20px 0}
+.fp-body{padding:28px 24px}
+.blog-grid-section{padding:40px 20px 40px}
+.blog-newsletter{padding:40px 20px 0}
+.bn-card{padding:40px 24px}.bn-form{flex-direction:column}
+.post-overlay{padding:10px}
+.post-content{padding:28px 24px 32px}
+.post-hero-img{height:220px}
+.footer{padding:40px 20px 24px}.footer-top{grid-template-columns:1fr;gap:30px}
+.payment-trust{padding:32px 20px}.pt-badges{flex-direction:column;gap:12px}
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar"><div class="nav-inner">
+<a href="index.html" class="nav-brand"><div class="nav-logo"><svg width="18" height="18" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="30" stroke="#FDF8F3" stroke-width="2"/><circle cx="50" cy="50" r="15" stroke="#FDF8F3" stroke-width="1.5"/><circle cx="50" cy="50" r="4" fill="#FDF8F3"/><ellipse cx="50" cy="30" rx="6" ry="14" stroke="#FDF8F3" stroke-width="1"/><ellipse cx="50" cy="70" rx="6" ry="14" stroke="#FDF8F3" stroke-width="1"/><ellipse cx="30" cy="50" rx="14" ry="6" stroke="#FDF8F3" stroke-width="1"/><ellipse cx="70" cy="50" rx="14" ry="6" stroke="#FDF8F3" stroke-width="1"/></svg></div><div class="nav-brand-text"><span class="nav-brand-name">Aipan House</span><span class="nav-brand-tag">Heritage Aipan Art</span></div></a>
+<div class="nav-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="story.html">Our Story</a><a href="blog.html" class="active">Blog</a></div>
+<div class="nav-actions"><button class="nav-icon-btn" title="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><button class="nav-icon-btn" title="Account"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button><button class="nav-icon-btn" id="cartToggle" title="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-badge" id="cartCount">0</span></button></div>
+</div></nav>
+
+<!-- NAVBAR -->
+
+<!-- HERO -->
+<section class="blog-hero">
+<div class="blog-hero-blob bhb-1"></div><div class="blog-hero-blob bhb-2"></div>
+<div class="blog-hero-inner">
+<div class="section-chip">Stories & Heritage</div>
+<h1 class="blog-hero-title">The <em>Craft Journal</em></h1>
+<p class="blog-hero-desc">Deep dives into Aipan art, Kumaoni culture, artisan stories, and the living traditions of Uttarakhand's Himalayan foothills.</p>
+</div>
+</section>
+
+<!-- FEATURED POST -->
+<div class="featured-post fade-in">
+<a class="fp-card" href="#" onclick="openPost(0);return false;">
+<div class="fp-image">
+<div class="fp-image-placeholder" style="background:linear-gradient(170deg,#7A2015,#A84028,#C46A48)">
+<svg width="120" height="120" viewBox="0 0 200 200" fill="none" style="opacity:.25"><circle cx="100" cy="100" r="80" stroke="white" stroke-width="1"/><circle cx="100" cy="100" r="55" stroke="white" stroke-width=".8"/><circle cx="100" cy="100" r="30" stroke="white" stroke-width=".8"/><circle cx="100" cy="100" r="10" fill="white" opacity=".3"/><ellipse cx="100" cy="40" rx="14" ry="32" stroke="white" stroke-width=".6"/><ellipse cx="100" cy="160" rx="14" ry="32" stroke="white" stroke-width=".6"/><ellipse cx="40" cy="100" rx="32" ry="14" stroke="white" stroke-width=".6"/><ellipse cx="160" cy="100" rx="32" ry="14" stroke="white" stroke-width=".6"/></svg>
+<span style="color:rgba(255,255,255,.5);font-size:11px;letter-spacing:1px;text-transform:uppercase">Aipan Art</span>
+</div>
+<div class="fp-label">Featured</div>
+</div>
+<div class="fp-body">
+<div class="fp-meta"><span class="fp-category">Culture & History</span><span class="fp-date">Feb 10, 2026</span><span class="fp-read">12 min read</span></div>
+<h2 class="fp-title">What is Aipan Art? A Complete Guide to Uttarakhand's Sacred Folk Tradition</h2>
+<p class="fp-excerpt">From the red ochre floors of Kumaon to contemporary living rooms across India — the definitive guide to one of the Himalayas' most ancient and endangered art forms, its meaning, its rituals, and its revival.</p>
+<div class="fp-author"><div class="fp-avatar">P</div><div class="fp-author-info"><strong>Priya Joshi</strong>Cultural Researcher & Co-founder</div></div>
+</div>
+</a>
+</div>
+
+<!-- BLOG GRID -->
+<section class="blog-grid-section">
+<div class="blog-grid-header">
+<h2 class="blog-grid-title">More Stories</h2>
+<div class="blog-tags">
+<span class="blog-tag active" onclick="filterBlog('all',this)">All</span>
+<span class="blog-tag" onclick="filterBlog('culture',this)">Culture</span>
+<span class="blog-tag" onclick="filterBlog('technique',this)">Technique</span>
+<span class="blog-tag" onclick="filterBlog('style',this)">Home & Style</span>
+</div>
+</div>
+
+<div class="blog-grid" id="blogGrid">
+<!-- CARD 2 -->
+<div class="blog-card fade-in" data-tag="culture" onclick="openPost(1)">
+<div class="bc-image"><div class="bc-image-placeholder" style="background:linear-gradient(170deg,#5A4420,#7A6530,#9A8550)"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" style="opacity:.3"><rect x="15" y="15" width="70" height="70" rx="8" stroke="white" stroke-width=".8"/><circle cx="50" cy="50" r="20" stroke="white" stroke-width=".8"/><line x1="50" y1="15" x2="50" y2="85" stroke="white" stroke-width=".5"/><line x1="15" y1="50" x2="85" y2="50" stroke="white" stroke-width=".5"/></svg></div><div class="bc-read-time">9 min read</div></div>
+<div class="bc-body"><div class="bc-meta"><span class="bc-category">Culture</span><span class="bc-date">Jan 28, 2026</span></div><h3 class="bc-title">The Ancient Motifs of Aipan: Decoding Sacred Symbols from the Kumaon Hills</h3><p class="bc-excerpt">Each Aipan motif tells a story — from the Lakshmi Chowki that invites prosperity to the Shankha that marks auspicious beginnings. A visual guide to the meaning behind the patterns.</p><div class="bc-footer"><div class="bc-author"><div class="bc-author-avatar" style="background:linear-gradient(135deg,#5A4420,#7A6530)">R</div>Ravi Pandey</div><span class="bc-read-link">Read →</span></div></div>
+</div>
+
+<!-- CARD 3 -->
+<div class="blog-card fade-in" data-tag="technique" onclick="openPost(2)">
+<div class="bc-image"><div class="bc-image-placeholder" style="background:linear-gradient(170deg,#3D5254,#5A7A7C,#7A9A9C)"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" style="opacity:.3"><circle cx="50" cy="50" r="35" stroke="white" stroke-width=".8"/><circle cx="50" cy="50" r="18" stroke="white" stroke-width=".8"/><path d="M50 15 L50 85 M15 50 L85 50" stroke="white" stroke-width=".5"/></svg></div><div class="bc-read-time">8 min read</div></div>
+<div class="bc-body"><div class="bc-meta"><span class="bc-category">Technique</span><span class="bc-date">Jan 14, 2026</span></div><h3 class="bc-title">Geru and Biswar: The Natural Pigments Behind Aipan Art</h3><p class="bc-excerpt">The two materials that define Aipan — red ochre earth and rice flour paste — have been used for over 500 years. We explore where they come from, how they're prepared, and why they can never be replaced by synthetics.</p><div class="bc-footer"><div class="bc-author"><div class="bc-author-avatar" style="background:linear-gradient(135deg,#3D5254,#5A7A7C)">P</div>Priya Joshi</div><span class="bc-read-link">Read →</span></div></div>
+</div>
+
+<!-- CARD 4 -->
+<div class="blog-card fade-in" data-tag="culture" onclick="openPost(3)">
+<div class="bc-image"><div class="bc-image-placeholder" style="background:linear-gradient(170deg,#4A3B2A,#6A5B4A,#8A7B6A)"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" style="opacity:.3"><polygon points="50,10 90,90 10,90" stroke="white" stroke-width=".8" fill="none"/><circle cx="50" cy="55" r="18" stroke="white" stroke-width=".8"/></svg></div><div class="bc-read-time">7 min read</div></div>
+<div class="bc-body"><div class="bc-meta"><span class="bc-category">Culture</span><span class="bc-date">Dec 20, 2025</span></div><h3 class="bc-title">How Aipan Art Got Its GI Tag — And Why It Matters</h3><p class="bc-excerpt">In 2023, Aipan received the coveted Geographical Indication tag from the Government of India. Here's what that means for the art form, the artisans, and the future of Kumaoni heritage.</p><div class="bc-footer"><div class="bc-author"><div class="bc-author-avatar" style="background:linear-gradient(135deg,#4A3040,#6A4858)">R</div>Ravi Pandey</div><span class="bc-read-link">Read →</span></div></div>
+</div>
+
+<!-- CARD 5 -->
+<div class="blog-card fade-in" data-tag="style" onclick="openPost(4)">
+<div class="bc-image"><div class="bc-image-placeholder" style="background:linear-gradient(170deg,#6B4226,#8B6246,#AB8266)"><svg width="60" height="60" viewBox="0 0 100 100" fill="none" style="opacity:.3"><ellipse cx="50" cy="50" rx="35" ry="25" stroke="white" stroke-width=".8"/><ellipse cx="50" cy="50" rx="25" ry="35" stroke="white" stroke-width=".8"/><circle cx="50" cy="50" r="8" fill="white" opacity=".2"/></svg></div><div class="bc-read-time">6 min read</div></div>
+<div class="bc-body"><div class="bc-meta"><span class="bc-category">Home & Style</span><span class="bc-date">Dec 5, 2025</span></div><h3 class="bc-title">5 Ways to Style Aipan Art in Your Modern Home</h3><p class="bc-excerpt">Aipan was born on temple floors, but it looks stunning on walls, shelves, and tables too. An interior design guide to integrating sacred Kumaoni art into contemporary Indian homes.</p><div class="bc-footer"><div class="bc-author"><div class="bc-author-avatar" style="background:linear-gradient(135deg,#5C4033,#7A5A48)">A</div>Anjali Bisht</div><span class="bc-read-link">Read →</span></div></div>
+</div>
+</div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="blog-newsletter">
+<div class="bn-card">
+<div class="bn-blob bnb-1"></div><div class="bn-blob bnb-2"></div>
+<h3>Get Heritage in Your Inbox</h3>
+<p>New stories about Aipan art, artisan spotlights, and exclusive offers — delivered monthly</p>
+<div class="bn-form"><input class="bn-input" type="email" placeholder="your@email.com"><button class="bn-btn">Subscribe</button></div>
+</div>
+</div>
+
+<!-- TRUST & PAYMENT STRIP -->
+
+<!-- FOOTER -->
+
+<!-- POST OVERLAY -->
+<div class="post-overlay" id="postOverlay" onclick="if(event.target===this)closePost()">
+<div class="post-modal" id="postModal"></div>
+</div>
+
+
+</div>
+
+<section class="payment-trust">
+<div class="payment-trust-inner">
+<div class="pt-section"><div class="pt-label">Secure Payments</div><div class="pt-icons"><div class="pt-icon" title="Visa"><svg width="32" height="20" viewBox="0 0 32 20"><rect width="32" height="20" rx="3" fill="#1A1F71"/><text x="16" y="13" text-anchor="middle" fill="white" font-family="Arial" font-size="8" font-weight="bold">VISA</text></svg></div><div class="pt-icon" title="Mastercard"><svg width="32" height="20" viewBox="0 0 32 20"><rect width="32" height="20" rx="3" fill="#2D2D2D"/><circle cx="12" cy="10" r="6" fill="#EB001B" opacity=".9"/><circle cx="20" cy="10" r="6" fill="#F79E1B" opacity=".9"/></svg></div><div class="pt-icon" title="UPI"><svg width="32" height="20" viewBox="0 0 32 20"><rect width="32" height="20" rx="3" fill="#4CAF50"/><text x="16" y="13" text-anchor="middle" fill="white" font-family="Arial" font-size="7" font-weight="bold">UPI</text></svg></div><div class="pt-icon" title="Net Banking"><svg width="32" height="20" viewBox="0 0 32 20"><rect width="32" height="20" rx="3" fill="#1565C0"/><text x="16" y="13" text-anchor="middle" fill="white" font-family="Arial" font-size="6" font-weight="bold">NETB</text></svg></div><div class="pt-icon" title="RuPay"><svg width="32" height="20" viewBox="0 0 32 20"><rect width="32" height="20" rx="3" fill="#3F51B5"/><text x="16" y="13" text-anchor="middle" fill="white" font-family="Arial" font-size="6" font-weight="bold">RuPay</text></svg></div></div></div>
+<div class="pt-divider"></div>
+<div class="pt-badges"><div class="pt-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>SSL Encrypted</div><div class="pt-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>100% Secure Checkout</div><div class="pt-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Verified by Razorpay</div><div class="pt-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.5 9A9 9 0 0 0 5.6 5.6L1 10m22 4l-4.6 4.4A9 9 0 0 1 3.5 15"/></svg>Easy Refunds</div></div>
+</div>
+</section>
+<footer class="footer"><div class="footer-inner">
+<div class="footer-top">
+<div><a href="index.html" class="nav-brand"><div class="nav-logo"><svg width="18" height="18" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="30" stroke="#FDF8F3" stroke-width="2"/><circle cx="50" cy="50" r="15" stroke="#FDF8F3" stroke-width="1.5"/><circle cx="50" cy="50" r="4" fill="#FDF8F3"/></svg></div><div class="nav-brand-text"><span class="nav-brand-name" style="color:var(--cream)">Aipan House</span><span class="nav-brand-tag" style="color:var(--gold-light)">Heritage Aipan Art</span></div></a><p class="footer-brand-desc">Bringing the sacred beauty of Kumaon's Aipan art into modern homes. Every purchase supports artisan families in the Himalayan foothills.</p></div>
+<div><h4 class="footer-heading">Shop</h4><ul class="footer-links"><li><a href="shop.html">Paintings & Wall Art</a></li><li><a href="shop.html">Cushions & Textiles</a></li><li><a href="shop.html">Vessel & Pottery</a></li><li><a href="shop.html">Home Décor</a></li><li><a href="shop.html">Gift Cards</a></li></ul></div>
+<div><h4 class="footer-heading">Company</h4><ul class="footer-links"><li><a href="story.html">Our Story</a></li><li><a href="blog.html">Blog</a></li><li><a href="story.html">Meet the Artisans</a></li><li><a href="story.html">Sustainability</a></li><li><a href="#">Press & Media</a></li></ul></div>
+<div><h4 class="footer-heading">Support</h4><ul class="footer-links"><li><a href="#">Shipping & Returns</a></li><li><a href="#">Care Instructions</a></li><li><a href="#">FAQs</a></li><li><a href="#">Contact Us</a></li></ul></div>
+</div>
+<div class="footer-bottom"><span>&copy; 2026 Aipan House. All rights reserved.</span><div class="footer-social"><a href="#" title="Instagram">ig</a><a href="#" title="Facebook">fb</a><a href="#" title="Pinterest">pi</a><a href="#" title="YouTube">yt</a></div></div>
+</div></footer>
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-sidebar" id="cartSidebar">
+<div class="cart-header"><h3 class="cart-title">Your Cart</h3><button class="cart-close" id="cartClose">✕</button></div>
+<div class="cart-items" id="cartItems"><div class="cart-empty">Your cart is empty.<br>Begin your collection today.</div></div>
+<div class="cart-footer" id="cartFooter" style="display:none"><div class="cart-total"><span class="cart-total-l">Subtotal</span><span class="cart-total-p" id="cartTotal">—</span></div><button class="checkout-btn">Browse Collection →</button></div>
+</div>
+<div class="toast" id="toast"><span class="toast-ck">✓</span><span id="toastMsg"></span></div>
+
+<script>
+// Shared functionality
+window.addEventListener('scroll', function() {
+  var nb = document.getElementById('navbar');
+  if (nb) nb.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll animations
+var fadeObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(x) { if (x.isIntersecting) x.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade-in').forEach(function(el) { fadeObserver.observe(el); });
+
+// Cart
+var cart = [];
+function openCartSidebar() { document.getElementById('cartOverlay').classList.add('active'); document.getElementById('cartSidebar').classList.add('active'); }
+function closeCartSidebar() { document.getElementById('cartOverlay').classList.remove('active'); document.getElementById('cartSidebar').classList.remove('active'); }
+ document.getElementById('cartToggle').addEventListener('click', openCartSidebar); } catch(_){}
+ document.getElementById('cartOverlay').addEventListener('click', closeCartSidebar); } catch(_){}
+ document.getElementById('cartClose').addEventListener('click', closeCartSidebar); } catch(_){}
+
+function showToast(m) { var t = document.getElementById('toast'); document.getElementById('toastMsg').textContent = m; t.classList.add('show'); setTimeout(function(){ t.classList.remove('show'); }, 2500); }
+
+
+
+
+var posts=[
+{
+title:"What is Aipan Art? A Complete Guide to Uttarakhand's Sacred Folk Tradition",
+category:"Culture & History",date:"February 10, 2026",read:"12 min read",author:"Priya Joshi",authorInit:"P",
+bg:"linear-gradient(145deg,#8B2500,#B84A28,#D06A48)",
+heroImg:"",
+tags:["Aipan","Kumaon","Uttarakhand","Folk Art","Heritage"],
+heroSvg:'<rect x="120" y="120" width="160" height="160" rx="4" stroke="white" stroke-width="1.2"/><circle cx="200" cy="200" r="50" stroke="white" stroke-width=".8"/><circle cx="200" cy="200" r="28" stroke="white" stroke-width=".6"/><circle cx="200" cy="200" r="10" fill="white" opacity=".12"/><ellipse cx="200" cy="155" rx="10" ry="22" stroke="white" stroke-width=".5"/><ellipse cx="200" cy="245" rx="10" ry="22" stroke="white" stroke-width=".5"/><ellipse cx="155" cy="200" rx="22" ry="10" stroke="white" stroke-width=".5"/><ellipse cx="245" cy="200" rx="22" ry="10" stroke="white" stroke-width=".5"/>',
+content:`<h2>The Origins: Where Red Earth Meets White Rice</h2>
+<p>In the mist-wrapped villages of Uttarakhand's Kumaon division — spanning the districts of Almora, Nainital, Pithoragarh, Bageshwar, and Champawat — a remarkable art form has been practiced for over five centuries. It is called <strong>Aipan</strong> (also spelled Aipan or Alpana in different dialects), and it is one of India's oldest surviving ritual floor painting traditions.</p>
+<p>The word "Aipan" is believed to derive from the Sanskrit word "Arpan," meaning to offer or to dedicate. And that captures its essence perfectly — Aipan is not mere decoration. It is an offering to the divine, a visual prayer drawn on the floors and walls of Kumaoni homes during rituals, festivals, and life ceremonies.</p>
+
+<h2>The Two Sacred Materials: Geru and Biswar</h2>
+<p>Aipan requires only two materials, both sourced directly from the Kumaoni landscape. The first is <strong>geru</strong> — a naturally occurring red ochre clay found in the hills. Geru is mixed with water to create a rich, earthy-red paste that forms the base coat applied to floors, walls, and wooden surfaces. The second is <strong>biswar</strong> — a paste made from soaked and ground rice flour. This white paste is what artisans use to draw the intricate patterns and motifs atop the red geru base.</p>
+<p>The interplay of red and white is not accidental. In Kumaoni tradition, red represents the earth goddess (Shakti) and creative energy, while white represents purity, knowledge, and the cosmic order. Every Aipan painting is thus a dialogue between two fundamental forces.</p>
+
+<h2>When and Where is Aipan Created?</h2>
+<p>Traditionally, Aipan appears at every significant threshold — both literal and metaphorical — in Kumaoni life. The most common locations include the main entrance of the home (to welcome Lakshmi), the puja room floor (as a seat for deities), the kitchen threshold (for Annapurna, goddess of food), and the space around the tulsi plant (the sacred basil). During weddings, the entire courtyard may be covered in elaborate Aipan designs.</p>
+<p>Aipan is also created for specific ceremonies: the naming ceremony of a newborn (Naamkaran), the sacred thread ceremony (Upanayana), the harvest festival (Harela), Diwali, Navratri, and funerary rites. Each occasion has its own prescribed set of motifs — you would never use a wedding Aipan for a funeral, or vice versa.</p>
+
+<h2>The Transmission Problem: Why Aipan Is Endangered</h2>
+<p>For centuries, Aipan knowledge was transmitted exclusively from mother to daughter and mother-in-law to daughter-in-law within the household. There were no written manuals, no formal schools — just the quiet intimacy of an older woman guiding a younger one's hand across the ochre floor.</p>
+<p>This oral tradition worked beautifully for generations, but it also made Aipan extremely vulnerable to disruption. When young Kumaoni women began migrating to cities for education and employment in the late 20th century, the chain of transmission began to break. Today, many villages that once had dozens of Aipan practitioners have none.</p>
+
+<h2>The Revival: Aipan in the 21st Century</h2>
+<p>But the story doesn't end in decline. A growing movement of cultural preservation — led by NGOs, government initiatives, and enterprises like Aipan House — is bringing Aipan back from the brink. The art received a significant boost in 2023 when the Government of India granted it a <strong>Geographical Indication (GI) tag</strong>, officially recognising Aipan as a unique cultural product of the Kumaon region.</p>
+<p>Today, Aipan is being translated onto new surfaces — canvas, handmade paper, textiles, ceramics, and wood — making it accessible to a global audience while providing sustainable livelihoods for the artisans who keep the tradition alive. The sacred geometry of Kumaon is finding new walls to adorn, new hands to appreciate it, and new meaning in the modern world.</p>`
+},
+{
+title:"The Ancient Motifs of Aipan: Decoding Sacred Symbols from the Kumaon Hills",
+category:"Culture",date:"January 28, 2026",read:"9 min read",author:"Ravi Pandey",authorInit:"R",
+bg:"linear-gradient(145deg,#5A4420,#7A6530,#A08848)",
+heroImg:"",
+tags:["Motifs","Symbolism","Lakshmi Chowki","Sacred Geometry","Kumaon"],
+heroSvg:'<rect x="100" y="100" width="200" height="200" rx="4" stroke="white" stroke-width="1"/><polygon points="200,110 240,170 225,240 175,240 160,170" stroke="white" stroke-width=".7" fill="none"/><circle cx="200" cy="180" r="30" stroke="white" stroke-width=".6"/><circle cx="200" cy="180" r="12" stroke="white" stroke-width=".5"/><circle cx="150" cy="150" r="8" stroke="white" stroke-width=".4"/><circle cx="250" cy="150" r="8" stroke="white" stroke-width=".4"/><circle cx="150" cy="250" r="8" stroke="white" stroke-width=".4"/><circle cx="250" cy="250" r="8" stroke="white" stroke-width=".4"/>',
+content:`<h2>Reading the Language of Lines</h2>
+<p>To the untrained eye, Aipan patterns might appear as beautiful abstract designs — intricate white lines dancing across a red surface. But to a Kumaoni woman steeped in this tradition, each motif is as legible as a written language. Every curve, dot, and geometric form carries specific meaning, tells a particular story, and serves a distinct ritual purpose.</p>
+<p>There are believed to be over 100 distinct Aipan motifs in the traditional repertoire, though many have been lost as the practice declined. Here we decode the most significant ones that survive today.</p>
+
+<h2>Lakshmi Chowki: The Throne of Prosperity</h2>
+<p>The most iconic and widely recognised Aipan motif is the <strong>Lakshmi Chowki</strong> — a square seat (chowki means stool or platform) designed to invite Goddess Lakshmi into the home. It features a central square surrounded by concentric borders of lotus petals, geometric triangles, and dot patterns. The Lakshmi Chowki is painted at the entrance of every Kumaoni home during Diwali and is considered the most auspicious of all Aipan designs.</p>
+<p>The motif's square shape represents stability and the four cardinal directions. The lotus petals symbolise spiritual purity and the unfolding of divine consciousness. When completed, the Lakshmi Chowki becomes a sanctified space where the physical and spiritual worlds intersect.</p>
+
+<h2>Saraswati Chowki: The Seat of Knowledge</h2>
+<p>Created during Vasant Panchami and learning ceremonies, the <strong>Saraswati Chowki</strong> is dedicated to the goddess of knowledge, music, and the arts. Its design features flowing, more organic forms compared to the structured Lakshmi Chowki — incorporating veena-like curves, book-shaped central panels, and swan motifs along the borders. Students often sit on or near a Saraswati Chowki when beginning a new course of study.</p>
+
+<h2>Chamunda Hast: The Protective Hand</h2>
+<p>One of the most powerful protective motifs, the <strong>Chamunda Hast</strong> depicts the open palm of Goddess Chamunda (a fierce form of Durga). It is painted near doors and windows to ward off evil spirits, negative energy, and the malevolent gaze. The five fingers represent the five elements — earth, water, fire, air, and ether — and their harmonious balance within the home.</p>
+
+<h2>Shankha: The Auspicious Conch</h2>
+<p>The <strong>Shankha</strong> (conch shell) motif marks new beginnings — housewarmings, the arrival of a bride, the birth of a child. In Kumaoni tradition, the sound of the conch is believed to purify the atmosphere and drive away negativity. The Aipan rendition of the Shankha is remarkably geometric — the natural spiral of the conch abstracted into concentric curves and dot patterns that radiate outward like sound waves.</p>
+
+<h2>Bel Patra and Paisley Borders</h2>
+<p>Many Aipan compositions use <strong>bel patra</strong> (three-leaf bilva pattern, sacred to Lord Shiva) and <strong>paisley borders</strong> as framing elements. These aren't just decorative — the bel patra invokes Shiva's blessings at the boundaries of the sacred space, while the paisley (known locally as "ambi," representing the mango) symbolises fertility and the abundance of the natural world. The borders literally define the threshold between sacred and profane space.</p>
+
+<h2>The Geometry Beneath: Mathematical Precision</h2>
+<p>What makes Aipan remarkable from a design perspective is its mathematical sophistication. Many motifs are constructed using precise geometric principles — bisected circles, equilateral triangles, and golden ratio proportions — all executed freehand without rulers, compasses, or stencils. This suggests that Kumaoni women carried an intuitive understanding of sacred geometry long before these concepts were formalised in academic mathematics.</p>`
+},
+{
+title:"Geru and Biswar: The Natural Pigments Behind Aipan Art",
+category:"Technique",date:"January 14, 2026",read:"8 min read",author:"Priya Joshi",authorInit:"P",
+bg:"linear-gradient(145deg,#8B3A2A,#A05838,#C47858)",
+heroImg:"",
+tags:["Geru","Biswar","Natural Pigments","Red Ochre","Rice Paste","Technique"],
+heroSvg:'<ellipse cx="160" cy="220" rx="70" ry="25" stroke="white" stroke-width="1" fill="none"/><path d="M90 220 Q90 280 160 280 Q230 280 230 220" stroke="white" stroke-width="1" fill="none"/><line x1="120" y1="200" x2="85" y2="130" stroke="white" stroke-width="2"/><ellipse cx="82" cy="126" rx="10" ry="6" stroke="white" stroke-width=".8" fill="none"/><ellipse cx="280" cy="200" rx="55" ry="20" stroke="white" stroke-width=".8" fill="none"/><path d="M225 200 Q225 250 280 250 Q335 250 335 200" stroke="white" stroke-width=".8" fill="none"/><ellipse cx="250" cy="140" rx="4" ry="9" fill="white" opacity=".1"/><ellipse cx="270" cy="130" rx="4" ry="9" fill="white" opacity=".08"/><ellipse cx="295" cy="138" rx="4" ry="9" fill="white" opacity=".1"/>',
+content:`<h2>Two Ingredients, Five Hundred Years</h2>
+<p>In an age of synthetic dyes, digital printing, and chemical pigments, there is something profoundly moving about an art form that still relies on just two materials — both drawn directly from the earth and the kitchen. <strong>Geru</strong> (red ochre) and <strong>biswar</strong> (rice flour paste) are the twin pillars of Aipan art, and understanding them is essential to understanding why this tradition cannot be mechanised or mass-produced.</p>
+
+<h2>Geru: The Red Earth of Kumaon</h2>
+<p><strong>Geru</strong> is a naturally occurring clay rich in iron oxide (Fe₂O₃) that gives it a distinctive deep red colour. It is found abundantly in the geological formations of the Kumaon Himalayas, particularly in the river valleys and cliff faces around Almora, Ranikhet, and the Kosi river basin. Kumaoni families have been collecting geru from specific traditional sites for generations — knowledge of the best geru deposits is itself a form of inherited wisdom.</p>
+<p>The preparation of geru is itself a ritual. Raw geru chunks are first dried in sunlight, then ground into a fine powder using a stone mortar and pestle (silbatta). The powder is mixed with water to create a smooth, paint-like consistency. For floor applications, the geru wash is applied in multiple thin layers, each allowed to dry completely before the next is added. A well-prepared geru surface has a warm, velvety texture that is both beautiful and functional — it is naturally antibacterial, insect-repelling, and cooling in summer.</p>
+
+<h2>Biswar: The Sacred White</h2>
+<p><strong>Biswar</strong> (also called biswār or lipāi) is prepared from soaked rice — specifically, the unpolished, semi-husked rice varieties traditionally grown in the terraced paddies of Kumaon. The rice is soaked overnight in water, then ground on a stone slab into a fine, smooth paste. The consistency is crucial: too thin and the lines will bleed; too thick and they won't flow from the fingertips.</p>
+<p>The use of rice paste is deeply symbolic. Rice is the staple food of Kumaon and the primary offering in Hindu puja. Using rice paste to draw sacred motifs is an act of offering the most essential sustenance to the gods — literally feeding the divine through art. The whiteness of biswar also represents purity, truth, and the light of knowledge against the red earth of material existence.</p>
+
+<h2>The Finger as Brush</h2>
+<p>What makes Aipan truly extraordinary is the application method. Artisans do not use brushes. The biswar paste is applied using the <strong>ring finger</strong> of the right hand — considered the most auspicious finger in Hindu tradition, associated with the sun and creative energy. For finer lines, a thin cotton wick or a sharpened bamboo stick may be used, but the primary instrument remains the human fingertip.</p>
+<p>This means that every Aipan artwork carries the literal fingerprint of its creator. No two pieces are ever identical. The slight wobble in a line, the variable thickness of a curve, the pressure changes in a dot pattern — these are not imperfections but signatures, proof that a human hand (and heart) was involved in every millimetre of the design.</p>
+
+<h2>Why Synthetics Cannot Replace Them</h2>
+<p>Attempts have been made to create Aipan using acrylic paints, stencils, and even screen printing. While these may produce visually similar results, they fundamentally violate the spiritual and ecological principles that define Aipan. The natural pigments are biodegradable, non-toxic, and sourced sustainably. More importantly, the act of preparing geru and biswar is itself a meditative practice — a slowing down, a connection to the earth that cannot be replicated by squeezing paint from a tube.</p>`
+},
+{
+title:"How Aipan Art Got Its GI Tag — And Why It Matters",
+category:"Culture",date:"December 20, 2025",read:"7 min read",author:"Ravi Pandey",authorInit:"R",
+bg:"linear-gradient(145deg,#4A3040,#6A4858,#8A6878)",
+heroImg:"",
+tags:["GI Tag","Intellectual Property","Government","Preservation","Uttarakhand"],
+heroSvg:'<path d="M200 60 L300 100 L300 210 Q300 270 200 300 Q100 270 100 210 L100 100 Z" stroke="white" stroke-width="1.2" fill="none"/><path d="M200 85 L280 115 L280 205 Q280 255 200 280 Q120 255 120 205 L120 115 Z" stroke="white" stroke-width=".5" fill="none"/><circle cx="200" cy="180" r="35" stroke="white" stroke-width=".6"/><circle cx="200" cy="180" r="18" stroke="white" stroke-width=".5"/><circle cx="200" cy="180" r="6" fill="white" opacity=".1"/>',
+content:`<h2>A Legal Shield for Ancient Knowledge</h2>
+<p>In 2023, the Government of India officially granted <strong>Aipan art a Geographical Indication (GI) tag</strong> — joining the ranks of Darjeeling tea, Banarasi silk, and Kashmiri pashmina as a product whose identity is inseparably linked to its place of origin. This was not just a bureaucratic milestone. It was a landmark recognition that Aipan belongs to Kumaon, and that its authenticity cannot be appropriated, diluted, or mass-manufactured elsewhere.</p>
+
+<h2>What Exactly Is a GI Tag?</h2>
+<p>A <strong>Geographical Indication</strong> is a form of intellectual property right that identifies a product as originating from a specific geographical location. The key principle is that the product's quality, reputation, or characteristics are essentially attributable to that origin. For Aipan, this means that only art created by traditional artisans in the Kumaon region of Uttarakhand, using traditional methods and materials (geru and biswar), can legally be called "Aipan."</p>
+<p>This is a powerful tool against exploitation. Before the GI tag, machine-printed imitations were being sold as "authentic Aipan" at a fraction of the price, undercutting the artisans who spend days creating each genuine piece. The GI tag provides legal recourse against such counterfeiting.</p>
+
+<h2>The Long Road to Recognition</h2>
+<p>The campaign for Aipan's GI tag was a multi-year effort involving the Uttarakhand government's Department of Industries, the Intellectual Property India office, cultural researchers, and — most crucially — the artisan communities themselves. Detailed documentation was required: historical evidence of the tradition's antiquity, proof of its geographical specificity, technical descriptions of materials and methods, and demonstration that the art form's characteristics are linked to its Kumaoni origin.</p>
+<p>Master artisans from Almora, Pithoragarh, and Bageshwar provided extensive testimonies about their inherited knowledge, demonstrating that Aipan techniques vary by village and family lineage — evidence of a deeply localised tradition that could not be replicated by outsiders without this generational knowledge.</p>
+
+<h2>Impact on Artisan Livelihoods</h2>
+<p>The GI tag has already begun to transform the economic landscape for Aipan artisans. With authenticated origin, products can command premium prices in both domestic and international markets. Government schemes now specifically target GI-tagged products for exhibition support, export facilitation, and artisan welfare programmes.</p>
+<p>For Aipan House, the GI tag provides a verifiable guarantee to customers that every product is genuinely handcrafted in Kumaon by traditional artisans. Each piece ships with a GI certification card, creating a direct chain of trust from artisan to home.</p>
+
+<h2>What Still Needs to Happen</h2>
+<p>A GI tag is a necessary but not sufficient condition for preservation. The real challenge remains transmission — ensuring that young Kumaoni women (and men) learn Aipan techniques and choose to practice them. Economic viability is key: when artisans can earn a dignified living from their craft, the next generation has a reason to learn. The GI tag helps create those economic conditions, but it must be accompanied by training programmes, design innovation, and market access to truly secure Aipan's future.</p>`
+},
+{
+title:"5 Ways to Style Aipan Art in Your Modern Home",
+category:"Home & Style",date:"December 5, 2025",read:"6 min read",author:"Anjali Bisht",authorInit:"A",
+bg:"linear-gradient(145deg,#5C4033,#7A5A48,#9A7A68)",
+heroImg:"",
+tags:["Interior Design","Home Décor","Styling","Modern Home","Indian Art"],
+heroSvg:'<rect x="140" y="60" width="120" height="150" rx="4" stroke="white" stroke-width="1" fill="none"/><rect x="152" y="72" width="96" height="126" rx="2" stroke="white" stroke-width=".4" fill="none"/><circle cx="200" cy="125" r="28" stroke="white" stroke-width=".5"/><circle cx="200" cy="125" r="14" stroke="white" stroke-width=".4"/><rect x="60" y="225" width="280" height="6" rx="3" stroke="white" stroke-width=".8" fill="none"/><line x1="80" y1="231" x2="80" y2="300" stroke="white" stroke-width=".6"/><line x1="320" y1="231" x2="320" y2="300" stroke="white" stroke-width=".6"/>',
+content:`<h2>Sacred Art, Contemporary Spaces</h2>
+<p>Aipan was born on ochre-washed floors and temple walls, but its bold geometry, warm palette, and spiritual resonance make it remarkably versatile in modern interior settings. Whether your home leans minimal Scandinavian, warm contemporary, or richly Indian maximalist, there's a way to incorporate Aipan that feels both authentic and fresh. Here are five approaches we love.</p>
+
+<h2>1. The Statement Wall</h2>
+<p>A large-format Aipan panel (24×36 inches or bigger) deserves to be the centrepiece of a room. Hang a framed Lakshmi Chowki or Durga Puja canvas on a clean, light-coloured wall — white, off-white, or warm beige works best. The red-and-white palette of traditional Aipan creates a natural focal point without clashing with most colour schemes. Pair it with warm wood furniture and brass accents to bring out the earthy tones.</p>
+<p><strong>Pro tip:</strong> Float-frame the piece (with a small gap between the art and the frame) to give it a gallery-quality presentation. Avoid ornate gold frames — a simple wooden or black metal frame lets the art speak for itself.</p>
+
+<h2>2. The Curated Console Display</h2>
+<p>Create a layered vignette on a console table or sideboard. Start with a medium Aipan print leaning against the wall. In front, place a copper kalash vessel on one side and a pair of Aipan-motif tealight holders on the other. Add a small potted plant (a money plant or fern) and perhaps a stack of art books. This approach works beautifully in entryways and living rooms, creating a warm welcome that tells your story.</p>
+
+<h2>3. The Textile Mix</h2>
+<p>Aipan-printed cushion covers and table runners are the easiest entry point. The key to making them look sophisticated (rather than souvenir-shop) is mixing them with solid-coloured textiles in complementary earthy tones — think cream, ochre, sage green, or deep indigo. On a neutral sofa, two Aipan cushions paired with two plain linen cushions creates the perfect balance of pattern and rest.</p>
+<p><strong>Pro tip:</strong> Use an Aipan table runner as a bed runner across the foot of your bed. It adds instant warmth and cultural character to a bedroom without overwhelming the space.</p>
+
+<h2>4. The Sacred Corner</h2>
+<p>If you maintain a puja space at home, Aipan is its natural companion. Place a Lakshmi Chowki print or a hand-painted wooden plate behind your deity figures. Use an Aipan-decorated brass or copper vessel for flowers. The art isn't just decoration here — it's fulfilling its original ritual purpose, sanctifying the space with sacred geometry in the same tradition that Kumaoni homes have followed for centuries.</p>
+
+<h2>5. The Dining Table Centrepiece</h2>
+<p>A beautifully hand-painted Aipan mandala wall plate (the kind with a stand) makes a stunning table centrepiece — especially for dinner parties. Surround it with tealight holders and scattered flowers. It's a conversation starter that leads naturally to the story of Kumaoni artisans and 500-year-old traditions — which is, after all, the most premium thing about these pieces. Not just what they look like, but what they mean.</p>
+
+<h2>A Note on Authenticity</h2>
+<p>When styling Aipan in your home, remember that these aren't just aesthetic objects — they're cultural artefacts carrying generations of meaning. Display them with the same respect and intentionality you'd give any original artwork. Every piece was made by hand, over several days, by an artisan whose family has practised this craft for generations. That provenance is the ultimate luxury.</p>`
+}
+];
+
+function openPost(i){
+var p=posts[i];
+document.getElementById('postModal').innerHTML=`
+<div class="post-hero-img">${p.heroImg ? '<img src="'+p.heroImg+'" alt="'+p.title+'" style="width:100%;height:100%;object-fit:cover">' : '<div class="post-hero-img-placeholder" style="background:linear-gradient(170deg,#7A2015,#A84028,#C46A48)"><svg width="100" height="100" viewBox="0 0 200 200" fill="none" style="opacity:.2"><circle cx="100" cy="100" r="80" stroke="white" stroke-width="1"/><circle cx="100" cy="100" r="55" stroke="white" stroke-width=".8"/><circle cx="100" cy="100" r="30" stroke="white" stroke-width=".8"/></svg></div>'}<button class="post-close" onclick="closePost()">✕</button></div>
+<div class="post-content">
+<div class="post-category">${p.category}</div>
+<h1>${p.title}</h1>
+<div class="post-meta"><strong>${p.author}</strong> · ${p.date} · ${p.read}</div>
+<article>${p.content}</article>
+<div class="post-tags">${p.tags.map(t=>'<span class="post-tag">'+t+'</span>').join('')}</div>
+</div>`;
+document.getElementById('postOverlay').classList.add('active');
+document.body.style.overflow='hidden';
+document.getElementById('postOverlay').scrollTop=0;
+}
+function closePost(){document.getElementById('postOverlay').classList.remove('active');document.body.style.overflow=''}
+function filterBlog(tag,el){
+document.querySelectorAll('.blog-tag').forEach(t=>t.classList.remove('active'));el.classList.add('active');
+document.querySelectorAll('.blog-card').forEach(c=>{c.style.display=(tag==='all'||c.dataset.tag===tag)?'':'none'});
+}
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
