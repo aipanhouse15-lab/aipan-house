@@ -1,0 +1,3 @@
+# Aipan House — Block crawling until site is ready for launch
+User-agent: *
+Disallow: /
