@@ -5,8 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aipan House — Heritage Aipan Art & Home Décor</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500;6..12,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
 <style>
+
+:root{--ochre:#943B20;--ochre-deep:#6B1E08;--ochre-warm:#B84A28;--cream:#FDF8F3;--ivory:#F7EFE5;--sand:#EDE3D5;--gold:#C6A55C;--gold-light:#DBBF7A;--gold-muted:#B49A5A;--charcoal:#2A2420;--warm-brown:#7A6B5D;--taupe:#A89888;--soft-white:#FEFCF9;--blush:#F5E6DA;--border:rgba(198,165,92,0.18);--shadow-soft:0 8px 40px rgba(107,30,8,0.06);--shadow-hover:0 16px 60px rgba(107,30,8,0.10);--r-sm:16px;--r-md:24px;--r-lg:40px;--r-xl:60px;--r-pill:999px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--charcoal);overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--cream)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px}
+
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 40px;transition:all .5s cubic-bezier(.4,0,.2,1)}
+
+:root{--ochre:#943B20;--ochre-deep:#6B1E08;--ochre-warm:#B84A28;--cream:#FDF8F3;--ivory:#F7EFE5;--sand:#EDE3D5;--gold:#C6A55C;--gold-light:#DBBF7A;--gold-muted:#B49A5A;--charcoal:#2A2420;--warm-brown:#7A6B5D;--taupe:#A89888;--soft-white:#FEFCF9;--blush:#F5E6DA;--border:rgba(198,165,92,0.18);--shadow-soft:0 8px 40px rgba(107,30,8,0.06);--shadow-hover:0 16px 60px rgba(107,30,8,0.10);--r-sm:16px;--r-md:24px;--r-lg:40px;--r-xl:60px;--r-pill:999px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--charcoal);overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--cream)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px}
+
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 40px;transition:all .5s cubic-bezier(.4,0,.2,1)}
+.navbar.scrolled{background:rgba(253,248,243,.92);backdrop-filter:blur(24px);box-shadow:0 4px 30px rgba(107,30,8,.05)}
+.nav-inner{max-width:1340px;margin:0 auto;padding:10px 28px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,243,.85);backdrop-filter:blur(16px);border-radius:var(--r-pill);border:1px solid var(--border);transition:all .5s ease}
+.navbar.scrolled .nav-inner{background:transparent;border-color:transparent;backdrop-filter:none}
+.nav-brand{display:flex;align-items:center;gap:12px}
+.nav-logo{width:38px;height:38px;border-radius:50%;background:var(--ochre-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-brand-text{display:flex;flex-direction:column}
+.nav-brand-name{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ochre-deep);line-height:1.1}
+.nav-brand-tag{font-size:9px;letter-spacing:2.5px;color:var(--gold-muted);text-transform:uppercase;font-weight:500}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{text-decoration:none;color:var(--warm-brown);font-size:13px;padding:8px 18px;border-radius:var(--r-pill);transition:all .3s ease}
+.nav-links a:hover{background:var(--sand);color:var(--ochre-deep)}
+.nav-actions{display:flex;gap:8px;align-items:center}
+.nav-icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--warm-brown);transition:all .3s ease;position:relative}
+.nav-icon-btn:hover{background:var(--sand);color:var(--ochre-deep);border-color:var(--sand)}
+.cart-badge{position:absolute;top:-3px;right:-3px;width:18px;height:18px;background:var(--ochre-warm);color:white;font-size:9px;font-weight:600;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--cream)}
+
 .hero{min-height:auto;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:100px;padding-bottom:40px;background:linear-gradient(180deg,var(--ivory) 0%,var(--cream) 100%)}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--cream));z-index:1;pointer-events:none}
 .hero-bg-shape{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15}
@@ -21,6 +50,11 @@
 .hero-title em{font-style:italic;color:var(--ochre-warm)}
 .hero-desc{font-family:'Lora',serif;font-size:17px;line-height:1.75;color:var(--warm-brown);max-width:460px;margin-bottom:32px}
 .hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:var(--ochre-deep);color:var(--cream);font-family:'Nunito Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;border:none;cursor:pointer;border-radius:var(--r-pill);transition:all .4s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 20px rgba(107,30,8,.2)}
+.btn-primary:hover{background:var(--ochre-warm);transform:translateY(-2px);box-shadow:0 8px 30px rgba(107,30,8,.25)}
+.btn-secondary{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border:1.5px solid var(--taupe);color:var(--charcoal);font-family:'Nunito Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;cursor:pointer;background:transparent;border-radius:var(--r-pill);transition:all .4s ease}
+.btn-secondary:hover{border-color:var(--ochre-deep);color:var(--ochre-deep);background:rgba(148,59,32,.04)}
+
 .hero-visual{position:relative;animation:gentleUp 1s ease .5s both}
 .hero-image-wrapper{position:relative;border-radius:200px 200px 40px 40px;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(160deg,var(--ochre-deep) 0%,var(--ochre-warm) 60%,#C46A48 100%);box-shadow:var(--shadow-hover)}
 .hero-image-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;padding:40px}
@@ -136,6 +170,70 @@
 .newsletter-btn{padding:16px 32px;background:var(--gold);color:white;border:none;border-radius:var(--r-pill);font-family:'Nunito Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .3s ease;white-space:nowrap}
 .newsletter-btn:hover{background:var(--gold-light);transform:scale(1.03)}
 
+/* PAYMENT TRUST STRIP */
+.payment-trust{padding:48px 40px;background:var(--sand)}
+.payment-trust-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.pt-section{display:flex;align-items:center;gap:16px}
+.pt-label{font-family:'DM Serif Display',serif;font-size:14px;color:var(--ochre-deep);white-space:nowrap}
+.pt-icons{display:flex;gap:8px}
+.pt-icon{border-radius:6px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.08);transition:transform .2s}
+.pt-icon:hover{transform:translateY(-2px)}
+.pt-divider{width:1px;height:40px;background:var(--border)}
+.pt-badges{display:flex;gap:20px;flex-wrap:wrap}
+.pt-badge{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--warm-brown);white-space:nowrap}
+.pt-badge svg{color:var(--gold);flex-shrink:0}
+
+.footer{background:var(--charcoal);padding:80px 40px 36px;margin-top:0;color:rgba(253,248,243,.6)}
+.footer-inner{max-width:1340px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.06)}
+.footer-brand-desc{font-family:'Lora',serif;font-size:14px;line-height:1.7;margin-top:18px;color:rgba(253,248,243,.4);max-width:300px}
+.footer-heading{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:20px;font-weight:600}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
+.footer-links a{text-decoration:none;color:rgba(253,248,243,.4);font-size:13px;transition:all .3s;display:inline-block}
+.footer-links a:hover{color:var(--cream);transform:translateX(3px)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-size:12px;color:rgba(253,248,243,.25)}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(253,248,243,.4);text-decoration:none;font-size:13px;transition:all .3s}
+.footer-social a:hover{border-color:var(--gold);color:var(--gold);background:rgba(198,165,92,.08)}
+
+.cart-overlay{position:fixed;inset:0;background:rgba(42,36,32,.4);backdrop-filter:blur(4px);z-index:2000;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.cart-overlay.active{opacity:1;pointer-events:all}
+.cart-sidebar{position:fixed;top:12px;right:12px;bottom:12px;width:410px;background:white;border-radius:var(--r-lg);z-index:2001;transform:translateX(calc(100% + 24px));transition:transform .5s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-8px 0 60px rgba(0,0,0,.12);overflow:hidden}
+.cart-sidebar.active{transform:translateX(0)}
+.cart-header{padding:24px 28px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.cart-title{font-family:'DM Serif Display',serif;font-size:22px;color:var(--ochre-deep)}
+.cart-close{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--warm-brown);transition:all .3s}
+.cart-close:hover{background:var(--ivory);color:var(--ochre)}
+.cart-items{flex:1;overflow-y:auto;padding:20px 28px}
+.cart-empty{text-align:center;padding:60px 20px;font-family:'Lora',serif;font-size:16px;color:var(--taupe);line-height:1.6}
+.cart-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+.cart-item-img{width:72px;height:72px;flex-shrink:0;border-radius:var(--r-sm);overflow:hidden}
+.cart-item-img-inner{width:100%;height:100%;background:var(--ochre-deep);display:flex;align-items:center;justify-content:center}
+.cart-item-info{flex:1}
+.cart-item-name{font-family:'DM Serif Display',serif;font-size:14px;color:var(--ochre-deep);margin-bottom:2px}
+.cart-item-cat{font-size:10px;color:var(--taupe);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.cart-item-bottom{display:flex;justify-content:space-between;align-items:center}
+.cart-item-qty{display:flex;align-items:center}
+.qty-btn{width:28px;height:28px;border:1px solid var(--border);background:transparent;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s;color:var(--charcoal)}
+.qty-btn:first-child{border-radius:var(--r-pill) 0 0 var(--r-pill)}.qty-btn:last-child{border-radius:0 var(--r-pill) var(--r-pill) 0}
+.qty-btn:hover{border-color:var(--ochre);color:var(--ochre);background:var(--ivory)}
+.qty-num{font-size:13px;font-weight:600;min-width:28px;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);height:28px;display:flex;align-items:center;justify-content:center}
+.cart-item-price{font-family:'DM Serif Display',serif;font-size:15px;color:var(--ochre-deep)}
+.cart-footer{padding:20px 28px 24px;border-top:1px solid var(--border)}
+.cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.cart-total-label{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--taupe)}
+.cart-total-price{font-family:'DM Serif Display',serif;font-size:26px;color:var(--ochre-deep)}
+.checkout-btn{width:100%;padding:16px;background:var(--ochre-deep);color:var(--cream);border:none;border-radius:var(--r-pill);font-family:'Nunito Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.8px;cursor:pointer;transition:all .3s}
+.checkout-btn:hover{background:var(--ochre-warm)}
+
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--charcoal);color:var(--cream);padding:14px 28px;border-radius:var(--r-pill);font-size:13px;font-weight:500;z-index:3000;opacity:0;transition:all .4s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:10px;box-shadow:0 8px 30px rgba(0,0,0,.2)}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast-check{width:22px;height:22px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:11px;color:white}
+
+@media(max-width:1100px){.nav-links{display:none}.hero-inner{grid-template-columns:1fr}.hero-visual{max-width:420px}.categories-grid{grid-template-columns:repeat(2,1fr)}.products-grid{grid-template-columns:repeat(2,1fr)}.story{grid-template-columns:1fr}.testimonials-grid{grid-template-columns:1fr;max-width:500px;margin:0 auto}.footer-top{grid-template-columns:1fr 1fr}.trust-inner{flex-wrap:wrap;justify-content:center;gap:24px}.testimonials{margin:0 20px}}
+@media(max-width:640px){.navbar{padding:10px 16px}.nav-inner{padding:8px 16px}.hero-inner{padding:30px 20px}.categories{padding:60px 20px}.categories-grid{grid-template-columns:1fr}.featured{padding:60px 20px}.products-grid{grid-template-columns:1fr}.story{padding:60px 20px;gap:40px}.story-features{grid-template-columns:1fr}.testimonials{padding:60px 20px;border-radius:var(--r-lg);margin:0 12px}.newsletter{padding:60px 20px}.newsletter-inner{padding:50px 28px;border-radius:var(--r-lg)}.newsletter-form{flex-direction:column}.footer{padding:60px 20px 30px;margin-top:0}.footer-top{grid-template-columns:1fr;gap:30px}.payment-trust{padding:32px 20px}.payment-trust-inner{flex-direction:column;gap:20px}.pt-divider{width:80px;height:1px}.pt-badges{flex-direction:column;gap:12px}.hero-actions{flex-direction:column;align-items:flex-start}.cart-sidebar{width:calc(100% - 24px)}.hero-float-card{display:none}.trust-bar{padding:20px}}
+
+
 /* === CAROUSEL === */
 .hero-carousel{position:relative;width:100%;min-height:75vh;overflow:hidden}
 .hc-track{display:flex;transition:transform .7s cubic-bezier(.4,0,.2,1);width:400%;height:75vh}
@@ -166,13 +264,14 @@
 @media(max-width:900px){.hc-visual{display:none}.hc-content{max-width:100%}.hc-slide{padding:0 30px}}
 @media(max-width:640px){.hero-carousel{min-height:65vh}.hc-track{height:65vh}.hc-slide{min-height:65vh}.hc-title{margin-bottom:14px}.hc-desc{margin-bottom:14px}.hc-nav{bottom:24px;gap:12px}.hc-counter{bottom:28px;right:20px}}
 
+
 </style>
 </head>
 <body>
 
 <nav class="navbar" id="navbar"><div class="nav-inner">
 <a href="/" class="nav-brand"><div class="nav-logo"><svg width="18" height="18" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="30" stroke="#FDF8F3" stroke-width="2"/><circle cx="50" cy="50" r="15" stroke="#FDF8F3" stroke-width="1.5"/><circle cx="50" cy="50" r="4" fill="#FDF8F3"/><ellipse cx="50" cy="30" rx="6" ry="14" stroke="#FDF8F3" stroke-width="1"/><ellipse cx="50" cy="70" rx="6" ry="14" stroke="#FDF8F3" stroke-width="1"/><ellipse cx="30" cy="50" rx="14" ry="6" stroke="#FDF8F3" stroke-width="1"/><ellipse cx="70" cy="50" rx="14" ry="6" stroke="#FDF8F3" stroke-width="1"/></svg></div><div class="nav-brand-text"><span class="nav-brand-name">Aipan House</span><span class="nav-brand-tag">Heritage Aipan Art</span></div></a>
-<div class="nav-links"><a href="/" class="active">Home</a><a href="/shop">Shop</a><a href="/story">Our Story</a><a href="/blog">Blog</a></div>
+<div class="nav-links"><a href="/" class="active">Home</a><a href="/shop">Shop</a><a href="/story">Our Story</a><a href="/blog">Blog</a><a href="/#testimonials">Reviews</a></div>
 <div class="nav-actions"><button class="nav-icon-btn" title="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><button class="nav-icon-btn" title="Account"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button><button class="nav-icon-btn" id="cartToggle" title="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-badge" id="cartCount">0</span></button></div>
 </div></nav>
 
@@ -257,7 +356,7 @@
 <div class="hero-pill"><span class="hero-pill-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M12 2L15 9L22 9L16.5 14L18.5 21L12 17L5.5 21L7.5 14L2 9L9 9Z"/></svg></span>Handcrafted in the Kumaon Hills</div>
 <h1 class="hero-title">Ancient Art,<br><em>Modern Living</em></h1>
 <p class="hero-desc">Discover the sacred geometry of Aipan — Uttarakhand's centuries-old ritual art, reimagined as exquisite home décor for the contemporary connoisseur.</p>
-<div class="hero-actions"><a href="/shop" class="btn-primary">Shop Collection <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a href="/story" class="btn-secondary">Our Heritage</a></div>
+<div class="hero-actions"><a href="#" class="btn-primary">Shop Collection <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a href="#" class="btn-secondary">Our Heritage</a></div>
 </div>
 <div class="hero-visual">
 <div class="hero-image-wrapper"><div class="hero-image-inner">
@@ -320,7 +419,7 @@
 </div></section>
 
 </div>
-
+<!-- TRUST & PAYMENT STRIP -->
 
 <section class="payment-trust">
 <div class="payment-trust-inner">
@@ -331,12 +430,12 @@
 </section>
 <footer class="footer"><div class="footer-inner">
 <div class="footer-top">
-<div><a href="/" class="nav-brand"><div class="nav-logo"><svg width="18" height="18" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="30" stroke="#FDF8F3" stroke-width="2"/><circle cx="50" cy="50" r="15" stroke="#FDF8F3" stroke-width="1.5"/><circle cx="50" cy="50" r="4" fill="#FDF8F3"/></svg></div><div class="nav-brand-text"><span class="nav-brand-name" style="color:var(--cream)">Aipan House</span><span class="nav-brand-tag" style="color:var(--gold-light)">Heritage Aipan Art</span></div></a><p class="footer-brand-desc">Bringing the sacred beauty of Kumaon's Aipan art into modern homes. Every purchase supports artisan families in the Himalayan foothills.</p></div>
-<div><h4 class="footer-heading">Shop</h4><ul class="footer-links"><li><a href="/shop">Paintings & Wall Art</a></li><li><a href="/shop">Cushions & Textiles</a></li><li><a href="/shop">Vessel & Pottery</a></li><li><a href="/shop">Home Décor</a></li><li><a href="/shop">Gift Cards</a></li></ul></div>
-<div><h4 class="footer-heading">Company</h4><ul class="footer-links"><li><a href="/story">Our Story</a></li><li><a href="/blog">Blog</a></li><li><a href="/story">Meet the Artisans</a></li><li><a href="/story">Sustainability</a></li><li><a href="#">Press & Media</a></li></ul></div>
+<div><div class="nav-brand"><div class="nav-logo"><svg width="18" height="18" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="30" stroke="#FDF8F3" stroke-width="2"/><circle cx="50" cy="50" r="15" stroke="#FDF8F3" stroke-width="1.5"/><circle cx="50" cy="50" r="4" fill="#FDF8F3"/></svg></div><div class="nav-brand-text"><span class="nav-brand-name" style="color:var(--cream)">Aipan House</span><span class="nav-brand-tag" style="color:var(--gold-light)">Heritage Aipan Art</span></div></div><p class="footer-brand-desc">Bringing the sacred beauty of Kumaon's Aipan art into modern homes. Every purchase supports artisan families in the Himalayan foothills.</p></div>
+<div><h4 class="footer-heading">Shop</h4><ul class="footer-links"><li><a href="/shop" >Paintings & Wall Art</a></li><li><a href="/shop" >Cushions & Textiles</a></li><li><a href="/shop" >Vessel & Pottery</a></li><li><a href="/shop" >Home Décor</a></li><li><a href="/shop" >Gift Cards</a></li></ul></div>
+<div><h4 class="footer-heading">Company</h4><ul class="footer-links"><li><a href="/story" >Our Story</a></li><li><a href="/blog" >Blog</a></li><li><a href="/story" >Meet the Artisans</a></li><li><a href="/story" >Sustainability</a></li><li><a href="#">Press & Media</a></li></ul></div>
 <div><h4 class="footer-heading">Support</h4><ul class="footer-links"><li><a href="#">Shipping & Returns</a></li><li><a href="#">Care Instructions</a></li><li><a href="#">FAQs</a></li><li><a href="#">Contact Us</a></li></ul></div>
 </div>
-<div class="footer-bottom"><span>&copy; 2026 Aipan House. All rights reserved.</span><div class="footer-social"><a href="#" title="Instagram">ig</a><a href="#" title="Facebook">fb</a><a href="#" title="Pinterest">pi</a><a href="#" title="YouTube">yt</a></div></div>
+<div class="footer-bottom"><span>&copy; 2026 Aipan House All rights reserved.</span><div class="footer-social"><a href="#" title="Instagram">ig</a><a href="#" title="Facebook">fb</a><a href="#" title="Pinterest">pi</a><a href="#" title="YouTube">yt</a></div></div>
 </div></footer>
 <div class="cart-overlay" id="cartOverlay"></div>
 <div class="cart-sidebar" id="cartSidebar">
@@ -348,26 +447,6 @@
 
 <script>
 
-// Navbar scroll
-window.addEventListener('scroll', function() {
-  var nb = document.getElementById('navbar');
-  if (nb) nb.classList.toggle('scrolled', window.scrollY > 60);
-});
-// Fade-in observer
-var fadeObserver = new IntersectionObserver(function(entries) {
-  entries.forEach(function(x) { if (x.isIntersecting) x.target.classList.add('visible'); });
-}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.fade-in').forEach(function(el) { fadeObserver.observe(el); });
-// Cart sidebar
-function openCartSidebar(){document.getElementById('cartOverlay').classList.add('active');document.getElementById('cartSidebar').classList.add('active')}
-function closeCartSidebar(){document.getElementById('cartOverlay').classList.remove('active');document.getElementById('cartSidebar').classList.remove('active')}
-try{document.getElementById('cartToggle').addEventListener('click',openCartSidebar)}catch(_){}
-try{document.getElementById('cartOverlay').addEventListener('click',closeCartSidebar)}catch(_){}
-try{document.getElementById('cartClose').addEventListener('click',closeCartSidebar)}catch(_){}
-// Toast
-function showToast(m){var t=document.getElementById('toast');document.getElementById('toastMsg').textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}
-
-
 // Helper for null-safe addEventListener
 function safeAddListener(sel, evt, fn) {
   var el = typeof sel === 'string' ? document.getElementById(sel) || document.querySelector(sel) : sel;
@@ -378,7 +457,6 @@ function safeAddListener(sel, evt, fn) {
     entries.forEach(function(x) { if (x.isIntersecting) x.target.classList.add('visible'); });
   }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
   document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
-})();
 
 // HERO CAROUSEL
 var hcIndex = 0;
@@ -431,7 +509,7 @@ initCarousel();
 
 
 
-
+try {
 
 
 var products=[
@@ -464,9 +542,9 @@ document.getElementById('cartTotal').textContent='—';
 function changeQty(id,d){var i=cart.find(x=>x.id===id);if(!i)return;i.qty+=d;if(i.qty<=0)cart=cart.filter(x=>x.id!==id);updateCart()}
 function openCart(){document.getElementById('cartOverlay').classList.add('active');document.getElementById('cartSidebar').classList.add('active')}
 function closeCart(){document.getElementById('cartOverlay').classList.remove('active');document.getElementById('cartSidebar').classList.remove('active')}
-document.getElementById('cartToggle').addEventListener('click',openCart);}catch(_){}
-document.getElementById('cartOverlay').addEventListener('click',closeCart);}catch(_){}
-document.getElementById('cartClose').addEventListener('click',closeCart);}catch(_){}
+try{document.getElementById('cartToggle').addEventListener('click',openCart);}catch(_){}
+try{document.getElementById('cartOverlay').addEventListener('click',closeCart);}catch(_){}
+try{document.getElementById('cartClose').addEventListener('click',closeCart);}catch(_){}
 function showToast(m){var t=document.getElementById('toast');document.getElementById('toastMsg').textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
 
 // Animation handled by SPA global observer
@@ -475,7 +553,7 @@ function showToast(m){var t=document.getElementById('toast');document.getElement
 
 
 
-
+} catch(e) { console.warn('home JS init:', e.message); }
 </script>
 </body>
 </html>
