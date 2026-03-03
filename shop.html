@@ -366,6 +366,7 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 
 
 
+
 </style>
 </head>
 <body>
@@ -637,6 +638,35 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 <div class="toast" id="toast"><span class="toast-ck">✓</span><span id="toastMsg"></span></div>
 
 <script>
+
+// Helper for null-safe addEventListener
+function safeAddListener(sel, evt, fn) {
+  var el = typeof sel === 'string' ? document.getElementById(sel) || document.querySelector(sel) : sel;
+  if (el && el.addEventListener) el.addEventListener(evt, fn);
+}
+
+// Navbar scroll effect
+window.addEventListener('scroll', function() {
+  var nb = document.getElementById('navbar');
+  if (nb) nb.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Fade-in observer (critical for all pages)
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(x) { if (x.isIntersecting) x.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
+
+// Cart sidebar
+function openCartSidebar(){document.getElementById('cartOverlay').classList.add('active');document.getElementById('cartSidebar').classList.add('active')}
+function closeCartSidebar(){document.getElementById('cartOverlay').classList.remove('active');document.getElementById('cartSidebar').classList.remove('active')}
+try{document.getElementById('cartToggle').addEventListener('click',openCartSidebar)}catch(_){}
+try{document.getElementById('cartOverlay').addEventListener('click',closeCartSidebar)}catch(_){}
+try{document.getElementById('cartClose').addEventListener('click',closeCartSidebar)}catch(_){}
+
+// Toast
+function showToast(m){var t=document.getElementById('toast');document.getElementById('toastMsg').textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}
+
 try {
 
 

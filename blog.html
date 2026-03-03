@@ -233,6 +233,7 @@ article .img-caption{font-size:12px;color:var(--taupe);text-align:center;font-st
 .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--charcoal);color:var(--cream);padding:14px 28px;border-radius:var(--r-pill);font-size:13px;font-weight:500;z-index:3000;opacity:0;transition:all .4s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:10px;box-shadow:0 8px 30px rgba(0,0,0,.2)}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 .toast-check{width:22px;height:22px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:11px;color:white}
+
 </style>
 </head>
 <body>
@@ -357,6 +358,35 @@ article .img-caption{font-size:12px;color:var(--taupe);text-align:center;font-st
 <div class="toast" id="toast"><span class="toast-ck">✓</span><span id="toastMsg"></span></div>
 
 <script>
+
+// Helper for null-safe addEventListener
+function safeAddListener(sel, evt, fn) {
+  var el = typeof sel === 'string' ? document.getElementById(sel) || document.querySelector(sel) : sel;
+  if (el && el.addEventListener) el.addEventListener(evt, fn);
+}
+
+// Navbar scroll effect
+window.addEventListener('scroll', function() {
+  var nb = document.getElementById('navbar');
+  if (nb) nb.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Fade-in observer (critical for all pages)
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(x) { if (x.isIntersecting) x.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
+
+// Cart sidebar
+function openCartSidebar(){document.getElementById('cartOverlay').classList.add('active');document.getElementById('cartSidebar').classList.add('active')}
+function closeCartSidebar(){document.getElementById('cartOverlay').classList.remove('active');document.getElementById('cartSidebar').classList.remove('active')}
+try{document.getElementById('cartToggle').addEventListener('click',openCartSidebar)}catch(_){}
+try{document.getElementById('cartOverlay').addEventListener('click',closeCartSidebar)}catch(_){}
+try{document.getElementById('cartClose').addEventListener('click',closeCartSidebar)}catch(_){}
+
+// Toast
+function showToast(m){var t=document.getElementById('toast');document.getElementById('toastMsg').textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}
+
 try {
 
 
