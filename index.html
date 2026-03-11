@@ -8,7 +8,7 @@
 <style>
 
 :root{--ochre:#943B20;--ochre-deep:#6B1E08;--ochre-warm:#B84A28;--cream:#FDF8F3;--ivory:#F7EFE5;--sand:#EDE3D5;--gold:#C6A55C;--gold-light:#DBBF7A;--gold-muted:#B49A5A;--charcoal:#2A2420;--warm-brown:#7A6B5D;--taupe:#A89888;--soft-white:#FEFCF9;--blush:#F5E6DA;--border:rgba(198,165,92,0.18);--shadow-soft:0 8px 40px rgba(107,30,8,0.06);--shadow-hover:0 16px 60px rgba(107,30,8,0.10);--r-sm:16px;--r-md:24px;--r-lg:40px;--r-xl:60px;--r-pill:999px}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--charcoal);overflow-x:hidden}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--cream)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px}
 
@@ -23,7 +23,7 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 .navbar.scrolled{background:rgba(253,248,243,.92);backdrop-filter:blur(24px);box-shadow:0 4px 30px rgba(107,30,8,.05)}
 .nav-inner{max-width:1340px;margin:0 auto;padding:10px 28px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,243,.85);backdrop-filter:blur(16px);border-radius:var(--r-pill);border:1px solid var(--border);transition:all .5s ease}
 .navbar.scrolled .nav-inner{background:transparent;border-color:transparent;backdrop-filter:none}
-.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-brand{display:flex;align-items:center;gap:12px}
 .nav-logo{width:38px;height:38px;border-radius:50%;background:var(--ochre-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .nav-brand-text{display:flex;flex-direction:column}
 .nav-brand-name{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ochre-deep);line-height:1.1}
@@ -36,7 +36,7 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 .nav-icon-btn:hover{background:var(--sand);color:var(--ochre-deep);border-color:var(--sand)}
 .cart-badge{position:absolute;top:-3px;right:-3px;width:18px;height:18px;background:var(--ochre-warm);color:white;font-size:9px;font-weight:600;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--cream)}
 
-.hero{min-height:auto;display:flex;align-items:center;position:relative;padding-top:60px;padding-bottom:40px;background:transparent;overflow:clip}
+.hero{min-height:auto;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:100px;padding-bottom:40px;background:linear-gradient(180deg,var(--ivory) 0%,var(--cream) 100%)}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--cream));z-index:1;pointer-events:none}
 .hero-bg-shape{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15}
 .hero-bg-1{width:600px;height:600px;background:var(--ochre-warm);top:-200px;right:-100px}
@@ -70,22 +70,10 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 .float-text{font-size:12px;line-height:1.5}.float-text strong{display:block;font-weight:600;color:var(--ochre-deep);font-size:13px}.float-text span{color:var(--warm-brown)}
 @keyframes gentleUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 
-
-/* ENHANCED TRUST BAR */
-.trust-bar{padding:20px 40px;max-width:1340px;margin:0 auto;position:relative;z-index:3}
+.trust-bar{padding:36px 40px;max-width:1340px;margin:-40px auto 0;position:relative;z-index:3}
 .trust-inner{display:flex;justify-content:center;gap:48px;padding:28px 40px;background:white;border-radius:var(--r-pill);box-shadow:var(--shadow-soft);border:1px solid var(--border)}
-.trust-item{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--warm-brown);position:relative;cursor:default;transition:all .3s ease}
-.trust-item:hover{transform:translateY(-2px)}
-.trust-icon{width:44px;height:44px;border-radius:50%;background:var(--ivory);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s ease}
-.trust-icon svg{width:22px;height:22px;transition:transform .3s ease}
-.trust-item:hover .trust-icon{background:rgba(198,165,92,.15);box-shadow:0 4px 16px rgba(198,165,92,.2)}
-.trust-item:hover .trust-icon svg{transform:scale(1.1)}
-.trust-item:hover .trust-label{color:var(--ochre)}
-.trust-label{transition:color .3s ease}
-.trust-tooltip{position:absolute;bottom:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--charcoal);color:var(--cream);padding:10px 16px;border-radius:var(--r-sm);font-size:11px;line-height:1.5;letter-spacing:.3px;white-space:nowrap;opacity:0;pointer-events:none;transition:all .3s ease;z-index:10;box-shadow:0 8px 24px rgba(0,0,0,.15)}
-.trust-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--charcoal)}
-.trust-item:hover .trust-tooltip{opacity:1;transform:translateX(-50%) translateY(0)}
-
+.trust-item{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--warm-brown)}
+.trust-icon{width:36px;height:36px;border-radius:50%;background:var(--ivory);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
 
 .section-header{text-align:center;margin-bottom:60px}
 .section-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:var(--ivory);border-radius:var(--r-pill);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-muted);font-weight:600;margin-bottom:16px}
@@ -135,8 +123,6 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 .add-to-cart{padding:10px 24px;background:var(--ochre-deep);border:none;color:white;font-family:'Nunito Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;border-radius:var(--r-pill);transition:all .3s ease}
 .add-to-cart:hover{background:var(--ochre-warm);transform:scale(1.04)}
 
-
-/* ENHANCED STORY SECTION */
 .story{padding:120px 40px;max-width:1340px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .story-visual{position:relative}
 .story-image{border-radius:50% 50% var(--r-lg) var(--r-lg);aspect-ratio:3/4;background:linear-gradient(160deg,var(--ochre-deep),var(--ochre-warm),#C46A48);position:relative;overflow:hidden;box-shadow:var(--shadow-hover)}
@@ -151,19 +137,6 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 .story-feature:hover{background:var(--sand);transform:translateY(-2px)}
 .sf-icon{width:40px;height:40px;flex-shrink:0;border-radius:50%;background:white;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .sf-text{font-size:13px;line-height:1.5}.sf-text strong{display:block;color:var(--ochre-deep);font-weight:600;margin-bottom:2px}
-/* Artisan Quote */
-.artisan-quote{margin-top:32px;padding:28px 32px;background:linear-gradient(135deg,var(--ivory),var(--sand));border-radius:var(--r-lg);position:relative;border-left:3px solid var(--gold)}
-.artisan-quote::before{content:'\201C';position:absolute;top:12px;left:20px;font-family:'DM Serif Display',serif;font-size:48px;color:var(--gold);line-height:1;opacity:.4}
-.artisan-quote-text{font-family:'Lora',serif;font-style:italic;font-size:15px;line-height:1.8;color:var(--ochre-deep);padding-left:20px}
-.artisan-quote-author{display:flex;align-items:center;gap:12px;margin-top:16px;padding-left:20px}
-.artisan-avatar{width:40px;height:40px;border-radius:50%;background:var(--ochre);display:flex;align-items:center;justify-content:center;color:white;font-family:'DM Serif Display',serif;font-size:16px;flex-shrink:0}
-.artisan-info{font-size:12px;color:var(--warm-brown);line-height:1.5}
-.artisan-info strong{display:block;color:var(--ochre-deep);font-size:13px}
-.story-cta{display:inline-flex;align-items:center;gap:8px;margin-top:28px;padding:14px 32px;background:var(--ochre-deep);color:var(--cream);text-decoration:none;border-radius:var(--r-pill);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;transition:all .3s ease}
-.story-cta:hover{background:var(--ochre);transform:translateY(-2px);box-shadow:0 8px 24px rgba(148,59,32,.2)}
-.story-cta svg{transition:transform .3s ease}
-.story-cta:hover svg{transform:translateX(4px)}
-
 
 .testimonials{padding:100px 40px;background:var(--ivory);border-radius:var(--r-xl);max-width:1400px;margin:0 auto;position:relative;overflow:hidden}
 .testimonials-blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.08}
@@ -257,73 +230,12 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 .toast-check{width:22px;height:22px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:11px;color:white}
 
-
-/* PRODUCT SHOWCASE */
-.product-showcase{padding:100px 40px;max-width:1340px;margin:0 auto}
-.showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:0}
-.showcase-card{background:white;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);transition:all .5s cubic-bezier(.4,0,.2,1);cursor:pointer;position:relative}
-.showcase-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-6px);border-color:transparent}
-.showcase-img{aspect-ratio:1;position:relative;overflow:hidden}
-.showcase-img-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;transition:transform .6s ease;flex-direction:column;gap:12px}
-.showcase-card:hover .showcase-img-bg{transform:scale(1.05)}
-.sc-bg-1{background:linear-gradient(135deg,#8B2500,#A83820)}
-.sc-bg-2{background:linear-gradient(135deg,#5A4420,#7A6530)}
-.sc-bg-3{background:linear-gradient(135deg,#3D5254,#4A6466)}
-.showcase-tag{position:absolute;top:16px;left:16px;padding:5px 14px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:var(--r-pill);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ochre-deep);font-weight:600;z-index:2}
-.showcase-info{padding:24px 24px 28px}
-.showcase-cat{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-muted);font-weight:600;margin-bottom:8px}
-.showcase-name{font-family:'DM Serif Display',serif;font-size:20px;color:var(--charcoal);margin-bottom:8px}
-.showcase-desc{font-family:'Lora',serif;font-size:14px;color:var(--warm-brown);line-height:1.6;margin-bottom:16px}
-.showcase-bottom{display:flex;justify-content:space-between;align-items:center}
-.showcase-price{font-size:13px;font-family:'Nunito Sans',sans-serif;color:var(--taupe);letter-spacing:.5px}
-.showcase-btn{padding:8px 20px;background:transparent;border:1px solid var(--border);border-radius:var(--r-pill);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ochre);cursor:default;opacity:.7;transition:all .3s}
-.showcase-motif{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.12;width:120px;height:120px}
-
-
-.artisan-quote{margin-top:28px;padding:24px 28px;background:linear-gradient(135deg,var(--ivory),var(--sand));border-radius:var(--r-lg);border-left:3px solid var(--gold);position:relative}
-.artisan-quote::before{content:'\201C';position:absolute;top:8px;left:16px;font-family:'DM Serif Display',serif;font-size:44px;color:var(--gold);line-height:1;opacity:.4}
-.aq-text{font-family:'Lora',serif;font-style:italic;font-size:14px;line-height:1.8;color:var(--ochre-deep);padding-left:18px}
-.aq-author{display:flex;align-items:center;gap:10px;margin-top:14px;padding-left:18px}
-.aq-avatar{width:36px;height:36px;border-radius:50%;background:var(--ochre);display:flex;align-items:center;justify-content:center;color:white;font-family:'DM Serif Display',serif;font-size:15px;flex-shrink:0}
-.aq-info{font-size:11px;color:var(--warm-brown);line-height:1.4}.aq-info strong{display:block;color:var(--ochre-deep);font-size:12px}
-.story-cta{display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:12px 28px;background:var(--ochre-deep);color:var(--cream);text-decoration:none;border-radius:var(--r-pill);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;transition:all .3s}
-.story-cta:hover{background:var(--ochre);transform:translateY(-2px);box-shadow:0 8px 24px rgba(148,59,32,.2)}
-.story-cta svg{transition:transform .3s}.story-cta:hover svg{transform:translateX(4px)}
-
-.footer-bottom-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.footer-social{display:flex;gap:12px}
-.social-link{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:var(--taupe);transition:all .3s;text-decoration:none}
-.social-link:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);background:rgba(198,165,92,.1)}
-
-.hero-carousel,.hc-slide{will-change:transform}
-.product-card,.showcase-card,.category-card,.testimonial-card{will-change:transform}
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
-.fade-in.visible{opacity:1;transform:translateY(0)}
-
-.btn-primary,.btn-secondary,.hc-btn-primary,.showcase-btn,.newsletter-btn,.story-cta{transition:all .3s cubic-bezier(.4,0,.2,1)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(148,59,32,.2)}
-.btn-secondary:hover{transform:translateY(-2px)}
-.category-card::after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 2px var(--gold);opacity:0;transition:opacity .3s;z-index:3;pointer-events:none}
-.category-card:hover::after{opacity:1}
-.nav-links a{position:relative}.nav-links a::after{content:'';position:absolute;bottom:4px;left:50%;width:0;height:1.5px;background:var(--ochre);transition:all .3s;transform:translateX(-50%)}.nav-links a:hover::after,.nav-links a.active::after{width:60%}
-
-/* MOBILE NAV */
-.nav-hamburger{display:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;align-items:center;justify-content:center;color:var(--warm-brown);transition:all .3s;flex-shrink:0}
-.nav-hamburger svg{width:20px;height:20px}
-.nav-hamburger:hover{background:var(--sand);color:var(--ochre-deep)}
-.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(253,248,243,.98);backdrop-filter:blur(20px);z-index:2000;padding:100px 40px 40px;opacity:0;pointer-events:none;transition:opacity .3s ease}
-.mobile-nav.active{opacity:1;pointer-events:all}
-.mobile-nav-links{display:flex;flex-direction:column;gap:8px}
-.mobile-nav-links a{text-decoration:none;color:var(--charcoal);font-family:'DM Serif Display',serif;font-size:28px;padding:16px 0;border-bottom:1px solid var(--border);transition:color .3s}
-.mobile-nav-links a:hover,.mobile-nav-links a.active{color:var(--ochre)}
-.mobile-nav-close{position:absolute;top:24px;right:24px;width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--charcoal);font-size:20px;transition:all .3s}
-.mobile-nav-close:hover{background:var(--sand)}
-@media(max-width:1100px){.nav-links{display:none}.nav-hamburger{display:flex}.hero-inner{grid-template-columns:1fr}.hero-visual{max-width:420px}.categories-grid{grid-template-columns:repeat(2,1fr)}.products-grid{grid-template-columns:repeat(2,1fr)}.story{grid-template-columns:1fr}.testimonials-grid{grid-template-columns:1fr;max-width:500px;margin:0 auto}.footer-top{grid-template-columns:1fr 1fr}.trust-inner{flex-wrap:wrap;justify-content:center;gap:24px}.showcase-grid{grid-template-columns:repeat(2,1fr)}.testimonials{margin:0 20px}}
-@media(max-width:640px){.navbar{padding:10px 16px}.nav-inner{padding:8px 16px}.hero-inner{padding:30px 20px}.categories{padding:60px 20px}.categories-grid{grid-template-columns:1fr}.featured{padding:60px 20px}.products-grid{grid-template-columns:1fr}.story{padding:60px 20px;gap:40px}.story-features{grid-template-columns:1fr}.testimonials{padding:60px 20px;border-radius:var(--r-lg);margin:0 12px}.testimonials-grid{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding-bottom:8px}.testimonials-grid::-webkit-scrollbar{height:3px}.testimonials-grid::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px}.testimonial-card{scroll-snap-align:start;min-width:300px}.newsletter{padding:60px 20px}.newsletter-inner{padding:50px 28px;border-radius:var(--r-lg)}.newsletter-form{flex-direction:column}.footer{padding:60px 20px 30px;margin-top:0}.footer-top{grid-template-columns:1fr;gap:30px}.payment-trust{padding:32px 20px}.payment-trust-inner{flex-direction:column;gap:20px}.pt-divider{width:80px;height:1px}.pt-badges{flex-direction:column;gap:12px}.hero-actions{flex-direction:column;align-items:flex-start}.cart-sidebar{width:calc(100% - 24px)}.hero-float-card{display:none}.trust-bar{padding:12px 16px}.trust-tooltip{display:none}.trust-inner{flex-direction:column;gap:16px;padding:24px;border-radius:var(--r-lg)}.trust-item{gap:12px}.trust-icon{width:44px;height:44px}.trust-icon svg{width:20px;height:20px}.product-showcase{padding:60px 20px}.showcase-grid{grid-template-columns:1fr}}
+@media(max-width:1100px){.nav-links{display:none}.hero-inner{grid-template-columns:1fr}.hero-visual{max-width:420px}.categories-grid{grid-template-columns:repeat(2,1fr)}.products-grid{grid-template-columns:repeat(2,1fr)}.story{grid-template-columns:1fr}.testimonials-grid{grid-template-columns:1fr;max-width:500px;margin:0 auto}.footer-top{grid-template-columns:1fr 1fr}.trust-inner{flex-wrap:wrap;justify-content:center;gap:24px}.testimonials{margin:0 20px}}
+@media(max-width:640px){.navbar{padding:10px 16px}.nav-inner{padding:8px 16px}.hero-inner{padding:30px 20px}.categories{padding:60px 20px}.categories-grid{grid-template-columns:1fr}.featured{padding:60px 20px}.products-grid{grid-template-columns:1fr}.story{padding:60px 20px;gap:40px}.story-features{grid-template-columns:1fr}.testimonials{padding:60px 20px;border-radius:var(--r-lg);margin:0 12px}.newsletter{padding:60px 20px}.newsletter-inner{padding:50px 28px;border-radius:var(--r-lg)}.newsletter-form{flex-direction:column}.footer{padding:60px 20px 30px;margin-top:0}.footer-top{grid-template-columns:1fr;gap:30px}.payment-trust{padding:32px 20px}.payment-trust-inner{flex-direction:column;gap:20px}.pt-divider{width:80px;height:1px}.pt-badges{flex-direction:column;gap:12px}.hero-actions{flex-direction:column;align-items:flex-start}.cart-sidebar{width:calc(100% - 24px)}.hero-float-card{display:none}.trust-bar{padding:20px}}
 
 
 /* === CAROUSEL === */
-.hero-carousel{position:relative;width:calc(100% - 32px);max-width:1340px;margin:100px auto 0;min-height:75vh;overflow:hidden;border-radius:var(--r-xl);box-shadow:var(--shadow-hover)}
+.hero-carousel{position:relative;width:100%;min-height:75vh;overflow:hidden}
 .hc-track{display:flex;transition:transform .7s cubic-bezier(.4,0,.2,1);width:400%;height:75vh}
 .hc-slide{position:relative;width:25%;min-height:75vh;display:flex;align-items:center;padding:0 clamp(30px,6vw,100px);box-sizing:border-box;overflow:hidden}
 .hc-content{position:relative;z-index:2;max-width:560px;padding-top:80px}
@@ -350,7 +262,7 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 .hc-counter{position:absolute;bottom:44px;right:clamp(30px,4vw,60px);font-family:'DM Serif Display',serif;font-size:14px;color:rgba(255,255,255,.35);letter-spacing:2px;z-index:10}
 #hcCurrent{color:rgba(255,255,255,.8);font-size:20px}
 @media(max-width:900px){.hc-visual{display:none}.hc-content{max-width:100%}.hc-slide{padding:0 30px}}
-@media(max-width:640px){.hero-carousel{min-height:60vh;margin:70px 16px 0;border-radius:var(--r-lg)}.hc-track{height:65vh}.hc-slide{min-height:65vh}.hc-title{margin-bottom:14px}.hc-desc{margin-bottom:14px}.hc-nav{bottom:24px;gap:12px}.hc-counter{bottom:28px;right:20px}}
+@media(max-width:640px){.hero-carousel{min-height:65vh}.hc-track{height:65vh}.hc-slide{min-height:65vh}.hc-title{margin-bottom:14px}.hc-desc{margin-bottom:14px}.hc-nav{bottom:24px;gap:12px}.hc-counter{bottom:28px;right:20px}}
 
 
 
@@ -364,20 +276,8 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 <nav class="navbar" id="navbar"><div class="nav-inner">
 <a href="/" class="nav-brand"><div class="nav-logo"><svg width="18" height="18" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="30" stroke="#FDF8F3" stroke-width="2"/><circle cx="50" cy="50" r="15" stroke="#FDF8F3" stroke-width="1.5"/><circle cx="50" cy="50" r="4" fill="#FDF8F3"/><ellipse cx="50" cy="30" rx="6" ry="14" stroke="#FDF8F3" stroke-width="1"/><ellipse cx="50" cy="70" rx="6" ry="14" stroke="#FDF8F3" stroke-width="1"/><ellipse cx="30" cy="50" rx="14" ry="6" stroke="#FDF8F3" stroke-width="1"/><ellipse cx="70" cy="50" rx="14" ry="6" stroke="#FDF8F3" stroke-width="1"/></svg></div><div class="nav-brand-text"><span class="nav-brand-name">Aipan House</span><span class="nav-brand-tag">Heritage Aipan Art</span></div></a>
 <div class="nav-links"><a href="/" class="active">Home</a><a href="/shop">Shop</a><a href="/story">Our Story</a><a href="/blog">Blog</a><a href="/#testimonials">Reviews</a></div>
-<div class="nav-actions"><button class="nav-icon-btn" title="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><button class="nav-icon-btn" title="Account"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button><button class="nav-icon-btn" id="cartToggle" title="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-badge" id="cartCount">0</span></button><button class="nav-hamburger" id="navHamburger" title="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+<div class="nav-actions"><button class="nav-icon-btn" title="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><button class="nav-icon-btn" title="Account"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button><button class="nav-icon-btn" id="cartToggle" title="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-badge" id="cartCount">0</span></button></div>
 </div></nav>
-
-<!-- MOBILE NAV OVERLAY -->
-<div class="mobile-nav" id="mobileNav">
-<button class="mobile-nav-close" id="mobileNavClose">&times;</button>
-<div class="mobile-nav-links">
-<a href="/" class="active">Home</a>
-<a href="/shop">Shop</a>
-<a href="/story">Our Story</a>
-<a href="/blog">Blog</a>
-<a href="/#testimonials">Reviews</a>
-</div>
-</div>
 
 <section class="hero-carousel" id="heroCarousel">
 <div class="hc-track" id="hcTrack">
@@ -453,52 +353,6 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 <div class="hc-counter"><span id="hcCurrent">01</span> / <span id="hcTotal">04</span></div>
 </section>
 
-<div class="trust-bar"><div class="trust-inner">
-<div class="trust-item">
-<div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ochre)" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M8 12l3 3 5-5"/></svg></div>
-<span class="trust-label">GI Certified</span>
-<div class="trust-tooltip">Geographical Indication tag ensures genuine Kumaoni craftsmanship</div>
-</div>
-<div class="trust-item">
-<div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ochre)" stroke-width="1.5" stroke-linecap="round"><path d="M7 8c0-3 2.2-5 5-5s5 2 5 5c0 2-1 4-3 5l-1 1H11l-1-1C8 12 7 10 7 8z"/><path d="M10 14v2a2 2 0 004 0v-2M8 18h8M9 21h6"/></svg></div>
-<span class="trust-label">100% Handcrafted</span>
-<div class="trust-tooltip">Every piece made entirely by hand by master artisans</div>
-</div>
-<div class="trust-item">
-<div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ochre)" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2M12 14v2"/><circle cx="12" cy="14" r="1.5"/></svg></div>
-<span class="trust-label">Free Shipping</span>
-<div class="trust-tooltip">Complimentary delivery across India on all orders</div>
-</div>
-<div class="trust-item">
-<div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ochre)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-<span class="trust-label">15-Day Returns</span>
-<div class="trust-tooltip">Hassle-free returns within 15 days, no questions asked</div>
-</div>
-<div class="trust-item">
-<div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ochre)" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
-<span class="trust-label">Eco-Friendly</span>
-<div class="trust-tooltip">Natural pigments, handmade paper & sustainable materials</div>
-</div>
-</div></div></div></div>
-
-
-
-
-<section class="categories" id="categories">
-<div class="section-header"><div class="section-chip">Curated Collections</div><h2 class="section-title">Shop by Category</h2><p class="section-subtitle">Each piece tells a story of devotion, tradition, and the timeless beauty of Kumaoni craftsmanship</p></div>
-<div class="categories-grid">
-<div class="category-card" onclick="location.href='/shop'"><div class="category-bg cat-paintings"><svg class="cat-pattern-svg" width="180" height="180" viewBox="0 0 180 180"><circle cx="90" cy="90" r="70" stroke="white" stroke-width=".5" fill="none"/><circle cx="90" cy="90" r="40" stroke="white" stroke-width=".5" fill="none"/><ellipse cx="90" cy="40" rx="10" ry="25" stroke="white" stroke-width=".5" fill="none"/><ellipse cx="90" cy="140" rx="10" ry="25" stroke="white" stroke-width=".5" fill="none"/></svg></div><div class="category-overlay"></div><div class="category-content"><div class="category-count">24 Pieces</div><h3 class="category-name">Paintings & Wall Art</h3><p class="category-desc">Traditional Aipan on handmade paper & canvas</p></div></div>
-<div class="category-card" onclick="location.href='/shop'"><div class="category-bg cat-cushions"><svg class="cat-pattern-svg" width="180" height="180" viewBox="0 0 180 180"><rect x="30" y="30" width="120" height="120" rx="20" stroke="white" stroke-width=".5" fill="none"/><rect x="50" y="50" width="80" height="80" rx="12" stroke="white" stroke-width=".5" fill="none"/></svg></div><div class="category-overlay"></div><div class="category-content"><div class="category-count">18 Pieces</div><h3 class="category-name">Cushions & Textiles</h3><p class="category-desc">Block-printed & embroidered Aipan textiles</p></div></div>
-<div class="category-card" onclick="location.href='/shop'"><div class="category-bg cat-vessels"><svg class="cat-pattern-svg" width="180" height="180" viewBox="0 0 180 180"><ellipse cx="90" cy="70" rx="45" ry="50" stroke="white" stroke-width=".5" fill="none"/><path d="M55 100 Q90 160 125 100" stroke="white" stroke-width=".5" fill="none"/></svg></div><div class="category-overlay"></div><div class="category-content"><div class="category-count">15 Pieces</div><h3 class="category-name">Vessel & Pottery Art</h3><p class="category-desc">Hand-painted copper, brass & ceramic pieces</p></div></div>
-<div class="category-card" onclick="location.href='/shop'"><div class="category-bg cat-decor"><svg class="cat-pattern-svg" width="180" height="180" viewBox="0 0 180 180"><polygon points="90,20 160,160 20,160" stroke="white" stroke-width=".5" fill="none" stroke-linejoin="round"/><circle cx="90" cy="90" r="30" stroke="white" stroke-width=".5" fill="none"/></svg></div><div class="category-overlay"></div><div class="category-content"><div class="category-count">12 Pieces</div><h3 class="category-name">Home Décor</h3><p class="category-desc">Coasters, trays, lamps & artful accessories</p></div></div>
-</div></section>
-
-
-
-
-
-
-<!-- PRODUCT SHOWCASE -->
 <section class="hero">
 <div class="hero-bg-shape hero-bg-1"></div><div class="hero-bg-shape hero-bg-2"></div><div class="hero-bg-shape hero-bg-3"></div>
 <div class="hero-inner">
@@ -518,46 +372,28 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 </div>
 </div>
 </section>
+<div class="trust-bar"><div class="trust-inner">
+<div class="trust-item"><span class="trust-icon">✦</span>100% Handcrafted</div>
+<div class="trust-item"><span class="trust-icon">◎</span>Artisan Direct Pricing</div>
+<div class="trust-item"><span class="trust-icon">❋</span>Eco-Friendly Materials</div>
+<div class="trust-item"><span class="trust-icon">◈</span>Free Shipping on All Orders</div>
+<div class="trust-item"><span class="trust-icon">↺</span>15-Day Easy Returns</div>
+</div>
 
-<section class="product-showcase">
-<div class="section-header">
-<div class="section-chip">Handpicked for You</div>
-<h2 class="section-title">Featured Pieces</h2>
-<p class="section-subtitle">Our most loved creations, each carrying the soul of Kumaoni artistry</p>
-</div>
-<div class="showcase-grid">
-<div class="showcase-card" onclick="location.href='/product'">
-<div class="showcase-img"><div class="showcase-img-bg sc-bg-1">
-<svg class="showcase-motif" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="35" stroke="white" stroke-width=".5"/><circle cx="50" cy="50" r="20" stroke="white" stroke-width=".5"/><circle cx="50" cy="50" r="6" fill="white" opacity=".2"/><ellipse cx="50" cy="25" rx="8" ry="18" stroke="white" stroke-width=".5"/><ellipse cx="50" cy="75" rx="8" ry="18" stroke="white" stroke-width=".5"/><ellipse cx="25" cy="50" rx="18" ry="8" stroke="white" stroke-width=".5"/><ellipse cx="75" cy="50" rx="18" ry="8" stroke="white" stroke-width=".5"/></svg>
-</div><div class="showcase-tag">Bestseller</div></div>
-<div class="showcase-info">
-<div class="showcase-cat">Paintings & Wall Art</div>
-<div class="showcase-name">Lakshmi Chowki Panel</div>
-<div class="showcase-desc">Traditional puja seat motif rendered on handmade Himalayan lokta paper</div>
-<div class="showcase-bottom"><span class="showcase-price">Coming Soon</span><button class="showcase-btn" disabled>Notify Me</button></div>
-</div></div>
-<div class="showcase-card" onclick="location.href='/product'">
-<div class="showcase-img"><div class="showcase-img-bg sc-bg-2">
-<svg class="showcase-motif" viewBox="0 0 100 100" fill="none"><rect x="15" y="15" width="70" height="70" rx="12" stroke="white" stroke-width=".5" fill="none"/><rect x="28" y="28" width="44" height="44" rx="8" stroke="white" stroke-width=".5" fill="none"/><circle cx="50" cy="50" r="10" stroke="white" stroke-width=".5" fill="none"/></svg>
-</div><div class="showcase-tag">New Arrival</div></div>
-<div class="showcase-info">
-<div class="showcase-cat">Cushions & Textiles</div>
-<div class="showcase-name">Aipan Lotus Cushion Set</div>
-<div class="showcase-desc">Set of 2 block-printed cotton cushion covers featuring the sacred lotus mandala</div>
-<div class="showcase-bottom"><span class="showcase-price">Coming Soon</span><button class="showcase-btn" disabled>Notify Me</button></div>
-</div></div>
-<div class="showcase-card" onclick="location.href='/product'">
-<div class="showcase-img"><div class="showcase-img-bg sc-bg-3">
-<svg class="showcase-motif" viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="40" rx="30" ry="32" stroke="white" stroke-width=".5" fill="none"/><path d="M28 55 Q50 90 72 55" stroke="white" stroke-width=".5" fill="none"/><circle cx="50" cy="38" r="12" stroke="white" stroke-width=".4" fill="none"/></svg>
-</div><div class="showcase-tag">Limited Edition</div></div>
-<div class="showcase-info">
-<div class="showcase-cat">Vessel & Pottery Art</div>
-<div class="showcase-name">Copper Kalash Vessel</div>
-<div class="showcase-desc">Hand-engraved copper vessel with sacred Aipan patterns — each piece one of a kind</div>
-<div class="showcase-bottom"><span class="showcase-price">Coming Soon</span><button class="showcase-btn" disabled>Notify Me</button></div>
-</div></div>
-</div>
-</section>
+
+
+
+<section class="categories" id="categories">
+<div class="section-header"><div class="section-chip">Curated Collections</div><h2 class="section-title">Shop by Category</h2><p class="section-subtitle">Each piece tells a story of devotion, tradition, and the timeless beauty of Kumaoni craftsmanship</p></div>
+<div class="categories-grid">
+<div class="category-card" onclick="location.href='/shop'"><div class="category-bg cat-paintings"><svg class="cat-pattern-svg" width="180" height="180" viewBox="0 0 180 180"><circle cx="90" cy="90" r="70" stroke="white" stroke-width=".5" fill="none"/><circle cx="90" cy="90" r="40" stroke="white" stroke-width=".5" fill="none"/><ellipse cx="90" cy="40" rx="10" ry="25" stroke="white" stroke-width=".5" fill="none"/><ellipse cx="90" cy="140" rx="10" ry="25" stroke="white" stroke-width=".5" fill="none"/></svg></div><div class="category-overlay"></div><div class="category-content"><div class="category-count">24 Pieces</div><h3 class="category-name">Paintings & Wall Art</h3><p class="category-desc">Traditional Aipan on handmade paper & canvas</p></div></div>
+<div class="category-card" onclick="location.href='/shop'"><div class="category-bg cat-cushions"><svg class="cat-pattern-svg" width="180" height="180" viewBox="0 0 180 180"><rect x="30" y="30" width="120" height="120" rx="20" stroke="white" stroke-width=".5" fill="none"/><rect x="50" y="50" width="80" height="80" rx="12" stroke="white" stroke-width=".5" fill="none"/></svg></div><div class="category-overlay"></div><div class="category-content"><div class="category-count">18 Pieces</div><h3 class="category-name">Cushions & Textiles</h3><p class="category-desc">Block-printed & embroidered Aipan textiles</p></div></div>
+<div class="category-card" onclick="location.href='/shop'"><div class="category-bg cat-vessels"><svg class="cat-pattern-svg" width="180" height="180" viewBox="0 0 180 180"><ellipse cx="90" cy="70" rx="45" ry="50" stroke="white" stroke-width=".5" fill="none"/><path d="M55 100 Q90 160 125 100" stroke="white" stroke-width=".5" fill="none"/></svg></div><div class="category-overlay"></div><div class="category-content"><div class="category-count">15 Pieces</div><h3 class="category-name">Vessel & Pottery Art</h3><p class="category-desc">Hand-painted copper, brass & ceramic pieces</p></div></div>
+<div class="category-card" onclick="location.href='/shop'"><div class="category-bg cat-decor"><svg class="cat-pattern-svg" width="180" height="180" viewBox="0 0 180 180"><polygon points="90,20 160,160 20,160" stroke="white" stroke-width=".5" fill="none" stroke-linejoin="round"/><circle cx="90" cy="90" r="30" stroke="white" stroke-width=".5" fill="none"/></svg></div><div class="category-overlay"></div><div class="category-content"><div class="category-count">12 Pieces</div><h3 class="category-name">Home Décor</h3><p class="category-desc">Coasters, trays, lamps & artful accessories</p></div></div>
+</div></section>
+
+
+
 
 
 <section class="story" id="story">
@@ -566,37 +402,20 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 <div class="section-chip">Our Heritage</div><h2 class="section-title">Preserving Sacred Art,<br>One Stroke at a Time</h2>
 <p class="story-text">Aipan is more than decorative art — it is a living prayer. For over five centuries, women of the Kumaon hills have painted these sacred geometric patterns using rice paste on red ochre walls, marking thresholds and festival grounds with divine protection.</p>
 <p class="story-text">We work directly with master artisans from Almora and Pithoragarh to translate this ritual art into contemporary home décor — ensuring every piece is authentic, ethically made, and carries the blessings of its origins.</p>
-<div class="artisan-quote">
-<p class="artisan-quote-text">My mother taught me these patterns when I was seven. Each line carries the prayers of our ancestors — when someone places our art in their home, they invite that same protection and beauty into their life.</p>
-<div class="artisan-quote-author">
-<div class="artisan-avatar">K</div>
-<div class="artisan-info"><strong>Kamala Devi</strong>Master Artisan, Almora — 40 years of practice</div>
-</div>
-</div>
 <div class="story-features">
 <div class="story-feature"><div class="sf-icon">✦</div><div class="sf-text"><strong>100% Handcrafted</strong>Every piece made entirely by hand</div></div>
 <div class="story-feature"><div class="sf-icon">◈</div><div class="sf-text"><strong>Artisan Direct</strong>Fair wages to Kumaoni craftspeople</div></div>
 <div class="story-feature"><div class="sf-icon">❋</div><div class="sf-text"><strong>Natural Materials</strong>Eco-friendly inks, dyes & substrates</div></div>
 <div class="story-feature"><div class="sf-icon">◎</div><div class="sf-text"><strong>GI Tagged</strong>Certified heritage authenticity</div></div>
-</div>
-<div class="artisan-quote">
-<p class="aq-text">My mother taught me these patterns when I was seven. Each line carries the prayers of our ancestors — when someone places our art in their home, they invite that same protection and beauty into their life.</p>
-<div class="aq-author"><div class="aq-avatar">K</div><div class="aq-info"><strong>Kamala Devi</strong>Master Artisan, Almora — 40 years of practice</div></div>
-</div>
-<a href="/story" class="story-cta">Read Our Full Story <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-</div></section>
+</div></div></section>
 
 <section class="testimonials" id="testimonials"><div class="testimonials-blob tblob-1"></div><div class="testimonials-blob tblob-2"></div><div class="testimonials-inner">
 <div class="section-header"><div class="section-chip">What People Say</div><h2 class="section-title">Loved by Collectors</h2></div>
-<div class="testimonials-grid" id="testGrid">
-<div class="testimonial-card"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testimonial-text">"The Lakshmi Chowki painting is absolutely breathtaking. The detailing is museum-quality, and knowing it was handmade makes it even more special."</p><div class="testimonial-author"><div class="testimonial-avatar">P</div><div><div class="testimonial-name">Priya Mehta</div><div class="testimonial-location">Mumbai, Maharashtra</div></div></div></div>
-<div class="testimonial-card"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testimonial-text">"Bought the copper kalash as a wedding gift. The reaction was priceless — it now sits in their puja room. Truly a piece that carries meaning."</p><div class="testimonial-author"><div class="testimonial-avatar">R</div><div><div class="testimonial-name">Rahul Sharma</div><div class="testimonial-location">Delhi NCR</div></div></div></div>
-<div class="testimonial-card"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testimonial-text">"As an interior designer, I've been looking for authentic Indian art that doesn't feel kitschy. Aipan House nailed it — my clients love the lotus cushions."</p><div class="testimonial-author"><div class="testimonial-avatar">A</div><div><div class="testimonial-name">Ananya Iyer</div><div class="testimonial-location">Bangalore, Karnataka</div></div></div></div>
-<div class="testimonial-card"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testimonial-text">"I'm from Kumaon originally and seeing our art presented this beautifully brought tears to my eyes. Finally, someone doing justice to Aipan."</p><div class="testimonial-author"><div class="testimonial-avatar">D</div><div><div class="testimonial-name">Deepa Bisht</div><div class="testimonial-location">Almora, Uttarakhand</div></div></div></div>
-<div class="testimonial-card"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testimonial-text">"Ordered the heritage table runner for Diwali. The packaging was beautiful, delivery was quick, and the quality exceeded expectations. Will order more."</p><div class="testimonial-author"><div class="testimonial-avatar">S</div><div><div class="testimonial-name">Sneha Kapoor</div><div class="testimonial-location">Jaipur, Rajasthan</div></div></div></div>
-<div class="testimonial-card"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testimonial-text">"Living in the US, I miss home every day. The Durga Puja canvas now hangs in my living room — it's like having a piece of Uttarakhand with me always."</p><div class="testimonial-author"><div class="testimonial-avatar">V</div><div><div class="testimonial-name">Vikram Negi</div><div class="testimonial-location">San Francisco, USA</div></div></div></div>
-</div>
-</div></section>
+<div class="testimonials-grid">
+<div class="testimonial-card"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testimonial-text">"The Lakshmi Chowki painting is absolutely breathtaking. The detailing is museum-quality, and knowing it was handmade by artisans from Kumaon makes it even more special."</p><div class="testimonial-author"><div class="testimonial-avatar">P</div><div><div class="testimonial-name">Priya Mehta</div><div class="testimonial-location">Mumbai, Maharashtra</div></div></div></div>
+<div class="testimonial-card"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testimonial-text">"I ordered the Aipan cushion set for my new home and was blown away by the craftsmanship. The ochre tones bring such warmth. Already ordering the copper vessels next!"</p><div class="testimonial-author"><div class="testimonial-avatar">R</div><div><div class="testimonial-name">Rahul Sharma</div><div class="testimonial-location">Bengaluru, Karnataka</div></div></div></div>
+<div class="testimonial-card"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testimonial-text">"As someone from Kumaon, seeing Aipan art presented with this level of care fills me with pride. This is how our heritage should be shared with the world."</p><div class="testimonial-author"><div class="testimonial-avatar">A</div><div><div class="testimonial-name">Anita Bisht</div><div class="testimonial-location">Almora, Uttarakhand</div></div></div></div>
+</div></div></section>
 
 <section class="newsletter" id="newsletter"><div class="newsletter-inner">
 <div class="section-chip">Stay Connected</div><h2 class="section-title">Join Our Circle</h2><p class="section-subtitle">Be the first to know about new collections, artisan stories, and exclusive offers</p>
@@ -620,7 +439,7 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 <div><h4 class="footer-heading">Company</h4><ul class="footer-links"><li><a href="/story" >Our Story</a></li><li><a href="/blog" >Blog</a></li><li><a href="/story" >Meet the Artisans</a></li><li><a href="/story" >Sustainability</a></li><li><a href="#">Press & Media</a></li></ul></div>
 <div><h4 class="footer-heading">Support</h4><ul class="footer-links"><li><a href="#">Shipping & Returns</a></li><li><a href="#">Care Instructions</a></li><li><a href="#">FAQs</a></li><li><a href="#">Contact Us</a></li></ul></div>
 </div>
-<div class="footer-bottom"><div class="footer-bottom-inner"><p>&copy; 2025 Aipan House. All rights reserved. Crafted with love in Kumaon.</p><div class="footer-social"><a href="#" class="social-link" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a><a href="#" class="social-link" title="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a><a href="#" class="social-link" title="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 21c1-3 2-6 2.5-8.5.5-2-1-3.5 1-5s4-.5 4 1.5-1 4-2 6c-.5 1.5 0 3 2 3s4-3 4-7-3-6-6.5-6S7 8 8 11"/></svg></a><a href="#" class="social-link" title="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.5 6.4a2.8 2.8 0 00-2-2C18.9 4 12 4 12 4s-6.9 0-8.5.5a2.8 2.8 0 00-2 2A29 29 0 001 12a29 29 0 00.5 5.6 2.8 2.8 0 002 2c1.6.4 8.5.4 8.5.4s6.9 0 8.5-.5a2.8 2.8 0 002-2A29 29 0 0023 12a29 29 0 00-.5-5.6z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98"/></svg></a></div></div></div></div>
+<div class="footer-bottom"><span>&copy; 2026 Aipan House All rights reserved.</span><div class="footer-social"><a href="#" title="Instagram">ig</a><a href="#" title="Facebook">fb</a><a href="#" title="Pinterest">pi</a><a href="#" title="YouTube">yt</a></div></div>
 </div></footer>
 <div class="cart-overlay" id="cartOverlay"></div>
 <div class="cart-sidebar" id="cartSidebar">
@@ -752,33 +571,11 @@ function showToast(m){var t=document.getElementById('toast');document.getElement
 
 // Animation handled by SPA global observer
 // renderProducts removed - carousel replaces product grid
-(function(){var btn=document.querySelector('.newsletter-btn'),inp=document.querySelector('.newsletter-input');if(!btn||!inp)return;btn.addEventListener('click',function(){var v=inp.value.trim();if(!v){inp.style.borderColor='#e74c3c';inp.placeholder='Please enter your email';setTimeout(function(){inp.style.borderColor='';inp.placeholder='Enter your email'},2000);return}if(!v.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)){inp.style.borderColor='#e74c3c';showToast('Please enter a valid email address');setTimeout(function(){inp.style.borderColor=''},2000);return}btn.textContent='Subscribed ✓';btn.style.background='var(--gold)';inp.value='';inp.placeholder='You\'re on the list!';showToast('Welcome to our circle! ✦');setTimeout(function(){btn.textContent='Subscribe';btn.style.background='';inp.placeholder='Enter your email'},3000)})})();
-
+(document.querySelector('.newsletter-btn')||document.querySelector('.newsletter-btn')||{addEventListener:function(){}}).addEventListener('click',()=>{var inp=document.querySelector('.newsletter-input');if(inp.value&&inp.value.includes('@')){showToast('Welcome to our circle! ✦');inp.value=''}});
 
 
 
 } catch(e) { console.warn('home JS init:', e.message); }
-</script>
-<script>
-// Mobile nav - separate script to ensure it always runs
-document.addEventListener('DOMContentLoaded', function(){
-  var h=document.getElementById('navHamburger');
-  var m=document.getElementById('mobileNav');
-  var cl=document.getElementById('mobileNavClose');
-  if(!h||!m||!cl)return;
-  h.addEventListener('click',function(){
-    m.classList.add('active');
-    document.body.style.overflow='hidden';
-  });
-  function closeNav(){
-    m.classList.remove('active');
-    document.body.style.overflow='';
-  }
-  cl.addEventListener('click',closeNav);
-  m.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click',closeNav);
-  });
-});
 </script>
 </body>
 </html>
