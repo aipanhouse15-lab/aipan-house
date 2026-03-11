@@ -1,0 +1,54 @@
+# CardStack
+
+> India's smartest credit card optimization tool. Free, no sign-up, zero tracking. 25+ Indian credit cards, real savings math, merchant-level recommendations.
+
+CardStack helps Indian credit card holders maximize their rewards by telling them exactly which card to use for every purchase. We maintain accurate reward rate data for 25+ popular Indian credit cards across 8 spending categories.
+
+## Tools
+
+- [Smart Swipe Guide](/smart-swipe): Select your cards, enter your monthly spending, and see which card gives the highest reward for each category (dining, travel, groceries, fuel, online shopping, utilities, entertainment, shopping). Calculates real annual savings vs a basic 1% card.
+- [Card Gap Finder](/gap-finder): Analyzes your current card stack and identifies categories where better cards exist. Shows exactly how much money you're leaving on the table per year.
+- [Swipe Check](/swipe-check): Merchant-level recommendations. Pick a specific merchant (Swiggy, Amazon, Zomato, Flipkart, etc.) and get the top 3 cards to use with pro tips and gotchas.
+- [Compare](/compare): Head-to-head comparison of any two Indian credit cards across all 8 spending categories with winner scoring.
+
+## API
+
+CardStack provides a free, public API for accessing Indian credit card reward data.
+
+- [All Cards](/api/cards): Returns all 25+ cards with reward rates, fees, pros, cons, lounge access, network
+- [Single Card](/api/cards/hdfc-regalia): Full details for a specific card with computed insights (best category, average rate, breakeven spend)
+- [Recommendations](/api/recommend): Smart recommendations engine
+  - Best card for a category: `/api/recommend?for=dining`
+  - Best free cards: `/api/recommend?budget=free`
+  - Best cards under ₹5000/yr: `/api/recommend?budget=under5000`
+  - Optimize a card stack: `/api/recommend?cards=hdfc-regalia,amazon-icici`
+
+API is open, requires no authentication, and returns JSON with CORS enabled.
+
+## Card Database
+
+We track reward rates for 25 Indian credit cards from 12 banks: HDFC, SBI, ICICI, Axis, AU Bank, IDFC, OneCard, BOB, Kotak, IndusInd, YES Bank, RBL.
+
+Cards include: HDFC Regalia, HDFC Infinia, HDFC Millennia, HDFC Diners Black, HDFC Swiggy Card, SBI SimplyCLICK, SBI Cashback Card, SBI Card ELITE, Amazon Pay ICICI, ICICI Coral, ICICI Sapphiro, ICICI Emeralde, Axis Flipkart, Axis ACE, Axis Atlas, AU LIT, AU Zenith+, IDFC FIRST WOW, IDFC FIRST Select, OneCard, BOB Eterna, Kotak 811 Dream, IndusInd Legend, YES Private Ace, RBL ShopRite.
+
+## Spending Categories
+
+We track rewards across 8 categories: Dining (restaurants, Swiggy, Zomato), Travel (flights, hotels, MakeMyTrip), Online Shopping (Amazon, Flipkart, Myntra), Groceries (BigBasket, Blinkit, stores), Fuel (petrol pumps, EV charging), Utilities (electricity, water, broadband), Entertainment (Netflix, movies, concerts), Shopping (malls, fashion, electronics).
+
+## Merchants Covered
+
+Swipe Check covers 20+ merchants: Swiggy, Zomato, Blinkit, BigBasket, restaurants, MakeMyTrip, Cleartrip, Uber/Ola, airlines, Amazon, Flipkart/Myntra, Nykaa/Ajio, electronics/Apple, Netflix/Hotstar/Spotify, BookMyShow/PVR, electricity/gas/water, mobile/broadband/DTH, insurance premiums, petrol pumps, FASTag/toll.
+
+## Key Facts
+
+- All tools are free, no sign-up required
+- We do not collect user data or track users
+- Data is updated monthly
+- We may earn affiliate commissions when users apply for cards through our links
+- We are not financial advisors — CardStack is a tool, not advice
+- Based in India, built for Indian credit card holders
+
+## Contact
+
+Website: https://cardstack.vercel.app
+API: https://cardstack.vercel.app/api/recommend
