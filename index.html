@@ -8,7 +8,7 @@
 <style>
 
 :root{--ochre:#943B20;--ochre-deep:#6B1E08;--ochre-warm:#B84A28;--cream:#FDF8F3;--ivory:#F7EFE5;--sand:#EDE3D5;--gold:#C6A55C;--gold-light:#DBBF7A;--gold-muted:#B49A5A;--charcoal:#2A2420;--warm-brown:#7A6B5D;--taupe:#A89888;--soft-white:#FEFCF9;--blush:#F5E6DA;--border:rgba(198,165,92,0.18);--shadow-soft:0 8px 40px rgba(107,30,8,0.06);--shadow-hover:0 16px 60px rgba(107,30,8,0.10);--r-sm:16px;--r-md:24px;--r-lg:40px;--r-xl:60px;--r-pill:999px}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--charcoal);overflow-x:hidden}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--cream)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px}
 
@@ -36,7 +36,7 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 .nav-icon-btn:hover{background:var(--sand);color:var(--ochre-deep);border-color:var(--sand)}
 .cart-badge{position:absolute;top:-3px;right:-3px;width:18px;height:18px;background:var(--ochre-warm);color:white;font-size:9px;font-weight:600;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--cream)}
 
-.hero{min-height:auto;display:flex;align-items:center;position:relative;padding-top:60px;padding-bottom:40px;background:transparent}
+.hero{min-height:auto;display:flex;align-items:center;position:relative;padding-top:60px;padding-bottom:40px;background:transparent;overflow:clip}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--cream));z-index:1;pointer-events:none}
 .hero-bg-shape{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15}
 .hero-bg-1{width:600px;height:600px;background:var(--ochre-warm);top:-200px;right:-100px}
@@ -323,7 +323,7 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 
 
 /* === CAROUSEL === */
-.hero-carousel{position:relative;width:100%;max-width:1340px;margin:100px auto 0;min-height:75vh;overflow:hidden;border-radius:var(--r-xl);box-shadow:var(--shadow-hover)}
+.hero-carousel{position:relative;width:calc(100% - 32px);max-width:1340px;margin:100px auto 0;min-height:75vh;overflow:hidden;border-radius:var(--r-xl);box-shadow:var(--shadow-hover)}
 .hc-track{display:flex;transition:transform .7s cubic-bezier(.4,0,.2,1);width:400%;height:75vh}
 .hc-slide{position:relative;width:25%;min-height:75vh;display:flex;align-items:center;padding:0 clamp(30px,6vw,100px);box-sizing:border-box;overflow:hidden}
 .hc-content{position:relative;z-index:2;max-width:560px;padding-top:80px}
@@ -757,9 +757,28 @@ function showToast(m){var t=document.getElementById('toast');document.getElement
 
 
 
-// Mobile nav
-(function(){var h=document.getElementById('navHamburger'),m=document.getElementById('mobileNav'),cl=document.getElementById('mobileNavClose');if(!h||!m)return;h.addEventListener('click',function(){m.classList.add('active');document.body.style.overflow='hidden'});function closeNav(){m.classList.remove('active');document.body.style.overflow=''}cl.addEventListener('click',closeNav);m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeNav)})})();
 } catch(e) { console.warn('home JS init:', e.message); }
+</script>
+<script>
+// Mobile nav - separate script to ensure it always runs
+document.addEventListener('DOMContentLoaded', function(){
+  var h=document.getElementById('navHamburger');
+  var m=document.getElementById('mobileNav');
+  var cl=document.getElementById('mobileNavClose');
+  if(!h||!m||!cl)return;
+  h.addEventListener('click',function(){
+    m.classList.add('active');
+    document.body.style.overflow='hidden';
+  });
+  function closeNav(){
+    m.classList.remove('active');
+    document.body.style.overflow='';
+  }
+  cl.addEventListener('click',closeNav);
+  m.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',closeNav);
+  });
+});
 </script>
 </body>
 </html>
