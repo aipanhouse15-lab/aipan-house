@@ -70,10 +70,22 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 .float-text{font-size:12px;line-height:1.5}.float-text strong{display:block;font-weight:600;color:var(--ochre-deep);font-size:13px}.float-text span{color:var(--warm-brown)}
 @keyframes gentleUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 
+
+/* ENHANCED TRUST BAR */
 .trust-bar{padding:36px 40px;max-width:1340px;margin:-40px auto 0;position:relative;z-index:3}
 .trust-inner{display:flex;justify-content:center;gap:48px;padding:28px 40px;background:white;border-radius:var(--r-pill);box-shadow:var(--shadow-soft);border:1px solid var(--border)}
-.trust-item{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--warm-brown)}
-.trust-icon{width:36px;height:36px;border-radius:50%;background:var(--ivory);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
+.trust-item{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--warm-brown);position:relative;cursor:default;transition:all .3s ease}
+.trust-item:hover{transform:translateY(-2px)}
+.trust-icon{width:44px;height:44px;border-radius:50%;background:var(--ivory);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s ease}
+.trust-icon svg{width:22px;height:22px;transition:transform .3s ease}
+.trust-item:hover .trust-icon{background:rgba(198,165,92,.15);box-shadow:0 4px 16px rgba(198,165,92,.2)}
+.trust-item:hover .trust-icon svg{transform:scale(1.1)}
+.trust-item:hover .trust-label{color:var(--ochre)}
+.trust-label{transition:color .3s ease}
+.trust-tooltip{position:absolute;bottom:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--charcoal);color:var(--cream);padding:10px 16px;border-radius:var(--r-sm);font-size:11px;line-height:1.5;letter-spacing:.3px;white-space:nowrap;opacity:0;pointer-events:none;transition:all .3s ease;z-index:10;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.trust-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--charcoal)}
+.trust-item:hover .trust-tooltip{opacity:1;transform:translateX(-50%) translateY(0)}
+
 
 .section-header{text-align:center;margin-bottom:60px}
 .section-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:var(--ivory);border-radius:var(--r-pill);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-muted);font-weight:600;margin-bottom:16px}
@@ -123,6 +135,8 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 .add-to-cart{padding:10px 24px;background:var(--ochre-deep);border:none;color:white;font-family:'Nunito Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;border-radius:var(--r-pill);transition:all .3s ease}
 .add-to-cart:hover{background:var(--ochre-warm);transform:scale(1.04)}
 
+
+/* ENHANCED STORY SECTION */
 .story{padding:120px 40px;max-width:1340px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .story-visual{position:relative}
 .story-image{border-radius:50% 50% var(--r-lg) var(--r-lg);aspect-ratio:3/4;background:linear-gradient(160deg,var(--ochre-deep),var(--ochre-warm),#C46A48);position:relative;overflow:hidden;box-shadow:var(--shadow-hover)}
@@ -137,6 +151,19 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 .story-feature:hover{background:var(--sand);transform:translateY(-2px)}
 .sf-icon{width:40px;height:40px;flex-shrink:0;border-radius:50%;background:white;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .sf-text{font-size:13px;line-height:1.5}.sf-text strong{display:block;color:var(--ochre-deep);font-weight:600;margin-bottom:2px}
+/* Artisan Quote */
+.artisan-quote{margin-top:32px;padding:28px 32px;background:linear-gradient(135deg,var(--ivory),var(--sand));border-radius:var(--r-lg);position:relative;border-left:3px solid var(--gold)}
+.artisan-quote::before{content:'\201C';position:absolute;top:12px;left:20px;font-family:'DM Serif Display',serif;font-size:48px;color:var(--gold);line-height:1;opacity:.4}
+.artisan-quote-text{font-family:'Lora',serif;font-style:italic;font-size:15px;line-height:1.8;color:var(--ochre-deep);padding-left:20px}
+.artisan-quote-author{display:flex;align-items:center;gap:12px;margin-top:16px;padding-left:20px}
+.artisan-avatar{width:40px;height:40px;border-radius:50%;background:var(--ochre);display:flex;align-items:center;justify-content:center;color:white;font-family:'DM Serif Display',serif;font-size:16px;flex-shrink:0}
+.artisan-info{font-size:12px;color:var(--warm-brown);line-height:1.5}
+.artisan-info strong{display:block;color:var(--ochre-deep);font-size:13px}
+.story-cta{display:inline-flex;align-items:center;gap:8px;margin-top:28px;padding:14px 32px;background:var(--ochre-deep);color:var(--cream);text-decoration:none;border-radius:var(--r-pill);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;transition:all .3s ease}
+.story-cta:hover{background:var(--ochre);transform:translateY(-2px);box-shadow:0 8px 24px rgba(148,59,32,.2)}
+.story-cta svg{transition:transform .3s ease}
+.story-cta:hover svg{transform:translateX(4px)}
+
 
 .testimonials{padding:100px 40px;background:var(--ivory);border-radius:var(--r-xl);max-width:1400px;margin:0 auto;position:relative;overflow:hidden}
 .testimonials-blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.08}
@@ -230,8 +257,30 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 .toast-check{width:22px;height:22px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:11px;color:white}
 
-@media(max-width:1100px){.nav-links{display:none}.hero-inner{grid-template-columns:1fr}.hero-visual{max-width:420px}.categories-grid{grid-template-columns:repeat(2,1fr)}.products-grid{grid-template-columns:repeat(2,1fr)}.story{grid-template-columns:1fr}.testimonials-grid{grid-template-columns:1fr;max-width:500px;margin:0 auto}.footer-top{grid-template-columns:1fr 1fr}.trust-inner{flex-wrap:wrap;justify-content:center;gap:24px}.testimonials{margin:0 20px}}
-@media(max-width:640px){.navbar{padding:10px 16px}.nav-inner{padding:8px 16px}.hero-inner{padding:30px 20px}.categories{padding:60px 20px}.categories-grid{grid-template-columns:1fr}.featured{padding:60px 20px}.products-grid{grid-template-columns:1fr}.story{padding:60px 20px;gap:40px}.story-features{grid-template-columns:1fr}.testimonials{padding:60px 20px;border-radius:var(--r-lg);margin:0 12px}.newsletter{padding:60px 20px}.newsletter-inner{padding:50px 28px;border-radius:var(--r-lg)}.newsletter-form{flex-direction:column}.footer{padding:60px 20px 30px;margin-top:0}.footer-top{grid-template-columns:1fr;gap:30px}.payment-trust{padding:32px 20px}.payment-trust-inner{flex-direction:column;gap:20px}.pt-divider{width:80px;height:1px}.pt-badges{flex-direction:column;gap:12px}.hero-actions{flex-direction:column;align-items:flex-start}.cart-sidebar{width:calc(100% - 24px)}.hero-float-card{display:none}.trust-bar{padding:20px}}
+
+/* PRODUCT SHOWCASE */
+.product-showcase{padding:100px 40px;max-width:1340px;margin:0 auto}
+.showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:0}
+.showcase-card{background:white;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);transition:all .5s cubic-bezier(.4,0,.2,1);cursor:pointer;position:relative}
+.showcase-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-6px);border-color:transparent}
+.showcase-img{aspect-ratio:1;position:relative;overflow:hidden}
+.showcase-img-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;transition:transform .6s ease;flex-direction:column;gap:12px}
+.showcase-card:hover .showcase-img-bg{transform:scale(1.05)}
+.sc-bg-1{background:linear-gradient(135deg,#8B2500,#A83820)}
+.sc-bg-2{background:linear-gradient(135deg,#5A4420,#7A6530)}
+.sc-bg-3{background:linear-gradient(135deg,#3D5254,#4A6466)}
+.showcase-tag{position:absolute;top:16px;left:16px;padding:5px 14px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:var(--r-pill);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ochre-deep);font-weight:600;z-index:2}
+.showcase-info{padding:24px 24px 28px}
+.showcase-cat{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-muted);font-weight:600;margin-bottom:8px}
+.showcase-name{font-family:'DM Serif Display',serif;font-size:20px;color:var(--charcoal);margin-bottom:8px}
+.showcase-desc{font-family:'Lora',serif;font-size:14px;color:var(--warm-brown);line-height:1.6;margin-bottom:16px}
+.showcase-bottom{display:flex;justify-content:space-between;align-items:center}
+.showcase-price{font-size:13px;font-family:'Nunito Sans',sans-serif;color:var(--taupe);letter-spacing:.5px}
+.showcase-btn{padding:8px 20px;background:transparent;border:1px solid var(--border);border-radius:var(--r-pill);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ochre);cursor:default;opacity:.7;transition:all .3s}
+.showcase-motif{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.12;width:120px;height:120px}
+
+@media(max-width:1100px){.nav-links{display:none}.hero-inner{grid-template-columns:1fr}.hero-visual{max-width:420px}.categories-grid{grid-template-columns:repeat(2,1fr)}.products-grid{grid-template-columns:repeat(2,1fr)}.story{grid-template-columns:1fr}.testimonials-grid{grid-template-columns:1fr;max-width:500px;margin:0 auto}.footer-top{grid-template-columns:1fr 1fr}.trust-inner{flex-wrap:wrap;justify-content:center;gap:24px}.showcase-grid{grid-template-columns:repeat(2,1fr)}.testimonials{margin:0 20px}}
+@media(max-width:640px){.navbar{padding:10px 16px}.nav-inner{padding:8px 16px}.hero-inner{padding:30px 20px}.categories{padding:60px 20px}.categories-grid{grid-template-columns:1fr}.featured{padding:60px 20px}.products-grid{grid-template-columns:1fr}.story{padding:60px 20px;gap:40px}.story-features{grid-template-columns:1fr}.testimonials{padding:60px 20px;border-radius:var(--r-lg);margin:0 12px}.newsletter{padding:60px 20px}.newsletter-inner{padding:50px 28px;border-radius:var(--r-lg)}.newsletter-form{flex-direction:column}.footer{padding:60px 20px 30px;margin-top:0}.footer-top{grid-template-columns:1fr;gap:30px}.payment-trust{padding:32px 20px}.payment-trust-inner{flex-direction:column;gap:20px}.pt-divider{width:80px;height:1px}.pt-badges{flex-direction:column;gap:12px}.hero-actions{flex-direction:column;align-items:flex-start}.cart-sidebar{width:calc(100% - 24px)}.hero-float-card{display:none}.trust-bar{padding:20px}.trust-tooltip{display:none}.trust-inner{flex-direction:column;gap:20px;padding:24px}.trust-item{gap:12px}.trust-icon{width:44px;height:44px}.trust-icon svg{width:20px;height:20px}.product-showcase{padding:60px 20px}.showcase-grid{grid-template-columns:1fr}}
 
 
 /* === CAROUSEL === */
@@ -373,12 +422,32 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 </div>
 </section>
 <div class="trust-bar"><div class="trust-inner">
-<div class="trust-item"><span class="trust-icon">✦</span>100% Handcrafted</div>
-<div class="trust-item"><span class="trust-icon">◎</span>Artisan Direct Pricing</div>
-<div class="trust-item"><span class="trust-icon">❋</span>Eco-Friendly Materials</div>
-<div class="trust-item"><span class="trust-icon">◈</span>Free Shipping on All Orders</div>
-<div class="trust-item"><span class="trust-icon">↺</span>15-Day Easy Returns</div>
+<div class="trust-item">
+<div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ochre)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M8 12l2.5 2.5L16 9"/><path d="M12 2l1.5 3.5L17 4l-1.5 3.5L19 9l-3.5 1L17 14l-3.5-1L12 17l-1.5-4L7 14l1.5-3.5L5 9l3.5-1.5L7 4l3.5 1.5z" opacity=".15"/></svg></div>
+<span class="trust-label">GI Certified</span>
+<div class="trust-tooltip">Geographical Indication tag ensures genuine Kumaoni craftsmanship</div>
 </div>
+<div class="trust-item">
+<div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ochre)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8.5C7 5.5 9.2 3 12 3s5 2.5 5 5.5c0 2-1 3.5-2.5 4.5L13 14H11l-1.5-1C8 12 7 10.5 7 8.5z"/><path d="M10 14v2a2 2 0 0 0 4 0v-2"/><path d="M8 18h8"/><path d="M9 21h6"/><path d="M3 8.5h2M19 8.5h2M5 4l1.5 1.5M17.5 5.5L19 4"/></svg></div>
+<span class="trust-label">100% Handcrafted</span>
+<div class="trust-tooltip">Every piece made entirely by hand by master artisans</div>
+</div>
+<div class="trust-item">
+<div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ochre)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 0 0-8 0v2"/><path d="M12 14v2"/><circle cx="12" cy="14" r="1.5"/></svg></div>
+<span class="trust-label">Free Shipping</span>
+<div class="trust-tooltip">Complimentary delivery across India on all orders</div>
+</div>
+<div class="trust-item">
+<div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ochre)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/><path d="M3.5 8.5L1 7M20.5 8.5L23 7"/><path d="M7 20l-2 2M17 20l2 2"/></svg></div>
+<span class="trust-label">15-Day Easy Returns</span>
+<div class="trust-tooltip">Hassle-free returns within 15 days, no questions asked</div>
+</div>
+<div class="trust-item">
+<div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ochre)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+<span class="trust-label">Eco-Friendly</span>
+<div class="trust-tooltip">Natural pigments, handmade paper & sustainable materials only</div>
+</div>
+</div></div>
 
 
 
@@ -396,18 +465,70 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ch
 
 
 
+
+<!-- PRODUCT SHOWCASE -->
+<section class="product-showcase">
+<div class="section-header">
+<div class="section-chip">Handpicked for You</div>
+<h2 class="section-title">Featured Pieces</h2>
+<p class="section-subtitle">Our most loved creations, each carrying the soul of Kumaoni artistry</p>
+</div>
+<div class="showcase-grid">
+<div class="showcase-card" onclick="location.href='/product'">
+<div class="showcase-img"><div class="showcase-img-bg sc-bg-1">
+<svg class="showcase-motif" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="35" stroke="white" stroke-width=".5"/><circle cx="50" cy="50" r="20" stroke="white" stroke-width=".5"/><circle cx="50" cy="50" r="6" fill="white" opacity=".2"/><ellipse cx="50" cy="25" rx="8" ry="18" stroke="white" stroke-width=".5"/><ellipse cx="50" cy="75" rx="8" ry="18" stroke="white" stroke-width=".5"/><ellipse cx="25" cy="50" rx="18" ry="8" stroke="white" stroke-width=".5"/><ellipse cx="75" cy="50" rx="18" ry="8" stroke="white" stroke-width=".5"/></svg>
+</div><div class="showcase-tag">Bestseller</div></div>
+<div class="showcase-info">
+<div class="showcase-cat">Paintings & Wall Art</div>
+<div class="showcase-name">Lakshmi Chowki Panel</div>
+<div class="showcase-desc">Traditional puja seat motif rendered on handmade Himalayan lokta paper</div>
+<div class="showcase-bottom"><span class="showcase-price">Coming Soon</span><button class="showcase-btn" disabled>Notify Me</button></div>
+</div></div>
+<div class="showcase-card" onclick="location.href='/product'">
+<div class="showcase-img"><div class="showcase-img-bg sc-bg-2">
+<svg class="showcase-motif" viewBox="0 0 100 100" fill="none"><rect x="15" y="15" width="70" height="70" rx="12" stroke="white" stroke-width=".5" fill="none"/><rect x="28" y="28" width="44" height="44" rx="8" stroke="white" stroke-width=".5" fill="none"/><circle cx="50" cy="50" r="10" stroke="white" stroke-width=".5" fill="none"/></svg>
+</div><div class="showcase-tag">New Arrival</div></div>
+<div class="showcase-info">
+<div class="showcase-cat">Cushions & Textiles</div>
+<div class="showcase-name">Aipan Lotus Cushion Set</div>
+<div class="showcase-desc">Set of 2 block-printed cotton cushion covers featuring the sacred lotus mandala</div>
+<div class="showcase-bottom"><span class="showcase-price">Coming Soon</span><button class="showcase-btn" disabled>Notify Me</button></div>
+</div></div>
+<div class="showcase-card" onclick="location.href='/product'">
+<div class="showcase-img"><div class="showcase-img-bg sc-bg-3">
+<svg class="showcase-motif" viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="40" rx="30" ry="32" stroke="white" stroke-width=".5" fill="none"/><path d="M28 55 Q50 90 72 55" stroke="white" stroke-width=".5" fill="none"/><circle cx="50" cy="38" r="12" stroke="white" stroke-width=".4" fill="none"/></svg>
+</div><div class="showcase-tag">Limited Edition</div></div>
+<div class="showcase-info">
+<div class="showcase-cat">Vessel & Pottery Art</div>
+<div class="showcase-name">Copper Kalash Vessel</div>
+<div class="showcase-desc">Hand-engraved copper vessel with sacred Aipan patterns — each piece one of a kind</div>
+<div class="showcase-bottom"><span class="showcase-price">Coming Soon</span><button class="showcase-btn" disabled>Notify Me</button></div>
+</div></div>
+</div>
+</section>
+
+
 <section class="story" id="story">
 <div class="story-visual"><div class="story-image"><svg class="story-aipan" width="280" height="360" viewBox="0 0 280 360"><g stroke="#FDF8F3" stroke-width=".7" fill="none"><circle cx="140" cy="180" r="100"/><circle cx="140" cy="180" r="70"/><circle cx="140" cy="180" r="40"/><circle cx="140" cy="180" r="15" fill="#FDF8F3" opacity=".1"/><ellipse cx="140" cy="80" rx="16" ry="42"/><ellipse cx="140" cy="280" rx="16" ry="42"/><ellipse cx="40" cy="180" rx="42" ry="16"/><ellipse cx="240" cy="180" rx="42" ry="16"/></g></svg></div><div class="story-stat-bubble"><div class="stat-number">500+</div><div class="stat-label">Years of<br>Tradition</div></div></div>
 <div class="story-content">
 <div class="section-chip">Our Heritage</div><h2 class="section-title">Preserving Sacred Art,<br>One Stroke at a Time</h2>
 <p class="story-text">Aipan is more than decorative art — it is a living prayer. For over five centuries, women of the Kumaon hills have painted these sacred geometric patterns using rice paste on red ochre walls, marking thresholds and festival grounds with divine protection.</p>
 <p class="story-text">We work directly with master artisans from Almora and Pithoragarh to translate this ritual art into contemporary home décor — ensuring every piece is authentic, ethically made, and carries the blessings of its origins.</p>
+<div class="artisan-quote">
+<p class="artisan-quote-text">My mother taught me these patterns when I was seven. Each line carries the prayers of our ancestors — when someone places our art in their home, they invite that same protection and beauty into their life.</p>
+<div class="artisan-quote-author">
+<div class="artisan-avatar">K</div>
+<div class="artisan-info"><strong>Kamala Devi</strong>Master Artisan, Almora — 40 years of practice</div>
+</div>
+</div>
 <div class="story-features">
 <div class="story-feature"><div class="sf-icon">✦</div><div class="sf-text"><strong>100% Handcrafted</strong>Every piece made entirely by hand</div></div>
 <div class="story-feature"><div class="sf-icon">◈</div><div class="sf-text"><strong>Artisan Direct</strong>Fair wages to Kumaoni craftspeople</div></div>
 <div class="story-feature"><div class="sf-icon">❋</div><div class="sf-text"><strong>Natural Materials</strong>Eco-friendly inks, dyes & substrates</div></div>
 <div class="story-feature"><div class="sf-icon">◎</div><div class="sf-text"><strong>GI Tagged</strong>Certified heritage authenticity</div></div>
-</div></div></section>
+</div>
+<a href="/story" class="story-cta">Read Our Full Story <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div></section>
 
 <section class="testimonials" id="testimonials"><div class="testimonials-blob tblob-1"></div><div class="testimonials-blob tblob-2"></div><div class="testimonials-inner">
 <div class="section-header"><div class="section-chip">What People Say</div><h2 class="section-title">Loved by Collectors</h2></div>
