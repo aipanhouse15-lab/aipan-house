@@ -2,6 +2,7 @@ import Link from 'next/link'
 import AlmanacWheel from '@/components/AlmanacWheel'
 import ElevationTracker from '@/components/ElevationTracker'
 import SiteFooter from '@/components/SiteFooter'
+import HomeHeader from '@/components/HomeHeader'
 
 function Ridge({ d, fill, opacity = 1 }) {
   return (
@@ -14,10 +15,7 @@ function Ridge({ d, fill, opacity = 1 }) {
 export default function Home() {
   return (
     <>
-      <header className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-9 py-4" style={{ mixBlendMode: 'difference', color: '#fff' }}>
-        <span className="font-display text-xl">Aipan House</span>
-        <span className="font-mono text-[11px] tracking-widest">SCROLL TO CLIMB ↑</span>
-      </header>
+      <HomeHeader />
       <ElevationTracker />
 
       {/* VALLEY */}
