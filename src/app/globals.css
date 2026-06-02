@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Spectral:wght@400;500;600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --geru: #9E2B1E; --rice: #FBF6EE; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--rice);
+  color: #241712;
+  font-family: 'Spectral', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtle paper grain on the rice ground */
+.grain::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- MDX article prose ---- */
+.prose-aipan { font-family: 'Spectral', Georgia, serif; color: #2d211b; font-size: 1.125rem; line-height: 1.78; }
+.prose-aipan > * + * { margin-top: 1.4em; }
+.prose-aipan h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.9rem; line-height: 1.2; margin-top: 2.4em; color: #6E1A10; letter-spacing: -0.01em; }
+.prose-aipan h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.4rem; margin-top: 1.8em; color: #9E2B1E; }
+.prose-aipan p { max-width: 68ch; }
+.prose-aipan a { color: #9E2B1E; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.prose-aipan a:hover { color: #6E1A10; }
+.prose-aipan ul, .prose-aipan ol { max-width: 66ch; padding-left: 1.3em; }
+.prose-aipan ul { list-style: none; }
+.prose-aipan ul > li { position: relative; padding-left: 1.4em; margin-top: 0.5em; }
+.prose-aipan ul > li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 7px; height: 7px; background: #C6A55C; transform: rotate(45deg); }
+.prose-aipan ol { list-style: decimal; }
+.prose-aipan ol > li { margin-top: 0.5em; padding-left: 0.3em; }
+.prose-aipan blockquote { border-left: 3px solid #C6A55C; padding-left: 1.2em; font-style: italic; color: #7A5A4A; }
+.prose-aipan strong { color: #6E1A10; font-weight: 600; }
+.prose-aipan table { width: 100%; border-collapse: collapse; font-family: 'Hanken Grotesk', sans-serif; font-size: 0.95rem; }
+.prose-aipan th { text-align: left; background: #F6EEE2; padding: 0.7em 1em; font-weight: 600; color: #6E1A10; border-bottom: 2px solid #EBDFCE; }
+.prose-aipan td { padding: 0.7em 1em; border-bottom: 1px solid #EBDFCE; }
+.prose-aipan figure { margin: 2em 0; }
+.prose-aipan figcaption { font-family: 'Hanken Grotesk', sans-serif; font-size: 0.85rem; color: #A8907E; text-align: center; margin-top: 0.6em; }
