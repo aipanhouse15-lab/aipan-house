@@ -1,12 +1,14 @@
 import './globals.css'
+import { SITE } from '@/lib/site'
 
 export const metadata = {
-  metadataBase: new URL('https://aipanhouse.com'),
+  metadataBase: new URL(SITE.url),
   title: { default: 'Aipan House — Kumaoni Art, Festivals & Heritage', template: '%s · Aipan House' },
-  description:
-    'The home of Kumaoni art, festivals and heritage — the folk art of Aipan, the festivals of Uttarakhand, and the living traditions of the Kumaon Himalaya.',
-  openGraph: { type: 'website', siteName: 'Aipan House', locale: 'en_IN' },
-  robots: { index: false, follow: false }, // flip at launch
+  description: SITE.description,
+  openGraph: { type: 'website', siteName: SITE.name, locale: 'en_IN', url: SITE.url, title: 'Aipan House — Kumaoni Art, Festivals & Heritage', description: SITE.description },
+  twitter: { card: 'summary_large_image', title: 'Aipan House', description: SITE.description },
+  alternates: { canonical: SITE.url },
+  robots: { index: true, follow: true },  // live & indexable
 }
 
 export default function RootLayout({ children }) {
