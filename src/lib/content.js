@@ -35,3 +35,29 @@ export function festivalByMonth() {
   fests.forEach((f) => { if (f.monthIndex != null) map[f.monthIndex] = f })
   return map
 }
+
+// Extract FAQ Q&A pairs from the MDX body (### under the "## FAQ" section)
+export function extractFaqs(content) {
+  if (!content) return []
+  const faqIdx = content.search(/^##\s+FAQ\s*$/m)
+  if (faqIdx === -1) return []
+  const section = content.slice(faqIdx)
+  const faqs = []
+  // match ### question then the text until the next ### or ## or end
+  const re = /^###\s+(.+?)\s*$([\s\S]*?)(?=^###\s|^##\s|\Z)/gm
+  let m
+  while ((m = re.exec(section)) !== null) {
+    const q = m[1].trim()
+    // first non-empty paragraph as the answer, strip markdown links/emphasis
+    const ans = m[2]
+      .split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean)[0] || ''
+    const clean = ans
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+      .replace(/\*\*([^*]+)\*\*/g, '$1')
+      .replace(/[*_`]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+    if (q && clean) faqs.push({ q, a: clean })
+  }
+  return faqs
+}

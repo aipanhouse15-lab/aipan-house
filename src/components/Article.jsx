@@ -3,6 +3,8 @@ import SiteHeader from './SiteHeader'
 import SiteFooter from './SiteFooter'
 import Motif from './Motif'
 import Mdx from './Mdx'
+import Schema from './Schema'
+import { extractFaqs } from '@/lib/content'
 
 // derive a darker shade for headings from the accent (simple darken)
 function darken(hex, amt = 0.7) {
@@ -23,9 +25,11 @@ export default function Article({ data, toc = [], facts = [], motif = 'lotus' })
   const accentDeep = darken(accent)
   const accentSoft = softTint(accent)
   const themeVars = { '--accent': accent, '--accent-deep': accentDeep, '--accent-soft': accentSoft }
+  const faqs = extractFaqs(data.content)
 
   return (
     <div style={themeVars}>
+      <Schema data={data} faqs={faqs} pillar={data.pillar} />
       <SiteHeader />
 
       {/* colored title strip */}
