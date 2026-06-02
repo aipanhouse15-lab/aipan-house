@@ -1,82 +1,85 @@
 import Link from 'next/link'
-import { Padma } from '@/components/Motifs'
-import { getAllInPillar } from '@/lib/content'
+import AlmanacWheel from '@/components/AlmanacWheel'
+import ElevationTracker from '@/components/ElevationTracker'
+import SiteFooter from '@/components/SiteFooter'
+
+function Ridge({ d, fill, opacity = 1 }) {
+  return (
+    <svg className="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 200" preserveAspectRatio="none">
+      <path d={d} fill={fill} opacity={opacity} />
+    </svg>
+  )
+}
 
 export default function Home() {
-  const aipan = getAllInPillar('aipan').slice(0, 3)
-  const festivals = getAllInPillar('festivals').slice(0, 3)
-
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-content items-center gap-10 px-6 py-20 md:grid-cols-[1.1fr_0.9fr] md:py-28">
-          <div className="animate-rise-in">
-            <span className="inline-flex items-center gap-2 rounded-pill border border-geru/20 px-4 py-1.5 font-sans text-xs font-medium uppercase tracking-wider text-geru">
-              <span className="h-1.5 w-1.5 rotate-45 bg-gold" />
-              Kumaon · Uttarakhand
-            </span>
-            <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-geru-deep md:text-6xl">
-              The living art &amp; heritage of the Kumaon Himalaya
-            </h1>
-            <p className="mt-6 max-w-xl font-body text-lg leading-relaxed text-clay">
-              The definitive English-language home for Aipan folk art, the festivals of
-              Uttarakhand, and the traditions that carry them — written from the hills themselves.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/aipan" className="rounded-pill bg-geru px-6 py-3 font-sans text-sm font-semibold text-rice transition-colors hover:bg-geru-deep">
-                Explore Aipan
-              </Link>
-              <Link href="/festivals" className="rounded-pill border border-geru/30 px-6 py-3 font-sans text-sm font-semibold text-geru transition-colors hover:bg-geru/5">
-                Festivals of Uttarakhand
-              </Link>
-            </div>
-          </div>
-          <div className="hidden md:block">
-            <Padma size={360} />
+      <header className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-9 py-4" style={{ mixBlendMode: 'difference', color: '#fff' }}>
+        <span className="font-display text-xl">Aipan House</span>
+        <span className="font-mono text-[11px] tracking-widest">SCROLL TO CLIMB ↑</span>
+      </header>
+      <ElevationTracker />
+
+      {/* VALLEY */}
+      <section id="valley" className="relative flex min-h-screen items-center overflow-hidden px-[8vw]"
+        style={{ background: 'linear-gradient(180deg,#cdd8c4,#b3c2a0)', color: '#2f3a26' }}>
+        <Ridge d="M0,200 L0,120 C300,90 500,140 760,120 C1000,102 1200,150 1440,110 L1440,200Z" fill="#9caf86" opacity={0.6} />
+        <div className="relative z-10 max-w-xl">
+          <div className="font-mono text-xs uppercase tracking-[.16em] opacity-75">Elevation 1,200 m · the valley floor</div>
+          <h2 className="mt-3 font-display text-5xl leading-[1.05] md:text-6xl">Where the day <em>begins</em>.</h2>
+          <p className="mt-4 text-lg leading-relaxed opacity-90">Terraced fields, the kitchen fire, the food that names a season. Start in the valley — the everyday life and cuisine of Kumaon.</p>
+          <div className="mt-6 flex flex-wrap gap-2.5">
+            <Link href="/traditions" className="rounded-full border border-current px-4 py-2 text-sm font-semibold">Kumaoni food</Link>
+            <Link href="/traditions" className="rounded-full border border-current px-4 py-2 text-sm font-semibold">Daily life</Link>
           </div>
         </div>
       </section>
 
-      {/* Pillars */}
-      <section className="mx-auto max-w-content px-6 py-8">
-        <div className="grid gap-5 md:grid-cols-3">
-          {[
-            { t: 'Aipan, decoded', d: 'Every motif, meaning, and method — deeper than anywhere on the web.', h: '/aipan' },
-            { t: 'Festivals', d: 'Harela, Phool Dei, Kumaoni Holi — the Kumaoni year, festival by festival.', h: '/festivals' },
-            { t: 'Traditions', d: 'Food, attire, language and the texture of Kumaoni life.', h: '/traditions' },
-          ].map((p) => (
-            <Link key={p.h} href={p.h} className="group rounded-md border border-sand bg-cream p-7 shadow-soft transition-all hover:-translate-y-1 hover:shadow-hover">
-              <span className="mb-4 block h-3 w-3 rotate-45 bg-gold" />
-              <h2 className="font-display text-2xl font-semibold text-geru-deep group-hover:text-geru">{p.t}</h2>
-              <p className="mt-2 font-body text-sm leading-relaxed text-clay">{p.d}</p>
-            </Link>
-          ))}
+      {/* VILLAGE — almanac wheel */}
+      <section id="village" className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-[6vw] py-24"
+        style={{ background: 'linear-gradient(180deg,#e7d9bf,#dcc59c)', color: '#42301c' }}>
+        <Ridge d="M0,200 L0,150 C320,110 520,160 780,138 C1040,118 1240,166 1440,130 L1440,200Z" fill="#c9ad79" opacity={0.55} />
+        <div className="relative z-10 max-w-2xl text-center">
+          <div className="font-mono text-xs uppercase tracking-[.16em] opacity-75">Elevation 1,800 m · the village</div>
+          <h2 className="mt-2 font-display text-4xl leading-tight md:text-5xl">The wheel of the <em>Kumaoni year</em>.</h2>
+          <p className="mx-auto mt-3.5 max-w-md text-base leading-relaxed">Up in the village, the calendar comes alive. Turn the year to find each festival in its season — what's sown, sung, cooked and drawn.</p>
+        </div>
+        <div className="relative z-10 mt-6 w-full">
+          <AlmanacWheel />
         </div>
       </section>
 
-      {/* Latest from Aipan + Festivals */}
-      {[{ items: aipan, title: 'From the Aipan archive', href: '/aipan' }, { items: festivals, title: 'Festivals of the Kumaoni year', href: '/festivals' }].map(
-        (block) =>
-          block.items.length > 0 && (
-            <section key={block.title} className="mx-auto max-w-content px-6 py-10">
-              <div className="mb-6 flex items-end justify-between">
-                <h2 className="font-display text-3xl font-semibold text-geru-deep">{block.title}</h2>
-                <Link href={block.href} className="font-sans text-sm font-medium text-geru hover:text-geru-deep">
-                  View all →
-                </Link>
-              </div>
-              <div className="grid gap-5 md:grid-cols-3">
-                {block.items.map((a) => (
-                  <Link key={a.slug} href={`/${a.pillar}/${a.slug}`} className="group rounded-md border border-sand bg-cream p-6 shadow-soft transition-all hover:-translate-y-1 hover:shadow-hover">
-                    <h3 className="font-display text-lg font-semibold leading-snug text-geru-deep group-hover:text-geru">{a.title}</h3>
-                    <p className="mt-2 font-body text-sm leading-relaxed text-clay">{a.excerpt}</p>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          )
-      )}
+      {/* TEMPLE */}
+      <section id="temple" className="relative flex min-h-screen items-center overflow-hidden px-[8vw]"
+        style={{ background: 'linear-gradient(180deg,#caa98e,#9E2B1E)', color: '#fbeee6' }}>
+        <Ridge d="M0,200 L0,150 C300,120 540,160 800,140 C1060,120 1260,160 1440,132 L1440,200Z" fill="#7e1f12" opacity={0.7} />
+        <div className="relative z-10 max-w-xl">
+          <div className="font-mono text-xs uppercase tracking-[.16em] opacity-75">Elevation 2,200 m · the temple threshold</div>
+          <h2 className="mt-3 font-display text-5xl leading-[1.05] md:text-6xl">Where the art is <em>drawn</em>.</h2>
+          <p className="mt-4 text-lg leading-relaxed opacity-90">At the threshold of the hill temple, the rice paste meets the red ground. This is Aipan — every motif and method, decoded in depth.</p>
+          <div className="mt-6 flex flex-wrap gap-2.5">
+            <Link href="/aipan" className="rounded-full border border-current px-4 py-2 text-sm font-semibold">What is Aipan?</Link>
+            <Link href="/aipan" className="rounded-full border border-current px-4 py-2 text-sm font-semibold">The motifs</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* PEAK */}
+      <section id="peak" className="relative flex min-h-screen items-center overflow-hidden px-[8vw]"
+        style={{ background: 'linear-gradient(180deg,#dfeaf2,#aebfca)', color: '#23323e' }}>
+        <Ridge d="M0,200 L0,160 C300,130 540,170 800,150 C1060,128 1260,168 1440,142 L1440,200Z" fill="#93a6b3" opacity={0.6} />
+        <div className="relative z-10 max-w-xl">
+          <div className="font-mono text-xs uppercase tracking-[.16em] opacity-75">Elevation 3,500 m · the high snows</div>
+          <h2 className="mt-3 font-display text-5xl leading-[1.05] md:text-6xl">Where the stories <em>live</em>.</h2>
+          <p className="mt-4 text-lg leading-relaxed opacity-90">Above the tree line are the gods and the old tales — Nanda Devi, the sacred peaks, the myths the festivals remember.</p>
+          <div className="mt-6 flex flex-wrap gap-2.5">
+            <Link href="/traditions" className="rounded-full border border-current px-4 py-2 text-sm font-semibold">Sacred geography</Link>
+            <Link href="/about" className="rounded-full border border-current px-4 py-2 text-sm font-semibold">Why Kumaon</Link>
+          </div>
+        </div>
+      </section>
+
+      <SiteFooter />
     </>
   )
 }
