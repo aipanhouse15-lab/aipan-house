@@ -6,11 +6,11 @@ import Motif from './Motif'
 export default function PillarList({ title, intro, pillar, items }) {
   return (
     <>
-      <SiteHeader />
-      <section className="border-b border-[#ededed] bg-[#FBFAF7] px-6 py-14 md:px-10">
+      <section className="relative px-6 pb-12 pt-28 md:px-10 md:pt-32" style={{ background: '#9E2B1E', color: '#FBF6EE' }}>
+        <SiteHeader transparent />
         <div className="mx-auto max-w-content">
-          <h1 className="font-head text-4xl font-extrabold tracking-tight text-geru md:text-5xl">{title}</h1>
-          <p className="mt-3 max-w-2xl font-body text-lg leading-relaxed text-slate-soft">{intro}</p>
+          <h1 className="font-head text-4xl font-extrabold tracking-tight md:text-5xl">{title}</h1>
+          <p className="mt-3 max-w-2xl font-body text-lg leading-relaxed opacity-90">{intro}</p>
         </div>
       </section>
       <section className="mx-auto max-w-content px-6 py-12 md:px-10">

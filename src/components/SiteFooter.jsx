@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Motif from './Motif'
+import Logo from './Logo'
 
 export default function SiteFooter() {
   const year = new Date().getFullYear()
@@ -15,9 +16,7 @@ export default function SiteFooter() {
           {/* brand */}
           <div>
             <div className="flex items-center gap-2.5">
-              <span className="grid h-8 w-8 place-items-center rounded-full border border-rice/30">
-                <Motif shape="lotus" size={20} stroke="#FBF6EE" sw={3} />
-              </span>
+              <Logo variant="reverse" size={36} />
               <span className="font-head text-lg font-extrabold text-rice">Aipan House</span>
             </div>
             <p className="mt-4 max-w-xs font-body text-sm leading-relaxed text-slate-mute">

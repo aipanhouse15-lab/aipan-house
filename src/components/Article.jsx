@@ -30,10 +30,10 @@ export default function Article({ data, toc = [], facts = [], motif = 'lotus' })
   return (
     <div style={themeVars}>
       <Schema data={data} faqs={faqs} pillar={data.pillar} />
-      <SiteHeader />
 
-      {/* colored title strip */}
-      <div className="px-6 pb-11 pt-9 md:px-10" style={{ background: accent, color: '#FBFDF8' }}>
+      {/* colored title strip — full-bleed, runs up behind the transparent header */}
+      <div className="relative px-6 pb-11 pt-28 md:px-10 md:pt-32" style={{ background: accent, color: '#FBFDF8' }}>
+        <SiteHeader transparent />
         <div className="mx-auto max-w-content">
           <div className="font-sans text-xs font-bold uppercase tracking-[.1em] opacity-85">{data.kicker}</div>
           <h1 className="mt-3 max-w-[18ch] font-head text-4xl font-extrabold leading-[1.0] tracking-tight md:text-5xl">{data.title}</h1>

@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import Logo from './Logo'
 
 const EXPLORE = [
   { label: 'Aipan — the folk art', href: '/aipan', desc: 'Motifs, meaning & method', shape: '◆' },
@@ -26,9 +27,7 @@ export default function HomeHeader() {
     <header className={`fixed left-0 right-0 top-0 z-50 transition-colors duration-300 ${solid ? 'border-b border-[#e9e4da] bg-white/92 backdrop-blur-md' : 'bg-gradient-to-b from-black/35 to-transparent'}`}>
       <div className="mx-auto flex max-w-content items-center justify-between px-6 py-3.5 md:px-10">
         <Link href="/" className="flex items-center gap-2.5 group">
-          <span className={`grid h-8 w-8 place-items-center rounded-full border ${solid ? 'border-geru/30' : 'border-white/50'}`}>
-            <span className={`h-2.5 w-2.5 rotate-45 transition-transform group-hover:rotate-[135deg] ${solid ? 'bg-geru' : 'bg-white'}`} />
-          </span>
+          <Logo variant={solid ? 'primary' : 'reverse'} size={34} className="transition-transform group-hover:scale-105" />
           <span className={`font-head text-lg font-extrabold tracking-tight ${solid ? 'text-geru' : 'text-white'}`}>Aipan House</span>
         </Link>
 
