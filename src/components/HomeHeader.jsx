@@ -23,7 +23,7 @@ export default function HomeHeader() {
   // solid white once scrolled; transparent (white text) over the hero
   const solid = scrolled
   return (
-    <header className={`fixed left-0 right-0 top-0 z-50 transition-colors duration-300 ${solid ? 'border-b border-[#e9e4da] bg-white/92 backdrop-blur-md' : 'bg-transparent'}`}>
+    <header className={`fixed left-0 right-0 top-0 z-50 transition-colors duration-300 ${solid ? 'border-b border-[#e9e4da] bg-white/92 backdrop-blur-md' : 'bg-gradient-to-b from-black/35 to-transparent'}`}>
       <div className="mx-auto flex max-w-content items-center justify-between px-6 py-3.5 md:px-10">
         <Link href="/" className="flex items-center gap-2.5 group">
           <span className={`grid h-8 w-8 place-items-center rounded-full border ${solid ? 'border-geru/30' : 'border-white/50'}`}>

@@ -4,7 +4,7 @@ import Motif from './Motif'
 export default function SiteFooter() {
   const year = new Date().getFullYear()
   return (
-    <footer className="relative mt-24 overflow-hidden bg-slate text-slate-mute">
+    <footer className="relative overflow-hidden bg-slate text-slate-mute">
       {/* ridge line */}
       <svg className="absolute left-0 top-0 w-full" viewBox="0 0 1440 80" preserveAspectRatio="none">
         <path d="M0,80 L180,40 L360,72 L560,36 L760,74 L960,40 L1180,74 L1380,44 L1440,64 L1440,80Z" fill="#1a2730" />
