@@ -34,20 +34,29 @@ export default function Article({ data, toc = [], facts = [], motif = 'lotus' })
       {/* colored title strip — full-bleed, runs up behind the transparent header */}
       <div className="relative px-6 pb-11 pt-28 md:px-10 md:pt-32" style={{ background: accent, color: '#FBFDF8' }}>
         <SiteHeader transparent />
-        <div className="mx-auto max-w-content">
-          <div className="font-sans text-xs font-bold uppercase tracking-[.1em] opacity-85">{data.kicker}</div>
-          <h1 className="mt-3 max-w-[18ch] font-head text-4xl font-extrabold leading-[1.0] tracking-tight md:text-5xl">{data.title}</h1>
-          {data.excerpt && <p className="mt-4 max-w-[60ch] text-lg italic leading-relaxed opacity-90">{data.excerpt}</p>}
-          <div className="mt-4 font-sans text-xs uppercase tracking-wide opacity-80">
-            By {data.author || 'Aipan House'} · {data.date} · {data.readingTime}
+        <div className={`mx-auto grid max-w-content items-center gap-10 ${data.hero ? 'md:grid-cols-[1.1fr_1fr]' : ''}`}>
+          <div>
+            <div className="font-sans text-xs font-bold uppercase tracking-[.1em] opacity-85">{data.kicker}</div>
+            <h1 className="mt-3 max-w-[18ch] font-head text-4xl font-extrabold leading-[1.0] tracking-tight md:text-5xl">{data.title}</h1>
+            {data.excerpt && <p className="mt-4 max-w-[52ch] text-lg italic leading-relaxed opacity-90">{data.excerpt}</p>}
+            <div className="mt-4 font-sans text-xs uppercase tracking-wide opacity-80">
+              By {data.author || 'Aipan House'} · {data.date} · {data.readingTime}
+            </div>
           </div>
+          {data.hero && (
+            <div className="hidden md:block">
+              <img src={data.hero} alt={data.heroAlt || data.title} loading="eager"
+                className="aspect-[4/3] w-full rounded-2xl object-cover shadow-[0_18px_50px_rgba(0,0,0,.22)]" />
+            </div>
+          )}
         </div>
       </div>
 
+      {/* hero on mobile — full width below banner */}
       {data.hero && (
-        <div className="mx-auto max-w-content px-6 md:px-10">
+        <div className="mx-auto max-w-content px-6 md:hidden">
           <img src={data.hero} alt={data.heroAlt || data.title} loading="eager"
-            className="-mt-6 aspect-[16/7] w-full rounded-2xl border border-[#e7e2da] object-cover shadow-[0_18px_50px_rgba(35,50,62,.18)]" />
+            className="-mt-6 aspect-[16/9] w-full rounded-2xl object-cover shadow-[0_18px_50px_rgba(35,50,62,.18)]" />
         </div>
       )}
 
