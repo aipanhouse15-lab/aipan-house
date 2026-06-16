@@ -32,14 +32,14 @@ export default function Article({ data, toc = [], facts = [], motif = 'lotus' })
       <Schema data={data} faqs={faqs} pillar={data.pillar} />
 
       {/* colored title strip — full-bleed, runs up behind the transparent header */}
-      <div className="relative px-6 pb-11 pt-28 md:px-10 md:pt-32" style={{ background: accent, color: '#FBFDF8' }}>
+      <div className="relative px-5 pb-9 pt-24 sm:px-6 md:px-10 md:pb-11 md:pt-32" style={{ background: accent, color: '#FBFDF8' }}>
         <SiteHeader transparent />
-        <div className={`mx-auto grid max-w-content items-center gap-10 ${data.hero ? 'md:grid-cols-[1.1fr_1fr]' : ''}`}>
+        <div className={`mx-auto grid max-w-content items-center gap-8 ${data.hero ? 'md:grid-cols-[1.1fr_1fr]' : ''}`}>
           <div>
-            <div className="font-sans text-xs font-bold uppercase tracking-[.1em] opacity-85">{data.kicker}</div>
-            <h1 className="mt-3 max-w-[18ch] font-head text-4xl font-extrabold leading-[1.0] tracking-tight md:text-5xl">{data.title}</h1>
-            {data.excerpt && <p className="mt-4 max-w-[52ch] text-lg italic leading-relaxed opacity-90">{data.excerpt}</p>}
-            <div className="mt-4 font-sans text-xs uppercase tracking-wide opacity-80">
+            <div className="font-sans text-[11px] font-bold uppercase tracking-[.1em] opacity-85">{data.kicker}</div>
+            <h1 className="mt-3 max-w-[18ch] font-head text-[2rem] font-extrabold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">{data.title}</h1>
+            {data.excerpt && <p className="mt-4 max-w-[52ch] text-base italic leading-relaxed opacity-90 md:text-lg">{data.excerpt}</p>}
+            <div className="mt-4 font-sans text-[11px] uppercase tracking-wide opacity-80">
               By {data.author || 'Aipan House'} · {data.date} · {data.readingTime}
             </div>
           </div>
@@ -54,14 +54,14 @@ export default function Article({ data, toc = [], facts = [], motif = 'lotus' })
 
       {/* hero on mobile — full width below banner */}
       {data.hero && (
-        <div className="mx-auto max-w-content px-6 md:hidden">
+        <div className="px-5 sm:px-6 md:hidden">
           <img src={data.hero} alt={data.heroAlt || data.title} loading="eager"
-            className="-mt-6 aspect-[16/9] w-full rounded-2xl object-cover shadow-[0_18px_50px_rgba(35,50,62,.18)]" />
+            className="-mt-5 aspect-[3/2] w-full rounded-xl object-cover shadow-[0_12px_30px_rgba(35,50,62,.18)]" />
         </div>
       )}
 
       {/* two-column layout */}
-      <div className="mx-auto grid max-w-content gap-12 px-6 pb-20 pt-11 md:grid-cols-[260px_1fr] md:px-10">
+      <div className="mx-auto grid max-w-content gap-10 px-5 pb-20 pt-10 sm:px-6 md:grid-cols-[260px_1fr] md:gap-12 md:px-10 md:pt-11">
         <aside className="order-2 md:order-1">
           <div className="md:sticky md:top-8">
             {toc.length > 0 && (
@@ -98,7 +98,7 @@ export default function Article({ data, toc = [], facts = [], motif = 'lotus' })
           </div>
         </aside>
 
-        <article className="order-1 max-w-reading md:order-2">
+        <article className="order-1 w-full min-w-0 max-w-reading md:order-2">
           <Mdx source={data.content} accent={accent} />
         </article>
       </div>

@@ -23,6 +23,8 @@ export default function Mdx({ source, accent }) {
     MotifRow: withAccent(MotifRow),
     Timeline: withAccent(Timeline),
     Callout, Motif, Photo, PhotoPair,
+    table: ({ children }) => <div className="my-6 w-full overflow-x-auto"><table>{children}</table></div>,
+    img: (p) => <img {...p} className="w-full rounded-xl" loading="lazy" />,
     h2: ({ children }) => <h2 id={slug(children)}>{children}</h2>,
     h3: ({ children }) => <h3 id={slug(children)}>{children}</h3>,
   }

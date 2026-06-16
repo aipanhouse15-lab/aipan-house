@@ -5,7 +5,16 @@
 @tailwind utilities;
 
 html { scroll-behavior: smooth; }
+html, body { max-width: 100%; overflow-x: hidden; }
 body { background: #fff; color: #23323e; font-family: 'Spectral', Georgia, serif; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; }
+.prose-article table { min-width: 480px; }
+@media (max-width: 640px) {
+  .prose-article { font-size: 17px; line-height: 1.7; }
+  .prose-article > p:first-child { font-size: 18px; }
+  .prose-article h2 { font-size: 24px; }
+  .prose-article h3 { font-size: 19px; }
+}
 
 /* ---- MDX article prose: themed by --accent / --accent-deep / --accent-soft ---- */
 .prose-article { font-family: 'Spectral', serif; color: #2b3128; font-size: 18px; line-height: 1.8; }
