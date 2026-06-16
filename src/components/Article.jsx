@@ -44,6 +44,13 @@ export default function Article({ data, toc = [], facts = [], motif = 'lotus' })
         </div>
       </div>
 
+      {data.hero && (
+        <div className="mx-auto max-w-content px-6 md:px-10">
+          <img src={data.hero} alt={data.heroAlt || data.title} loading="eager"
+            className="-mt-6 aspect-[16/7] w-full rounded-2xl border border-[#e7e2da] object-cover shadow-[0_18px_50px_rgba(35,50,62,.18)]" />
+        </div>
+      )}
+
       {/* two-column layout */}
       <div className="mx-auto grid max-w-content gap-12 px-6 pb-20 pt-11 md:grid-cols-[260px_1fr] md:px-10">
         <aside className="order-2 md:order-1">

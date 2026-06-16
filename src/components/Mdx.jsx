@@ -2,6 +2,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import Motif from './Motif'
 import { Plate, TwoUp, Step, MotifRow, Timeline } from './Visual'
+import { Photo, PhotoPair } from './Photo'
 
 function slug(children) {
   return String(Array.isArray(children) ? children.join('') : children)
@@ -21,7 +22,7 @@ export default function Mdx({ source, accent }) {
     Step: withAccent(Step),
     MotifRow: withAccent(MotifRow),
     Timeline: withAccent(Timeline),
-    Callout, Motif,
+    Callout, Motif, Photo, PhotoPair,
     h2: ({ children }) => <h2 id={slug(children)}>{children}</h2>,
     h3: ({ children }) => <h3 id={slug(children)}>{children}</h3>,
   }
