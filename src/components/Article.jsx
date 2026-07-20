@@ -4,7 +4,6 @@ import SiteFooter from './SiteFooter'
 import Motif from './Motif'
 import Mdx from './Mdx'
 import Schema from './Schema'
-import NewsletterBlock from './NewsletterBlock'
 import { extractFaqs } from '@/lib/content'
 
 // derive a darker shade for headings from the accent (simple darken)
@@ -101,9 +100,6 @@ export default function Article({ data, toc = [], facts = [], motif = 'lotus' })
 
         <article className="order-1 w-full min-w-0 max-w-reading md:order-2">
           <Mdx source={data.content} accent={accent} />
-          <div className="mt-12">
-            <NewsletterBlock source={`article-${data.slug}`} accent={accent} />
-          </div>
         </article>
       </div>
 
