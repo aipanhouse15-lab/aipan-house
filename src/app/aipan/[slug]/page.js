@@ -8,7 +8,13 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const a = getOne('aipan', params.slug)
   if (!a) return {}
-  return { title: a.title, description: a.excerpt, openGraph: { title: a.title, description: a.excerpt, type: 'article' } }
+  const url = `/aipan/${params.slug}`
+  return {
+    title: a.title,
+    description: a.excerpt,
+    alternates: { canonical: url },
+    openGraph: { title: a.title, description: a.excerpt, type: 'article', url, ...(a.hero ? { images: [a.hero] } : {}) },
+  }
 }
 
 export default function AipanArticle({ params }) {

@@ -7,7 +7,6 @@ export const metadata = {
   description: SITE.description,
   openGraph: { type: 'website', siteName: SITE.name, locale: 'en_IN', url: SITE.url, title: 'Aipan House — Kumaoni Art, Festivals & Heritage', description: SITE.description },
   twitter: { card: 'summary_large_image', title: 'Aipan House', description: SITE.description },
-  alternates: { canonical: SITE.url },
   robots: { index: true, follow: true },  // live & indexable
   manifest: '/site.webmanifest',
   icons: {

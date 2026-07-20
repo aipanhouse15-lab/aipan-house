@@ -1,7 +1,7 @@
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 
-export const metadata = { title: 'About & Methodology', description: 'Who writes Aipan House, and how — our sourcing and commitment to accurate Kumaoni cultural documentation.' }
+export const metadata = { alternates: { canonical: '/about' }, title: 'About & Methodology', description: 'Who writes Aipan House, and how — our sourcing and commitment to accurate Kumaoni cultural documentation.' }
 
 export default function About() {
   return (

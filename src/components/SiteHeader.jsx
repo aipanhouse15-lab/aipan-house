@@ -57,6 +57,10 @@ export default function SiteHeader({ transparent = false }) {
               </div>
             )}
           </div>
+          <Link href="/shop" className={`flex items-center gap-1.5 font-sans text-[14px] font-semibold ${navTxt}`}>
+            Shop
+            <span className="rounded-full bg-white/90 px-1.5 py-0.5 font-sans text-[9px] font-bold uppercase tracking-wide text-geru">Soon</span>
+          </Link>
           <Link href="/about" className={`font-sans text-[14px] font-semibold ${navTxt}`}>About</Link>
           <Link href="/contact" className={`rounded-full px-5 py-2 font-sans text-[13px] font-semibold transition-colors ${contactCls}`}>Contact us</Link>
         </nav>
@@ -73,7 +77,8 @@ export default function SiteHeader({ transparent = false }) {
           {EXPLORE.map((e) => (
             <Link key={e.href} href={e.href} onClick={() => setOpen(false)} className={`block py-2.5 font-head text-[15px] font-bold ${light ? 'text-white' : 'text-ink'}`}>{e.label}</Link>
           ))}
-          <Link href="/about" onClick={() => setOpen(false)} className={`block border-t py-2.5 font-sans text-[14px] font-semibold ${light ? 'border-white/15 text-white/90' : 'border-[#f2efe9] text-slate-soft'}`}>About</Link>
+                    <Link href="/shop" onClick={() => setOpen(false)} className={`block border-t py-2.5 font-sans text-[14px] font-semibold ${light ? 'border-white/15 text-white/90' : 'border-[#f2efe9] text-slate-soft'}`}>Shop <span className="ml-1 text-[10px] font-bold uppercase opacity-70">soon</span></Link>
+<Link href="/about" onClick={() => setOpen(false)} className={`block border-t py-2.5 font-sans text-[14px] font-semibold ${light ? 'border-white/15 text-white/90' : 'border-[#f2efe9] text-slate-soft'}`}>About</Link>
           <Link href="/contact" onClick={() => setOpen(false)} className="mt-2 block rounded-full bg-white px-5 py-2.5 text-center font-sans text-[13px] font-semibold text-geru">Contact us</Link>
         </div>
       )}

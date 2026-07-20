@@ -8,7 +8,13 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const a = getOne('traditions', params.slug)
   if (!a) return {}
-  return { title: a.title, description: a.excerpt, openGraph: { title: a.title, description: a.excerpt, type: 'article' } }
+  const url = `/traditions/${params.slug}`
+  return {
+    title: a.title,
+    description: a.excerpt,
+    alternates: { canonical: url },
+    openGraph: { title: a.title, description: a.excerpt, type: 'article', url, ...(a.hero ? { images: [a.hero] } : {}) },
+  }
 }
 
 export default function TraditionsArticle({ params }) {

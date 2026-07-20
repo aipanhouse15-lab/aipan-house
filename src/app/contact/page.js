@@ -2,7 +2,7 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import Motif from '@/components/Motif'
 
-export const metadata = { title: 'Contact', description: 'Get in touch with Aipan House — corrections, contributions and Kumaoni cultural stories.' }
+export const metadata = { alternates: { canonical: '/contact' }, title: 'Contact', description: 'Get in touch with Aipan House — corrections, contributions and Kumaoni cultural stories.' }
 
 export default function Contact() {
   return (

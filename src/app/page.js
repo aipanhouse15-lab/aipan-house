@@ -13,6 +13,8 @@ function Ridge({ d, fill, opacity = 1 }) {
   )
 }
 
+export const metadata = { alternates: { canonical: '/' } }
+
 export default function Home() {
   return (
     <>
