@@ -14,6 +14,7 @@ export function generateMetadata({ params }) {
     description: a.excerpt,
     alternates: { canonical: url },
     openGraph: { title: a.title, description: a.excerpt, type: 'article', url, ...(a.hero ? { images: [a.hero] } : {}) },
+    twitter: { card: 'summary_large_image', title: a.title, description: a.excerpt, ...(a.hero ? { images: [a.hero] } : {}) },
   }
 }
 

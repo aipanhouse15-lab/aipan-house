@@ -20,10 +20,38 @@ export const metadata = {
   },
 }
 
+const sameAs = Object.values(SITE.social || {}).filter(Boolean)
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${SITE.url}/#organization`,
+  name: 'Aipan House',
+  url: SITE.url,
+  logo: { '@type': 'ImageObject', url: `${SITE.url}/icon-512.png` },
+  description: SITE.description,
+  address: { '@type': 'PostalAddress', addressLocality: 'Dehradun', addressRegion: 'Uttarakhand', addressCountry: 'IN' },
+  knowsAbout: ['Aipan art', 'Kumaoni festivals', 'Kumaon', 'Uttarakhand folk art', 'Harela', 'GI-certified crafts'],
+  ...(sameAs.length ? { sameAs } : {}),
+}
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE.url}/#website`,
+  name: 'Aipan House',
+  url: SITE.url,
+  description: SITE.description,
+  inLanguage: 'en-IN',
+  publisher: { '@id': `${SITE.url}/#organization` },
+}
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+        {children}
+      </body>
     </html>
   )
 }

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Motif from './Motif'
 import Logo from './Logo'
+import { SITE } from '@/lib/site'
 
 export default function SiteFooter() {
   const year = new Date().getFullYear()
@@ -60,8 +61,8 @@ export default function SiteFooter() {
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 font-mono text-[11px] uppercase tracking-wider md:flex-row md:items-center">
           <span>© {year} Aipan House · Tallyard Ventures · Dehradun, Uttarakhand</span>
           <span className="flex gap-5">
-            <a href="https://instagram.com" className="hover:text-rice">Instagram</a>
-            <a href="https://pinterest.com" className="hover:text-rice">Pinterest</a>
+            {SITE.social.instagram && <a href={SITE.social.instagram} target="_blank" rel="noopener" className="hover:text-rice">Instagram</a>}
+            {SITE.social.pinterest && <a href={SITE.social.pinterest} target="_blank" rel="noopener" className="hover:text-rice">Pinterest</a>}
           </span>
         </div>
       </div>

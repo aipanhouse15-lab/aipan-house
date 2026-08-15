@@ -28,8 +28,8 @@ export default function Home() {
         <div className="relative z-10 grid w-full items-center gap-8 md:grid-cols-2">
           <div className="max-w-xl">
             <div className="font-mono text-xs uppercase tracking-[.16em] opacity-75">Elevation 1,200 m · the valley floor</div>
-            <h2 className="mt-3 font-display text-5xl leading-[1.05] md:text-6xl">Where the day <em>begins</em>.</h2>
-            <p className="mt-4 text-lg leading-relaxed opacity-90">Terraced fields, the kitchen fire, the food that names a season. Start in the valley — the everyday life and cuisine of Kumaon.</p>
+            <h1 className="mt-3 font-display text-5xl leading-[1.05] md:text-6xl">The living heritage of <em>Kumaon</em>.</h1>
+            <p className="mt-4 text-lg leading-relaxed opacity-90">Aipan House documents the art, festivals and traditions of the Kumaon Himalaya — Aipan, the GI-certified rice-paste folk art of Uttarakhand, and the festival year it belongs to: Harela, Phool Dei, Ghee Sankranti, Nanda Ashtami, Ghughutiya and the long Kumaoni Holi. Start in the valley, where the day begins.</p>
             <div className="mt-6 flex flex-wrap gap-2.5">
               <Link href="/traditions" className="rounded-full border border-current px-4 py-2 text-sm font-semibold">Kumaoni food</Link>
               <Link href="/traditions" className="rounded-full border border-current px-4 py-2 text-sm font-semibold">Daily life</Link>
@@ -85,7 +85,7 @@ export default function Home() {
             <h2 className="mt-3 font-display text-5xl leading-[1.05] md:text-6xl">Where the stories <em>live</em>.</h2>
             <p className="mt-4 text-lg leading-relaxed opacity-90">Above the tree line are the gods and the old tales — Nanda Devi, the sacred peaks, the myths the festivals remember.</p>
             <div className="mt-6 flex flex-wrap gap-2.5">
-              <Link href="/traditions" className="rounded-full border border-current px-4 py-2 text-sm font-semibold">Sacred geography</Link>
+              <Link href="/festivals/nanda-ashtami" className="rounded-full border border-current px-4 py-2 text-sm font-semibold">Nanda Devi</Link>
               <Link href="/about" className="rounded-full border border-current px-4 py-2 text-sm font-semibold">Why Kumaon</Link>
             </div>
           </div>

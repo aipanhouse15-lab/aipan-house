@@ -9,13 +9,13 @@ const MONTHS = [
   { m: 'JETH', f: '', d: 'The dry heat before the rains — fields prepared.' },
   { m: 'ASARH', f: '', d: 'First clouds gather over the high ridges.' },
   { m: 'SHRAVAN', f: 'Harela', slug: 'harela', d: 'Seven grains sown; the Kumaoni new year turns green.' },
-  { m: 'BHADO', f: 'Ghee Sankranti', slug: null, d: 'Olgia — a harvest gratitude of ghee-rich food.' },
+  { m: 'BHADO', f: 'Ghee Sankranti', slug: 'ghee-sankranti', d: 'Olgia — a harvest gratitude of ghee-rich food.' },
   { m: 'ASOJ', f: 'Khatarua', slug: null, d: 'A seasonal bonfire marking the harvest.' },
   { m: 'KARTIK', f: 'Egaas Bagwal', slug: null, d: 'Diwali, eleven days later, with Bhailo fire-twirling.' },
   { m: 'MANGSIR', f: '', d: 'The cold settles; weddings and home rites begin.' },
   { m: 'POUSH', f: '', d: 'Deep winter in the hills, hearth season.' },
-  { m: 'MAGH', f: 'Uttarayani', slug: null, d: 'Ghughutia — necklaces of sweet fried flour for the crows.' },
-  { m: 'PHAGUN', f: 'Kumaoni Holi', slug: null, d: 'Baithki and Khari — the long musical Holi of Kumaon.' },
+  { m: 'MAGH', f: 'Uttarayani', slug: 'ghughutiya', d: 'Ghughutia — necklaces of sweet fried flour for the crows.' },
+  { m: 'PHAGUN', f: 'Kumaoni Holi', slug: 'kumaoni-holi', d: 'Baithki and Khari — the long musical Holi of Kumaon.' },
 ]
 const cx = 300, cy = 300, rO = 270, rI = 140
 const pol = (r, a) => [cx + r * Math.cos(a), cy + r * Math.sin(a)]
