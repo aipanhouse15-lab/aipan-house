@@ -41,10 +41,12 @@ export function extractFaqs(content) {
   if (!content) return []
   const faqIdx = content.search(/^##\s+FAQ\s*$/m)
   if (faqIdx === -1) return []
-  const section = content.slice(faqIdx)
+  // Append a sentinel heading so the final Q&A has a terminator to match against.
+  // (JS regex has no \Z — without this, the last FAQ was silently dropped from schema.)
+  const section = content.slice(faqIdx) + '\n## '
   const faqs = []
-  // match ### question then the text until the next ### or ## or end
-  const re = /^###\s+(.+?)\s*$([\s\S]*?)(?=^###\s|^##\s|\Z)/gm
+  // match ### question then the text until the next ### or ##
+  const re = /^###\s+(.+?)\s*$([\s\S]*?)(?=^###\s|^##\s)/gm
   let m
   while ((m = re.exec(section)) !== null) {
     const q = m[1].trim()
