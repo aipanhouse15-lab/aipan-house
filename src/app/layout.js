@@ -48,6 +48,12 @@ const websiteSchema = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* Fonts are @imported in globals.css, which chains css -> googleapis -> gstatic.
+            Preconnecting shaves the handshake off that critical path. */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body>
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-CTGHFB9Y82" strategy="afterInteractive" />
         <Script id="ga4" strategy="afterInteractive">

@@ -3,6 +3,7 @@ import remarkGfm from 'remark-gfm'
 import Motif from './Motif'
 import { Plate, TwoUp, Step, MotifRow, Timeline } from './Visual'
 import { Photo, PhotoPair } from './Photo'
+import ResponsiveImg from './ResponsiveImg'
 
 function slug(children) {
   return String(Array.isArray(children) ? children.join('') : children)
@@ -24,7 +25,7 @@ export default function Mdx({ source, accent }) {
     Timeline: withAccent(Timeline),
     Callout, Motif, Photo, PhotoPair,
     table: ({ children }) => <div className="my-6 w-full overflow-x-auto"><table>{children}</table></div>,
-    img: (p) => <img {...p} className="w-full rounded-xl" loading="lazy" />,
+    img: (p) => <ResponsiveImg src={p.src} alt={p.alt || ''} className="h-auto w-full rounded-xl" />,
     h2: ({ children }) => <h2 id={slug(children)}>{children}</h2>,
     h3: ({ children }) => <h3 id={slug(children)}>{children}</h3>,
   }

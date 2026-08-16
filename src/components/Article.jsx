@@ -3,6 +3,7 @@ import SiteHeader from './SiteHeader'
 import SiteFooter from './SiteFooter'
 import Motif from './Motif'
 import Mdx from './Mdx'
+import ResponsiveImg from './ResponsiveImg'
 import Schema from './Schema'
 import { extractFaqs } from '@/lib/content'
 
@@ -45,7 +46,8 @@ export default function Article({ data, toc = [], facts = [], motif = 'lotus' })
           </div>
           {data.hero && (
             <div className="hidden md:block">
-              <img src={data.hero} alt={data.heroAlt || data.title} loading="eager"
+              <ResponsiveImg src={data.hero} alt={data.heroAlt || data.title} priority
+                sizes="(max-width: 768px) 100vw, 520px"
                 className="aspect-[4/3] w-full rounded-2xl object-cover shadow-[0_18px_50px_rgba(0,0,0,.22)]" />
             </div>
           )}
@@ -55,7 +57,8 @@ export default function Article({ data, toc = [], facts = [], motif = 'lotus' })
       {/* hero on mobile — full width below banner */}
       {data.hero && (
         <div className="px-5 sm:px-6 md:hidden">
-          <img src={data.hero} alt={data.heroAlt || data.title} loading="eager"
+          <ResponsiveImg src={data.hero} alt={data.heroAlt || data.title} priority
+            sizes="100vw"
             className="-mt-5 aspect-[3/2] w-full rounded-xl object-cover shadow-[0_12px_30px_rgba(35,50,62,.18)]" />
         </div>
       )}
