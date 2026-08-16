@@ -2,21 +2,24 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
-// 12 Kumaoni months; festivals carry a slug to link out
+// 12 Kumaoni months. `slug` links to a festival article; `href` links anywhere
+// (used for festivals without their own article yet — they point at the calendar).
 const MONTHS = [
   { m: 'CHAITRA', f: 'Phool Dei', slug: 'phool-dei', d: 'Children scatter spring flowers on every threshold.' },
-  { m: 'BAISAKH', f: 'Bikhauti', slug: null, d: 'The Syalde fair and the spring bathing rites.' },
+  { m: 'BAISAKH', f: 'Bikhauti', slug: 'bikhauti', d: 'The Syalde fair and the spring bathing rites.' },
   { m: 'JETH', f: '', d: 'The dry heat before the rains — fields prepared.' },
   { m: 'ASARH', f: '', d: 'First clouds gather over the high ridges.' },
   { m: 'SHRAVAN', f: 'Harela', slug: 'harela', d: 'Seven grains sown; the Kumaoni new year turns green.' },
   { m: 'BHADO', f: 'Ghee Sankranti', slug: 'ghee-sankranti', d: 'Olgia — a harvest gratitude of ghee-rich food.' },
-  { m: 'ASOJ', f: 'Khatarua', slug: null, d: 'A seasonal bonfire marking the harvest.' },
-  { m: 'KARTIK', f: 'Egaas Bagwal', slug: null, d: 'Diwali, eleven days later, with Bhailo fire-twirling.' },
+  { m: 'ASOJ', f: 'Khatarua', slug: 'khatarua', d: 'A seasonal bonfire marking the harvest.' },
+  { m: 'KARTIK', f: 'Egaas Bagwal', slug: 'egaas-bagwal', d: 'Diwali, eleven days later, with Bhailo fire-twirling.' },
   { m: 'MANGSIR', f: '', d: 'The cold settles; weddings and home rites begin.' },
   { m: 'POUSH', f: '', d: 'Deep winter in the hills, hearth season.' },
   { m: 'MAGH', f: 'Uttarayani', slug: 'ghughutiya', d: 'Ghughutia — necklaces of sweet fried flour for the crows.' },
   { m: 'PHAGUN', f: 'Kumaoni Holi', slug: 'kumaoni-holi', d: 'Baithki and Khari — the long musical Holi of Kumaon.' },
 ]
+const linkFor = (m) => (m.slug ? `/festivals/${m.slug}` : m.href || null)
+
 const cx = 300, cy = 300, rO = 270, rI = 140
 const pol = (r, a) => [cx + r * Math.cos(a), cy + r * Math.sin(a)]
 
@@ -65,9 +68,9 @@ export default function AlmanacWheel() {
             <>
               <div className="mt-1.5 font-display text-2xl leading-tight text-[#3a2a18]">{mo.f}</div>
               <div className="mt-2 text-xs leading-snug text-[#6a5436]">{mo.d}</div>
-              {mo.slug && (
-                <Link href={`/festivals/${mo.slug}`} className="pointer-events-auto mt-3 inline-block rounded-full border border-[#c9a06a] px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wider text-geru hover:bg-geru hover:text-rice">
-                  Read the festival →
+              {linkFor(mo) && (
+                <Link href={linkFor(mo)} className="pointer-events-auto mt-3 inline-block rounded-full border border-[#c9a06a] px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wider text-geru hover:bg-geru hover:text-rice">
+                  {mo.slug ? 'Read the festival →' : 'See it in the calendar →'}
                 </Link>
               )}
             </>
@@ -84,8 +87,8 @@ export default function AlmanacWheel() {
       <ul className="w-full max-w-sm divide-y divide-[#e3d6bf] sm:hidden">
         {MONTHS.filter((m) => m.f).map((m) => (
           <li key={m.m}>
-            {m.slug ? (
-              <Link href={`/festivals/${m.slug}`} className="flex items-baseline justify-between gap-3 py-3">
+            {linkFor(m) ? (
+              <Link href={linkFor(m)} className="flex items-baseline justify-between gap-3 py-3">
                 <span><span className="font-mono text-[11px] uppercase tracking-wider text-geru">{m.m}</span>
                   <span className="ml-2 font-display text-lg text-[#3a2a18]">{m.f}</span></span>
                 <span className="font-mono text-[11px] text-[#a8895c]">→</span>

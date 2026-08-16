@@ -1,3 +1,0 @@
-# blocking crawlers until content MVP is ready for launch
-User-agent: *
-Disallow: /

@@ -3,7 +3,7 @@ import SiteHeader from './SiteHeader'
 import SiteFooter from './SiteFooter'
 import Motif from './Motif'
 
-export default function PillarList({ title, intro, pillar, items }) {
+export default function PillarList({ title, intro, pillar, items, children }) {
   return (
     <>
       <section className="relative px-6 pb-12 pt-28 md:px-10 md:pt-32" style={{ background: '#9E2B1E', color: '#FBF6EE' }}>
@@ -37,6 +37,9 @@ export default function PillarList({ title, intro, pillar, items }) {
           </div>
         )}
       </section>
+      {children ? (
+        <section className="mx-auto max-w-content px-6 pb-16 md:px-10">{children}</section>
+      ) : null}
       <SiteFooter />
     </>
   )
