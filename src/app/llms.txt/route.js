@@ -19,7 +19,7 @@ export function GET() {
 > ${SITE.description}
 
 Aipan House is the definitive English-language home of Kumaoni art, culture and heritage,
-written from Dehradun, Uttarakhand. Aipan — the red-and-white ritual folk art of Kumaon —
+written from Nainital, Uttarakhand. Aipan — the red-and-white ritual folk art of Kumaon —
 is the anchor; the festivals, food and living traditions of the Kumaon Himalaya are the body.
 All motif diagrams are original illustrations.
 

@@ -19,11 +19,11 @@ export default function Contact() {
             <div className="mt-8 space-y-4 font-sans text-sm">
               <div>
                 <div className="text-[11px] font-bold uppercase tracking-wider text-slate-mute">Write to us</div>
-                <a href="mailto:hello@aipanhouse.com" className="font-head text-xl font-bold text-geru">hello@aipanhouse.com</a>
+                <a href="mailto:aipanhouse15@gmail.com" className="font-head text-xl font-bold text-geru">aipanhouse15@gmail.com</a>
               </div>
               <div>
                 <div className="text-[11px] font-bold uppercase tracking-wider text-slate-mute">Based in</div>
-                <div className="font-head text-lg text-ink">Dehradun, Uttarakhand</div>
+                <div className="font-head text-lg text-ink">Nainital, Uttarakhand</div>
               </div>
             </div>
           </div>

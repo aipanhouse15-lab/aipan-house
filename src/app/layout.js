@@ -30,7 +30,7 @@ const orgSchema = {
   url: SITE.url,
   logo: { '@type': 'ImageObject', url: `${SITE.url}/icon-512.png` },
   description: SITE.description,
-  address: { '@type': 'PostalAddress', addressLocality: 'Dehradun', addressRegion: 'Uttarakhand', addressCountry: 'IN' },
+  address: { '@type': 'PostalAddress', addressLocality: 'Nainital', addressRegion: 'Uttarakhand', addressCountry: 'IN' },
   knowsAbout: ['Aipan art', 'Kumaoni festivals', 'Kumaon', 'Uttarakhand folk art', 'Harela', 'GI-certified crafts'],
   ...(sameAs.length ? { sameAs } : {}),
 }

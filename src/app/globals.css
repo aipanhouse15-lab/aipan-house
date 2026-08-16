@@ -5,7 +5,12 @@
 @tailwind utilities;
 
 html { scroll-behavior: smooth; }
-html, body { max-width: 100%; overflow-x: hidden; }
+/* `overflow-x: hidden` here would make body a scroll container and silently break
+   every `position: sticky` descendant (the article sidebar). `clip` prevents the
+   horizontal scrollbar without creating a scroll container, so sticky keeps working.
+   Wide tables are already wrapped in their own overflow-x-auto container in Mdx.jsx. */
+html, body { max-width: 100%; }
+html { overflow-x: clip; }
 body { background: #fff; color: #23323e; font-family: 'Spectral', Georgia, serif; -webkit-font-smoothing: antialiased; }
 img { max-width: 100%; height: auto; }
 .prose-article table { min-width: 480px; }

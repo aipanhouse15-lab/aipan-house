@@ -62,8 +62,8 @@ export default function Article({ data, toc = [], facts = [], motif = 'lotus' })
 
       {/* two-column layout */}
       <div className="mx-auto grid max-w-content gap-10 px-5 pb-20 pt-10 sm:px-6 md:grid-cols-[260px_1fr] md:gap-12 md:px-10 md:pt-11">
-        <aside className="order-2 md:order-1">
-          <div className="md:sticky md:top-8">
+        <aside className="order-2 self-start md:order-1">
+          <div className="md:sticky md:top-8 md:max-h-[calc(100vh-4rem)] md:overflow-y-auto md:pr-1">
             {toc.length > 0 && (
               <div className="mb-7">
                 <h4 className="border-b border-[#e8e8e8] pb-2 font-sans text-[11px] font-bold uppercase tracking-[.1em]" style={{ color: accentDeep }}>On this page</h4>

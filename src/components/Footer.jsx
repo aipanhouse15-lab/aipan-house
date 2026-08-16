@@ -13,7 +13,7 @@ export default function Footer() {
           </div>
           <p className="mt-4 max-w-sm font-body text-sm leading-relaxed text-clay">
             The digital home of Kumaoni art, culture and heritage — written from the Kumaon
-            Himalaya, in Dehradun, Uttarakhand.
+            Himalaya, in Nainital, Uttarakhand.
           </p>
         </div>
 
@@ -36,7 +36,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-sand">
         <p className="mx-auto max-w-content px-6 py-5 font-sans text-xs text-taupe">
-          © {new Date().getFullYear()} Aipan House · Tallyard Ventures · Dehradun, Uttarakhand
+          © {new Date().getFullYear()} Aipan House · Nainital, Uttarakhand
         </p>
       </div>
     </footer>

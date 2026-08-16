@@ -13,7 +13,7 @@ export default function SiteFooter() {
       </svg>
 
       <div className="relative z-10 mx-auto max-w-content px-6 pb-10 pt-24 md:px-10">
-        <div className="grid gap-10 md:grid-cols-[1.6fr_1fr_1fr_1.3fr]">
+        <div className="grid gap-10 md:grid-cols-[2fr_1fr_1fr]">
           {/* brand */}
           <div>
             <div className="flex items-center gap-2.5">
@@ -22,7 +22,7 @@ export default function SiteFooter() {
             </div>
             <p className="mt-4 max-w-xs font-body text-sm leading-relaxed text-slate-mute">
               The home of Kumaoni art, festivals and heritage — written from the Kumaon Himalaya,
-              in Dehradun, Uttarakhand.
+              in Nainital, Uttarakhand.
             </p>
           </div>
 
@@ -45,21 +45,11 @@ export default function SiteFooter() {
             </ul>
           </div>
 
-          {/* newsletter / connect */}
-          <div>
-            <h4 className="font-sans text-[11px] font-bold uppercase tracking-[.12em] text-gold">Stay in touch</h4>
-            <p className="mt-4 font-body text-sm leading-relaxed">A letter from the hills now and then — new writing, no noise.</p>
-            <form className="mt-3 flex gap-2" action="#" method="post">
-              <input type="email" placeholder="your email" aria-label="Email"
-                className="w-full rounded-full border border-rice/25 bg-transparent px-4 py-2 font-sans text-sm text-rice placeholder:text-slate-mute focus:border-gold focus:outline-none" />
-              <button type="submit" className="rounded-full bg-gold px-4 py-2 font-sans text-[13px] font-semibold text-slate">Join</button>
-            </form>
-          </div>
         </div>
 
         {/* bottom bar */}
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 font-mono text-[11px] uppercase tracking-wider md:flex-row md:items-center">
-          <span>© {year} Aipan House · Tallyard Ventures · Dehradun, Uttarakhand</span>
+          <span>© {year} Aipan House · Nainital, Uttarakhand</span>
           <span className="flex gap-5">
             {SITE.social.instagram && <a href={SITE.social.instagram} target="_blank" rel="noopener" className="hover:text-rice">Instagram</a>}
             {SITE.social.pinterest && <a href={SITE.social.pinterest} target="_blank" rel="noopener" className="hover:text-rice">Pinterest</a>}
