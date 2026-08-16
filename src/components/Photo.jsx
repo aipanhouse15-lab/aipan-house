@@ -9,7 +9,7 @@ export function Photo({ src, alt, caption, priority = false }) {
         src={src}
         alt={alt || ''}
         priority={priority}
-        sizes="(max-width: 768px) 100vw, 680px"
+        sizes="(max-width: 768px) calc(100vw - 40px), 680px"
         className="h-auto w-full rounded-2xl border border-[#e7e2da] object-cover"
       />
       {caption && <figcaption className="mt-3 text-center font-sans text-[13px] text-slate-mute">{caption}</figcaption>}
@@ -49,7 +49,7 @@ export function PhotoPair({ aSrc, aAlt, aCaption, bSrc, bAlt, bCaption, a, b }) 
             alt={p.alt || ''}
             width={1200}
             height={960}
-            sizes="(max-width: 640px) 100vw, 340px"
+            sizes="(max-width: 640px) calc(100vw - 40px), 340px"
             className="aspect-[4/3] w-full rounded-xl border border-[#e7e2da] object-cover"
           />
           {p.caption && <figcaption className="mt-2 text-center font-sans text-[12px] text-slate-mute">{p.caption}</figcaption>}

@@ -2,6 +2,9 @@ import './globals.css'
 import Script from 'next/script'
 import { SITE } from '@/lib/site'
 
+const FONT_CSS =
+  'https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Spectral:wght@400;600&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400&display=swap'
+
 export const metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: 'Aipan House — Kumaoni Art, Festivals & Heritage', template: '%s · Aipan House' },
@@ -49,10 +52,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Fonts are @imported in globals.css, which chains css -> googleapis -> gstatic.
-            Preconnecting shaves the handshake off that critical path. */}
+        {/* Fonts load non-render-blocking: the sheet is fetched with media="print" (which
+            browsers do not block render on) and flipped to media="all" once it arrives.
+            display=swap means text paints immediately in the fallback and swaps in. */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preload" as="style" href={FONT_CSS} />
+        <link id="gfonts" rel="stylesheet" href={FONT_CSS} media="print" />
+        <noscript><link rel="stylesheet" href={FONT_CSS} /></noscript>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){var l=document.getElementById('gfonts');if(!l)return;" +
+              "if(l.sheet){l.media='all';}else{l.addEventListener('load',function(){l.media='all';});}})();",
+          }}
+        />
       </head>
       <body>
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-CTGHFB9Y82" strategy="afterInteractive" />

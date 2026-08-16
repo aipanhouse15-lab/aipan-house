@@ -20,7 +20,7 @@ export function webpSrcSet(src) {
 export default function ResponsiveImg({
   src,
   alt = '',
-  sizes = '(max-width: 768px) 100vw, 700px',
+  sizes = '(max-width: 768px) calc(100vw - 40px), 680px',
   width = 1400,
   height = 1120,
   priority = false,

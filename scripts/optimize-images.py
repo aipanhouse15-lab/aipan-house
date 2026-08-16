@@ -17,7 +17,7 @@ import os, glob, json
 from PIL import Image
 
 SRC = 'public/images'
-WIDTHS = [600, 1000, 1400]
+WIDTHS = [400, 700, 1000, 1400]
 FULL_W = 1400
 JPEG_QUALITY = 74
 WEBP_QUALITY = 72

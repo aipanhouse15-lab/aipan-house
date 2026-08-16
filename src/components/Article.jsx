@@ -47,7 +47,7 @@ export default function Article({ data, toc = [], facts = [], motif = 'lotus' })
           {data.hero && (
             <div className="hidden md:block">
               <ResponsiveImg src={data.hero} alt={data.heroAlt || data.title} priority
-                sizes="(max-width: 768px) 100vw, 520px"
+                sizes="(max-width: 768px) calc(100vw - 40px), 520px"
                 className="aspect-[4/3] w-full rounded-2xl object-cover shadow-[0_18px_50px_rgba(0,0,0,.22)]" />
             </div>
           )}
@@ -58,7 +58,7 @@ export default function Article({ data, toc = [], facts = [], motif = 'lotus' })
       {data.hero && (
         <div className="px-5 sm:px-6 md:hidden">
           <ResponsiveImg src={data.hero} alt={data.heroAlt || data.title} priority
-            sizes="100vw"
+            sizes="calc(100vw - 40px)"
             className="-mt-5 aspect-[3/2] w-full rounded-xl object-cover shadow-[0_12px_30px_rgba(35,50,62,.18)]" />
         </div>
       )}

@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Spectral:wght@400;500;600&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap');
+/* Font stylesheet is NOT imported here on purpose.
+   An @import forces the browser to download globals.css, parse it, discover the
+   import, then fetch Google's CSS, then the woff2 files — a 4-hop serial chain that
+   blocked render for ~1.8s. It is now loaded non-blocking from the root layout. */
 
 @tailwind base;
 @tailwind components;
