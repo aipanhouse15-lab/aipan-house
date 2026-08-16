@@ -1,5 +1,21 @@
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import { SITE } from '@/lib/site'
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${SITE.url}/about#ashutosh`,
+  name: 'Ashutosh',
+  homeLocation: {
+    '@type': 'Place',
+    address: { '@type': 'PostalAddress', addressLocality: 'Nainital', addressRegion: 'Uttarakhand', addressCountry: 'IN' },
+  },
+  knowsAbout: ['Aipan art', 'Kumaoni festivals', 'Kumaon', 'Uttarakhand folk art'],
+  description:
+    'Writer of Aipan House. A Nainital resident who has worked in the Aipan craft trade in Kumaon, Uttarakhand.',
+  worksFor: { '@id': `${SITE.url}/#organization` },
+}
 
 export const metadata = {
   alternates: { canonical: '/about' },
@@ -11,6 +27,7 @@ export const metadata = {
 export default function About() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
       <SiteHeader />
       <article className="mx-auto max-w-reading px-6 py-16">
         <h1 className="font-display text-4xl font-medium leading-tight text-geru md:text-5xl">About Aipan House</h1>
@@ -18,7 +35,8 @@ export default function About() {
           <p>Aipan House is a documentation project written from <strong>Nainital, in the Kumaon Himalaya</strong>. It exists to give Kumaoni art, festivals and traditions the clear, well-made English-language home they have never quite had online — written close to the source, by someone from the region rather than about it.</p>
 
           <h2>Who writes this</h2>
-          <p>Aipan House is written and run by a resident of Kumaon, based in Nainital, who has <strong>worked in the Aipan craft trade</strong> — with the artisans who draw it, and with the practical realities of producing and selling the work. That background shapes what is on this site: the material detail about geru and bisvar, the distinction between what is drawn for which occasion, and the honesty about which traditions are thriving and which are thinning as the hill villages empty.</p>
+          <p>Aipan House is written and run by <strong>Ashutosh</strong>, a resident of <strong>Nainital, Uttarakhand</strong>, who has <strong>worked in the Aipan craft trade</strong> — with the artisans who draw it, and with the practical realities of producing and selling the work. That background shapes what is on this site: the material detail about geru and bisvar, the distinction between what is drawn for which occasion, and the honesty about which traditions are thriving and which are thinning as the hill villages empty.</p>
+          <p>Kumaon is home, not a subject. The festivals documented here are ones observed in the hills around Nainital and Almora, and the account of a tradition fading is written from having watched it thin rather than from having read about it.</p>
           <p>This is a personal project, not a corporate publication and not a content farm. It is not affiliated with any other business.</p>
 
           <h2>Why we started</h2>
