@@ -30,9 +30,13 @@ function asObj(v) {
   return v || {}
 }
 
-export function PhotoPair({ aSrc, aAlt, aCaption, bSrc, bAlt, bCaption, a, b }) {
+export function PhotoPair({ aSrc, aAlt, aCaption, bSrc, bAlt, bCaption, aspect = '4/3', a, b }) {
   const la = asObj(a)
   const lb = asObj(b)
+  const landscape = aspect === '3/2'
+  const imageClass = landscape
+    ? 'aspect-[3/2] w-full rounded-xl border border-[#e7e2da] object-cover'
+    : 'aspect-[4/3] w-full rounded-xl border border-[#e7e2da] object-cover'
   const items = [
     { src: aSrc || la.src, alt: aAlt || la.alt, caption: aCaption || la.caption },
     { src: bSrc || lb.src, alt: bAlt || lb.alt, caption: bCaption || lb.caption },
@@ -48,9 +52,9 @@ export function PhotoPair({ aSrc, aAlt, aCaption, bSrc, bAlt, bCaption, a, b }) 
             src={p.src}
             alt={p.alt || ''}
             width={1200}
-            height={960}
+            height={landscape ? 800 : 960}
             sizes="(max-width: 640px) calc(100vw - 40px), 340px"
-            className="aspect-[4/3] w-full rounded-xl border border-[#e7e2da] object-cover"
+            className={imageClass}
           />
           {p.caption && <figcaption className="mt-2 text-center font-sans text-[12px] text-slate-mute">{p.caption}</figcaption>}
         </figure>
