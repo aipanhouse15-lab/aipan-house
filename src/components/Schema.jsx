@@ -1,4 +1,4 @@
-import { SITE } from '@/lib/site'
+import { AUTHOR, SITE } from '@/lib/site'
 
 const PILLAR_LABEL = { aipan: 'Aipan', festivals: 'Festivals', traditions: 'Traditions' }
 
@@ -9,7 +9,7 @@ export default function Schema({ data, faqs = [], pillar }) {
     '@type': 'Article',
     headline: data.title,
     description: data.excerpt,
-    author: { '@type': 'Organization', name: data.author || 'Aipan House', url: SITE.url },
+    author: { '@type': 'Person', '@id': AUTHOR.id, name: AUTHOR.name, url: `${SITE.url}${AUTHOR.path}` },
     publisher: {
       '@type': 'Organization',
       name: 'Aipan House',
@@ -44,7 +44,9 @@ export default function Schema({ data, faqs = [], pillar }) {
     : null
   // Optional Event schema — driven by `event` frontmatter:
   // event: { name, startDate, endDate }
-  const eventSchema = data.event?.startDate
+  // Only describe a single physical event when the article provides a verified,
+  // specific venue. A region-wide festival is not itself one schema.org Event.
+  const eventSchema = data.event?.verified && data.event?.startDate && data.event?.location
     ? {
         '@context': 'https://schema.org',
         '@type': 'Event',
@@ -55,8 +57,13 @@ export default function Schema({ data, faqs = [], pillar }) {
         eventStatus: 'https://schema.org/EventScheduled',
         location: {
           '@type': 'Place',
-          name: 'Kumaon, Uttarakhand',
-          address: { '@type': 'PostalAddress', addressRegion: 'Uttarakhand', addressCountry: 'IN' },
+          name: data.event.location.name,
+          address: {
+            '@type': 'PostalAddress',
+            ...(data.event.location.locality ? { addressLocality: data.event.location.locality } : {}),
+            addressRegion: 'Uttarakhand',
+            addressCountry: 'IN',
+          },
         },
         ...(data.hero ? { image: `${SITE.url}${data.hero}` } : {}),
         description: data.excerpt,

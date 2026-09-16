@@ -5,9 +5,9 @@ import PillarList from '@/components/PillarList'
 
 export const metadata = {
   alternates: { canonical: '/aipan' },
-  title: 'Aipan Art: the GI-Certified Folk Art of Kumaon, Uttarakhand',
+  title: { absolute: 'Aipan Art of Uttarakhand: Meaning, Motifs and Method' },
   description:
-    'What Aipan is, where it comes from, and what every motif means — the red geru and white rice-paste ritual folk art of Kumaon, Uttarakhand, GI-certified in 2021. Motifs, materials and method, decoded.',
+    'Learn the meaning, motifs, materials and method of Aipan, the red-and-white ritual folk art of Kumaon in Uttarakhand.',
   openGraph: {
     title: 'Aipan Art: the GI-Certified Folk Art of Kumaon, Uttarakhand',
     description:

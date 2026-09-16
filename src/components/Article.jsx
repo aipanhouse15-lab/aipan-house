@@ -6,6 +6,7 @@ import Mdx from './Mdx'
 import ResponsiveImg from './ResponsiveImg'
 import Schema from './Schema'
 import { extractFaqs } from '@/lib/content'
+import { AUTHOR } from '@/lib/site'
 
 // derive a darker shade for headings from the accent (simple darken)
 function darken(hex, amt = 0.7) {
@@ -41,7 +42,7 @@ export default function Article({ data, toc = [], facts = [], motif = 'lotus' })
             <h1 className="mt-3 max-w-[18ch] font-head text-[2rem] font-extrabold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">{data.title}</h1>
             {data.excerpt && <p className="mt-4 max-w-[52ch] text-base italic leading-relaxed opacity-90 md:text-lg">{data.excerpt}</p>}
             <div className="mt-4 font-sans text-[11px] uppercase tracking-wide opacity-80">
-              By {data.author || 'Aipan House'} · {data.date} · {data.readingTime}
+              By <Link href={AUTHOR.path} rel="author" className="underline decoration-current/50 underline-offset-2 hover:opacity-80">{AUTHOR.name}</Link> · {data.date} · {data.readingTime}
             </div>
           </div>
           {data.hero && (

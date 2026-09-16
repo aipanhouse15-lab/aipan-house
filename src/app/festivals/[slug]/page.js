@@ -1,25 +1,21 @@
 import { notFound } from 'next/navigation'
 import { getOne, getSlugs } from '@/lib/content'
+import { articleMetadata } from '@/lib/seo'
 import Article from '@/components/Article'
 
 export function generateStaticParams() {
   return getSlugs('festivals').map((slug) => ({ slug }))
 }
-export function generateMetadata({ params }) {
-  const a = getOne('festivals', params.slug)
+export async function generateMetadata({ params }) {
+  const { slug } = await params
+  const a = getOne('festivals', slug)
   if (!a) return {}
-  const url = `/festivals/${params.slug}`
-  return {
-    title: a.title,
-    description: a.excerpt,
-    alternates: { canonical: url },
-    openGraph: { title: a.title, description: a.excerpt, type: 'article', url, ...(a.hero ? { images: [a.hero] } : {}) },
-    twitter: { card: 'summary_large_image', title: a.title, description: a.excerpt, ...(a.hero ? { images: [a.hero] } : {}) },
-  }
+  return articleMetadata(a, 'festivals')
 }
 
-export default function FestivalArticle({ params }) {
-  const data = getOne('festivals', params.slug)
+export default async function FestivalArticle({ params }) {
+  const { slug } = await params
+  const data = getOne('festivals', slug)
   if (!data) notFound()
   return <Article data={data} toc={data.toc || []} facts={data.facts || []} motif={data.motif || 'vasudhara'} />
 }

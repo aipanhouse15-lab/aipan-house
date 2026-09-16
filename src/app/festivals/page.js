@@ -4,9 +4,9 @@ import Link from 'next/link'
 
 export const metadata = {
   alternates: { canonical: '/festivals' },
-  title: 'Festivals of Uttarakhand: the Kumaoni Festival Calendar',
+  title: { absolute: 'Festivals of Uttarakhand: Kumaoni Calendar and Dates' },
   description:
-    'Every festival of the Kumaoni year with its dates — Harela, Ghee Sankranti, Khatarua, Nanda Ashtami, Egaas Bagwal, Ghughutiya, Phool Dei, Kumaoni Holi and Bikhauti.',
+    'Dates and traditions for Harela, Nanda Ashtami, Ghee Sankranti, Phool Dei, Kumaoni Holi and other festivals of Kumaon.',
 }
 
 export default function Festivals() {
