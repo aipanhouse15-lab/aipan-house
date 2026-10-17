@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" role="img" aria-labelledby="title desc">
+  <title id="title">Five beginner Aipan practice designs: symbols and thresholds</title>
+  <desc id="desc">Simple Swastika, framed Swastika, paired inward-facing footprints, footprints with a lotus border and a threshold practice arrangement.</desc>
+  <rect width="1000" height="800" rx="24" fill="#f7f3eb"/>
+  <g font-family="Arial,sans-serif" font-size="21" fill="#493a31" text-anchor="middle">
+    <text x="250" y="42">11 · Swastika</text><text x="750" y="42">12 · Framed</text>
+    <text x="250" y="350">13 · Lakshmi Pad</text><text x="750" y="350">14 · Lotus border</text>
+    <text x="500" y="658">15 · Threshold practice</text>
+  </g>
+  <g fill="#a84e36" stroke="#d9c8ac" stroke-width="3">
+    <rect x="35" y="60" width="430" height="260" rx="14"/><rect x="535" y="60" width="430" height="260" rx="14"/>
+    <rect x="35" y="368" width="430" height="260" rx="14"/><rect x="535" y="368" width="430" height="260" rx="14"/>
+    <rect x="185" y="676" width="630" height="100" rx="14"/>
+  </g>
+  <g fill="none" stroke="#fff8e9" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M250 120 V250 H315 M250 185 H185 M185 185 V120 M315 185 V250 M250 185 H315 M250 185 V120"/>
+    <rect x="650" y="92" width="200" height="190" stroke-width="5"/><path d="M750 122 V252 H800 M750 187 H700 M700 187 V132 M800 187 V242 M750 187 H800 M750 187 V132"/>
+    <path d="M195 430 Q165 478 190 520 Q205 540 225 520 Q245 492 215 462 Q203 448 195 430 M305 430 Q335 478 310 520 Q295 540 275 520 Q255 492 285 462 Q297 448 305 430"/>
+    <path d="M184 432 l-8 -12 M195 426 l-2 -14 M206 430 l4 -13 M284 430 l-4 -13 M295 426 l2 -14 M306 432 l8 -12" stroke-width="6"/>
+    <path d="M695 420 Q710 452 695 470 Q680 452 695 420 M805 420 Q820 452 805 470 Q790 452 805 420 M695 525 Q710 543 695 575 Q680 543 695 525 M805 525 Q820 543 805 575 Q790 543 805 525 M695 472 Q710 455 725 472 Q710 489 695 472 M775 472 Q790 455 805 472 Q790 489 775 472"/>
+    <path d="M420 692 v55 M500 692 v35 M580 692 v55" stroke-width="6"/>
+    <path d="M500 721 Q516 739 500 751 Q484 739 500 721" stroke-width="5"/>
+  </g>
+  <g fill="#fff8e9">
+    <circle cx="175" cy="132" r="6"/><circle cx="325" cy="250" r="6"/><circle cx="695" cy="112" r="5"/><circle cx="805" cy="260" r="5"/>
+  </g>
+</svg>
