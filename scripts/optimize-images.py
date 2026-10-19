@@ -13,7 +13,7 @@ the browser pick a width that matches the device instead.
 
 Run:  python3 scripts/optimize-images.py
 """
-import os, glob, json
+import os, glob, json, subprocess
 from PIL import Image
 
 SRC = 'public/images'
@@ -61,6 +61,9 @@ for path in sorted(glob.glob(f'{SRC}/*.jpg')):
 
 with open('src/lib/image-manifest.json', 'w') as fh:
     json.dump(manifest, fh, indent=0, sort_keys=True)
+
+# Keep the original-image dimensions in sync, including SVG illustrations.
+subprocess.run(['node', 'scripts/update-image-metadata.mjs'], check=True)
 
 print(f'{count} source images')
 print(f'  JPEG fallbacks : {human(before)} -> {human(after_full)}')

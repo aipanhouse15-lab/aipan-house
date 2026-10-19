@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build --webpack",
     "start": "next start",
-    "seo:check": "node scripts/check-seo.mjs"
+    "seo:check": "node scripts/check-seo.mjs",
+    "seo:check:built": "node scripts/check-rendered-seo.mjs",
+    "images:metadata": "node scripts/update-image-metadata.mjs"
   },
   "keywords": [],
   "author": "",

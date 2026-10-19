@@ -7,6 +7,10 @@ module.exports = {
   async redirects() {
     return [
       { source: '/aipan/lakshmi-pad-motif', destination: '/aipan/lakshmi-pad', permanent: true },
+      { source: '/festival', destination: '/festivals', permanent: true },
+      { source: '/festival/khatarua-uttarakhand', destination: '/festivals/khatarua', permanent: true },
+      { source: '/p/festivals-of-uttarakhand-aipan-house', destination: '/festivals', permanent: true },
+      { source: '/home/nanda-ashtami-2026-date-and-nanda-devi-traditions', destination: '/festivals/nanda-ashtami', permanent: true },
     ]
   },
 }

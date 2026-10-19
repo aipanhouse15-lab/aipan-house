@@ -7,20 +7,26 @@ const STATIC_PAGES = [
   { path: '/aipan', updated: '2026-07-20', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/festivals', updated: '2026-07-20', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/about', updated: '2026-06-01', changeFrequency: 'yearly', priority: 0.5 },
-  { path: '/contact', updated: '2026-06-01', changeFrequency: 'yearly', priority: 0.3 },
+  { path: '/contact', updated: '2026-10-19', changeFrequency: 'yearly', priority: 0.3 },
 ]
 // NOTE: /traditions is excluded until it has content; re-add when the first article ships.
 
 export default function sitemap() {
+  const pillars = ['aipan', 'festivals', 'traditions']
+  const articles = Object.fromEntries(pillars.map((pillar) => [pillar, getAll(pillar)]))
   const staticPages = STATIC_PAGES.map((p) => ({
     url: `${SITE.url}${p.path}`,
-    lastModified: new Date(p.updated),
+    lastModified: new Date(
+      (articles[p.path.slice(1)] || []).reduce(
+        (latest, article) => [latest, article.updated || article.published || latest].sort().at(-1),
+        p.updated,
+      ),
+    ),
     changeFrequency: p.changeFrequency,
     priority: p.priority,
   }))
-  const pillars = ['aipan', 'festivals', 'traditions']
   const articlePages = pillars.flatMap((pillar) =>
-    getAll(pillar).map((a) => ({
+    articles[pillar].map((a) => ({
       url: `${SITE.url}/${pillar}/${a.slug}`,
       lastModified: new Date(a.updated || a.published || '2026-06-01'),
       changeFrequency: 'monthly',

@@ -35,17 +35,6 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-reading px-6 py-14">
-        <form action="#" method="post" className="grid gap-4">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <input className="rounded-lg border border-[#e2dccf] px-4 py-3 font-sans text-sm focus:border-geru focus:outline-none" placeholder="Your name" aria-label="Name" />
-            <input className="rounded-lg border border-[#e2dccf] px-4 py-3 font-sans text-sm focus:border-geru focus:outline-none" placeholder="Your email" type="email" aria-label="Email" />
-          </div>
-          <textarea rows="5" className="rounded-lg border border-[#e2dccf] px-4 py-3 font-sans text-sm focus:border-geru focus:outline-none" placeholder="Your message, correction, or story" aria-label="Message" />
-          <button type="submit" className="justify-self-start rounded-full bg-geru px-7 py-3 font-sans text-sm font-semibold text-rice hover:bg-geru-deep">Send message</button>
-        </form>
-        <p className="mt-4 font-sans text-xs text-slate-mute">This form is a placeholder — wire it to Resend or Formspree before launch.</p>
-      </section>
       <SiteFooter />
     </>
   )

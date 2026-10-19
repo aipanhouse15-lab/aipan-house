@@ -5,6 +5,7 @@
 // small share of clients without WebP, and remains the og:image for social cards.
 
 import manifest from '@/lib/image-manifest.json'
+import metadata from '@/lib/image-metadata.json'
 
 export function webpSrcSet(src) {
   if (typeof src !== 'string') return null
@@ -21,21 +22,26 @@ export default function ResponsiveImg({
   src,
   alt = '',
   sizes = '(max-width: 768px) calc(100vw - 40px), 680px',
-  width = 1400,
-  height = 1120,
+  width,
+  height,
   priority = false,
   className = '',
 }) {
   if (!src) return null
   const srcSet = webpSrcSet(src)
+  const original = metadata[src]
+  const imageWidth = width ?? original?.width ?? 1400
+  const imageHeight = height ?? (original
+    ? Math.round(imageWidth * original.height / original.width)
+    : 1120)
   return (
     <picture>
       {srcSet && <source type="image/webp" srcSet={srcSet} sizes={sizes} />}
       <img
         src={src}
         alt={alt}
-        width={width}
-        height={height}
+        width={imageWidth}
+        height={imageHeight}
         sizes={sizes}
         loading={priority ? 'eager' : 'lazy'}
         decoding={priority ? 'sync' : 'async'}
