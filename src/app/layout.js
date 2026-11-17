@@ -52,6 +52,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1251062595068305"
+          crossOrigin="anonymous"
+        />
         {/* Fonts load non-render-blocking: the sheet is fetched with media="print" (which
             browsers do not block render on) and flipped to media="all" once it arrives.
             display=swap means text paints immediately in the fallback and swaps in. */}
